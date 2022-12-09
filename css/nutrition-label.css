@@ -1,0 +1,92 @@
+
+/* STRUCTURE *********/
+
+.nutrition-details {
+    overflow:hidden;
+    transition:500ms;
+}
+
+.nutrition-details .nutrition-label, .nutrition-label  {
+    margin-top:24px;
+    padding:8px;
+    background-color:#fff;
+    border:1px solid var(--gray-800);
+    border-radius:8px;
+}
+
+.nutrition-label {
+    margin-top:0px;
+}
+
+.nutrition-label .header {
+    margin-bottom: 4px;
+    display:block;
+}
+
+.nutrition-label .section > div {
+    display:grid;
+    grid-template-columns: 1fr auto;
+    gap:8px;
+    padding:4px 0;
+}
+
+.nutrition-label .section > div + div {
+    border-top:1px solid var(--gray-400);
+}
+
+.nutrition-label .section.main {
+    border-top: 8px solid var(--gray-800);
+}
+
+.nutrition-label .section.sub {
+    border-top: 4px solid var(--gray-800);
+}
+
+.nutrition-label .section > div > div:last-child {
+    font-weight: 800;
+}
+
+
+
+
+
+
+/* TEXT *********/
+
+.nutrition-label {
+    font-size: var(--type-xs);
+}
+
+.nutrition-label h4 {
+    margin-bottom:4px;
+}
+
+.nutrition-label p.legal {
+    margin-top:0;
+}
+
+.nutrition-label a {
+    color:var(--gray-800);
+    font-weight:400;
+    text-decoration: underline;
+    transition: all 500ms;
+    white-space: nowrap;
+}
+
+.nutrition-label a:hover {
+    text-decoration: none;
+}
+
+
+
+.nutrition-label .close {
+    position:absolute;
+    right:-16px;
+    top:-16px;
+}
+
+.nutrition-label .close svg {
+    width:16px;
+    height:16px;
+    fill:var(--gray-800);
+}

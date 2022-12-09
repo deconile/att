@@ -1,0 +1,351 @@
+
+/* CARD | MAIN STYLES on cards.css */
+
+.card.config {
+    font-size: var(--type-sm);
+    display:grid;
+    grid-template-columns: 1fr auto;
+    cursor: pointer;
+    user-select: none;
+    padding:16px;
+}
+
+.card.config.active {
+    border: 2px solid var(--cobalt-600);
+    background-color:var(--blue-000);
+}
+
+.card.config > div {
+    display:flex;
+    align-items: center;
+    gap:4px;
+}
+
+.card.config span {
+    font-size: var(--heading-xs);
+    font-weight:700;
+}
+
+
+
+
+
+
+
+/* SECTION | CONFIGURE *********/
+
+#configure-header > div {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.configure-option {
+    font-size:var(--type-sm);
+}
+
+
+
+
+
+
+
+/* FAVORITE ICON */
+.favorite {
+    transition: all 500ms;
+    cursor: pointer;
+    transform-origin: center;
+}
+
+.favorite.active {
+    animation: fav-check 500ms ease-in-out;
+}
+
+@keyframes fav-check {
+    0% {transform:scale(1);}
+    50% {transform:scale(1.2);}
+    100% {transform:scale(1);}
+}
+
+.favorite svg {
+    width:24px;
+    fill: var(--gray-800);
+}
+
+.favorite.active svg {
+    fill: var(--cobalt-600);
+}
+
+
+
+/* SECTION | PRICING */
+
+.price {
+    display: flex;
+    flex-direction: column;
+}
+
+.price-point {
+    font-weight:700;
+}
+
+.price.xl .price-point{
+    font-size: var(--heading-xl);
+}
+
+.price.sm .price-point{
+    font-size: var(--heading-sm);
+}
+
+.price.xs .price-point{
+    font-size: var(--heading-xs);
+}
+
+.price > div:not(.price-point) {
+    font-size:var(--type-xxs);
+}
+
+.price .strikethrough {
+    color: var(--gray-600);
+    text-decoration: line-through;
+}
+
+
+.price .price-point::before {
+    content: "$";
+    font-size: 0.5em;
+    vertical-align:super;
+}
+
+.price .price-point.none::before {
+    content: "";
+}
+
+.price .add-on-mo::before {
+    content: "+$";
+}
+
+.price .plan::after, .price .add-on-mo::after {
+    content: "/mo";
+    font-size: 0.3em;
+    vertical-align:baseline;
+}
+
+#footer-pricing .price .plan::after {
+    content:"Monthy";
+    margin-left:8px;
+    font-size:0.75em;
+}
+
+.price .retail::before {
+    content: "$";
+    font-size: 0.5em;
+    vertical-align:super;
+}
+
+.price.xs .price-point::before, 
+.price.sm .price-point::before {
+    font-size:1em;
+    vertical-align: baseline;
+}
+
+.price.xs .plan::after, 
+.price.sm .plan::after, 
+.price .add-on-mo::after {
+    font-size:0.5em;
+}
+
+#footer-pricing .price .retail::after {
+    content:"Due today";
+    margin-left:8px;
+    font-size:0.75em;
+}
+
+
+
+
+
+/* SECTION | CONFIGURE OPTIONS */
+.config-options {
+    display:grid;
+    gap:24px;
+}
+
+.configure-option {
+    border:1px solid var(--gray-300);
+    border-radius: var(--border-radius);
+    background-color:#fff;
+    transition: all 500ms;
+}
+
+.configure-option.progressive {
+    border:2px solid var(--cobalt-600);
+    background-color: var(--blue-000);
+}
+
+.configure-option:hover {
+    box-shadow: 0px 2px 8px rgba(37, 48, 58, 0.2), 0px 2px 4px -1px rgba(37, 48, 58, 0.12), 0px 2px 12px rgba(37, 48, 58, 0.1);
+}
+
+.configure-option + .configure-option {
+    margin-top:32px;
+}
+
+.configure-option-head {
+    display:grid;
+    grid-template-columns: 1fr auto;
+    align-items: flex-start;
+    cursor: pointer;
+    padding:16px;
+}
+
+.configure-option:not(.selected) .configure-option-head {
+    align-items: center;
+}
+
+.configure-option-head > div {
+    /*display:flex;
+    align-items: center;*/
+    
+}
+
+.configure-option-head .label {
+    display:flex;
+    flex-direction: column;
+    transition: 500ms;
+}
+
+.configure-option-head .label .selection {
+    font-weight:700;
+    position:relative;
+}
+
+.configure-option .label .type {
+    transition: 500ms;
+    height:24px;
+    overflow:hidden;
+}
+
+
+.configure-option.unselected .label .type {
+    height:0;
+}
+
+.configure-option-head .chevron {
+    transition: transform 600ms;
+    height:24px;
+}
+
+.configure-option-head .chevron svg {
+    width:24px;
+    color:var(--gray-800);
+}
+
+
+.configure-option-container {
+    overflow: hidden;
+    height:0px;
+}
+
+.configure-option-container .options-block {
+    padding:0 16px 24px;
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+}
+
+
+/********* UNSELECTED */
+.configure-option.unselected.closed .configure-option-head .label {
+    color:var(--gray-500);
+}
+
+
+/********** OPENED */
+.configure-option.opened .configure-option-head .chevron {
+    transform: rotateZ(180deg);
+}
+
+.configure-option.opened .configure-option-container {
+    height:100%;
+}
+
+
+
+/* CONFIGURE | COLOR */
+.options-block#color-options {
+    display:flex;
+    flex-direction: row;
+    gap:16px;
+}
+
+#color-options .swatch {
+    width:42px;
+    height:42px;
+    border-radius: 100%;
+    cursor:pointer;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid transparent;
+    transition: all 500ms;
+}
+
+#color-options .swatch > div {
+    width:36px;
+    height:36px;
+    border-radius: 100%;
+    transition: all 500ms;
+    border: 1px solid var(--gray-500);
+}
+
+#color-options .swatch:hover {
+    border: 1px solid var(--gray-500);
+}
+
+#color-options .swatch.active {
+    border: 2px solid var(--cobalt-600);
+}
+
+#color-options .swatch.active > div {
+    width:34px;
+    height:34px;
+    border: 1px solid transparent;
+}
+
+.swatch span {
+    display:none;
+}
+
+
+/* SHIPPING DETAILS ************************/
+#shipping {
+    padding-top:32px;
+    margin-top:32px;
+    border-top: 1px solid var(--gray-300);
+}
+
+#shipping h3, #shipping h5 {
+    margin-bottom:8px;
+} 
+
+#shipping p {
+    font-size:var(--type-sm);
+}
+
+#shipping p + p {
+    margin-top:16px;
+}
+
+
+#shipping svg {
+    max-width:48px;
+    max-height:48px;
+}
+
+#shipping .shipping-opt {
+    margin-top:32px;
+    display:grid;
+    grid-template-columns: auto 1fr;
+    gap: 16px;
+}
+

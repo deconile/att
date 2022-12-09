@@ -1,0 +1,76 @@
+
+#device-carousel {
+    margin-top:32px;
+}
+
+/* TOP MENU ICONS */
+#device-carousel .device-views {
+    display: flex;
+    justify-content: flex-end;
+    gap:16px;
+}
+
+
+/* CAROUSEL */
+#device-carousel .device-carousel {
+    display:grid;
+    grid-template-columns: auto 1fr auto;
+}
+
+#device-carousel .device-carousel .page-control {
+    width:64px;
+    display:flex;
+    align-items: center;
+}
+
+#device-carousel .device-carousel .device-images {
+    position: relative;
+    height:35vh;
+    overflow:hidden;
+    transition: 1000ms;
+}
+
+#device-carousel.full .device-carousel .device-images {
+    height:70vh;
+}
+
+#device-carousel .device-carousel .device-images > div {
+    height:100%;
+    width:100%;
+    position:absolute;
+    display:flex;
+    justify-content: center;
+}
+
+#device-carousel .device-carousel .device-images > div img {
+    height:100%;
+}
+
+
+/* PAGINATION */
+#device-carousel .pagination {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:16px;
+    margin-top:32px;
+}
+
+#device-carousel .pagination > div {
+    width:32px;
+    height:6px;
+    border-radius: 60px;
+    transition: all 300ms;
+    background-color:var(--gray-300);
+    border: 1px solid transparent;
+}
+
+#device-carousel .pagination > div:hover {
+    background-color:#fff;
+    border: 1px solid var(--gray-300);
+}
+
+#device-carousel .pagination > div.active {
+    width:64px;
+    background-color:var(--gray-500);
+}

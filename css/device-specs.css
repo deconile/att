@@ -1,0 +1,93 @@
+
+#specs-container {
+    display:grid;
+    grid-template-columns: auto auto 1fr;
+    gap:32px;
+    background-color:var(--gray-100);
+    border-radius: 16px;
+    padding:32px;
+    align-items: flex-start;
+}
+
+#specs-details-container {
+    display:grid;
+    grid-template-columns: auto 1fr;
+}
+
+
+#device {
+    width:206px;
+    height:400px;
+    position: relative;
+    transform: perspective(1000px) rotateY(0deg);
+    transform-style: preserve-3d;
+    transition: 500ms;
+}
+
+
+
+
+
+/* SHELL */
+#device-front, #device-back {
+    width:100%;
+    height:100%;
+    border:2px solid var(--gray-400);
+    border-radius: 32px;
+    position:absolute;
+    background-color:#fff;
+}
+
+#device-front {
+    transform: translateZ(15px);
+}
+
+#device-back {
+    transform: translateZ(-15px) rotateY(180deg);
+}
+
+#device-front > div, #device-back > div {
+    position:absolute;
+}
+
+
+/* FRONT */
+#device-front .face {
+    width:calc(100% - 4px);
+    height:calc(100% - 4px);
+    top:2px;
+    left:2px;
+    border:6px solid var(--gray-600);
+    border-radius: 28px;
+}
+
+#device-front .mic {
+    width:30%;
+    height:18px;
+    background-color: var(--gray-600);
+    border-radius: 18px;
+    top:16px;
+    left:50%;
+    transform: translateX(-50%);
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right:6px
+}
+
+#device .camera {
+    border-radius: 100%;
+}
+
+#device-front .mic .camera {
+    width:8px;
+    height:8px;
+    background-color:var(--gray-700);
+
+}
+
+/* BACK */
+
+#device.back {
+    transform: perspective(1000px) rotateY(180deg);
+}

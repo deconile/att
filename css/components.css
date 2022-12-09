@@ -1,0 +1,475 @@
+/* BUTTONS ***********************************/
+.button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap:8px;
+    position: relative;
+    border-radius: 100px;
+    cursor: pointer;
+    padding: 15px 32px;
+    font-size: 14px;
+    font-weight:700;
+    color:#fff;
+    background-color: var(--cobalt-600);
+    border:2px solid transparent;
+    transition: 300ms;
+}
+
+.button.secondary {
+    color: var(--cobalt-600);
+    background-color: #fff;
+    border-color: var(--cobalt-600);
+}
+
+.button:hover {
+    color:#fff;
+    background-color: var(--cobalt-400);
+}
+
+.button.inactive {
+    color: var(--gray-500);
+    background-color: var(--gray-300);
+    cursor:default;
+}
+
+.button.small {
+    padding: 6px 24px;
+    font-size: 12px;
+}
+
+.button.icon svg {
+    max-width:24px;
+    max-height:24px;
+    fill: #fff;
+    transition: 300ms;
+}
+
+.button.secondary.icon svg {
+    fill: var(--cobalt-600);
+}
+
+.button.icon:hover svg {
+    fill: #fff;
+}
+
+.button.icon.small svg {
+    max-width:16px;
+    max-height:16px;
+}
+
+.button.icon.only {
+    padding:0;
+    width:40px;
+    height:40px;
+}
+
+.button.icon.only.small {
+    width:24px;
+    height:24px;
+}
+
+.button.icon.right {
+    flex-direction: row-reverse;
+}
+
+
+
+/* CHECKBOX **************************/
+.checkbox {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:24px;
+    height:24px;
+    background-color:#fff;
+    border:1px solid var(--gray-600);
+    border-radius: 4px;
+    transition: 300ms;
+}
+
+.checkbox svg {
+    max-width: 16px;
+    max-height: 16px;
+    opacity: 0;
+    transition: 300ms;
+}
+
+.checkbox.active {
+    background-color:var(--cobalt-600);
+    border:1px solid transparent;
+}
+
+.checkbox.active svg {
+    fill: #fff;
+    opacity: 1;
+}
+
+.toggle {
+    display:flex;
+    align-items: center;
+    gap:8px;
+    font-size:var(--type-xs);
+    margin-top:24px;
+    cursor:pointer;
+}
+
+.toggle .switch {
+    width:32px;
+    height:18px;
+    background-color:var(--gray-500);
+    border-radius:100px;
+    position:relative;
+    transition: 500ms;
+}
+
+.toggle .switch::before {
+    position:absolute;
+    content:"";
+    top:2px;
+    left:2px;
+    width: 14px;
+    height: 14px;
+    background-color:#fff;
+    border-radius:100px;
+    transition: 500ms;
+}
+
+.toggle.active .switch {
+    background-color:var(--cobalt-600);
+}
+
+.toggle.active .switch::before {
+    transform:translateX(100%);
+}
+
+
+/* QUANTITY INCREMENTOR *********************/
+
+.quantity {
+    display: inline-flex;
+    color: var(--gray-600);
+    font-weight:700;
+    border:1px solid var(--gray-400);
+    border-radius: 100px;
+    background-color:#fff;
+    font-size: 12px;
+    transform: translateY(2px);
+    overflow: hidden;
+}
+
+.quantity > div {
+    padding:6px 8px 4px;
+    transition: 300ms;
+}
+
+.quantity .amount {
+    padding:6px 16px 4px;
+}
+
+.quantity svg {
+    max-width:16px;
+    max-height:16px;
+    fill:var(--gray-500);
+}
+
+.quantity > div:first-child {
+    border-right:1px solid var(--gray-400);
+}
+
+.quantity > div:last-child {
+    border-left:1px solid var(--gray-400);
+}
+
+.quantity .change:hover {
+    background-color: var(--gray-300);
+}
+
+
+/* BADGES *****************************/
+.badge-container {
+    min-height:24px;
+    display:flex;
+}
+
+.badge {
+    display:inline-flex;
+    align-items: center;
+    gap:4px;
+    padding:4px 8px;
+    font-size: var(--type-xs);
+    font-weight:700;
+    background-color:var(--blue-200);
+    border-radius: 4px;
+}
+
+.badge svg {
+    max-width:16px;
+    max-height:16px;
+    fill: var(--gray-800);
+}
+
+
+/* SEARCH BAR ***************************/
+
+.searchbar {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    background-color:#fff;
+    border:1px solid var(--gray-600);
+    border-radius:8px;
+}
+
+.searchbar input {
+    font-size: var(--type-sm);
+    color: var(--gray-600);
+    padding: 12px 16px;
+    border: transparent;
+    border-radius:8px;
+    background-color:transparent;
+}
+
+.searchbar > div {
+
+}
+.searchbar svg {
+    max-width:16px;
+    max-height:16px;
+    margin: 0 16px;
+    fill: var(--gray-600);
+}
+
+
+.search-filters {
+    display:grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap:64px;
+    transition: 300ms;
+}
+
+.filter {
+    position:relative;
+    min-width:200px;
+}
+
+.filter-control {
+    position:relative;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: 8px;
+}
+
+.filter .label {
+    font-size: var(--type-xs);
+}
+
+.filter .label span {
+    font-weight: 700;
+}
+
+
+/* DROP DOWN ************************************/
+.modal.dropdown {
+    position:absolute;
+    bottom:-4px;
+    right:0;
+    transform: translateY(100%);
+    z-index: 1;
+    width:100%;
+    background-color: #fff;
+    border: 1px solid var(--gray-400);
+    box-shadow: 0px 2px 2px -1px rgba(37, 48, 58, 0.12), 0px 1px 8px rgba(37, 48, 58, 0.1), 0px 1px 4px rgba(37, 48, 58, 0.2);
+    border-radius: 8px;
+    font-size: var(--type-sm);
+    color:var(--gray-600);
+    overflow: hidden;
+}
+
+.modal.dropdown > div {
+    padding:16px;
+    cursor:pointer;
+    transition: 300ms;
+}
+
+.modal.dropdown > div:hover {
+    background-color: var(--blue-100);
+    color:var(--cobalt-600);
+}
+
+
+
+/* ACCORDION ***********************************/
+.accordion {
+    border-top:1px solid var(--gray-300);
+    border-bottom:1px solid var(--gray-300);
+    transition: 500ms;
+}
+
+.accordion.expanded {
+    padding-bottom:32px;
+}
+
+.accordion .control {
+    position: relative;
+    display:grid;
+    grid-template-columns: 1fr auto;
+    column-gap:16px;
+    row-gap: 8px;
+    padding:32px 0;
+    cursor:pointer;
+    transition: 500ms;
+}
+.accordion .control .user {
+    position:absolute;
+    top:32px;
+    opacity: 0;
+    transition: 500ms;
+}
+
+.accordion.expanded .control .user {
+    opacity: 1;
+}
+
+.accordion .control .label {
+    font-size:var(--heading-sm);
+    font-weight:700;
+    transition:500ms;
+}
+
+.accordion.expanded .control.with-user .label {
+    padding-top:32px;
+} 
+
+.accordion .control .chevron svg {
+    transition: 500ms;
+}
+
+.accordion.expanded .control .chevron svg {
+    transform: rotateZ(180deg);
+}
+
+.accordion .control .chevron svg {
+    max-width:20px;
+    max-height:20px;
+    fill:var(--gray-600);
+}
+
+.accordion .content {
+    overflow: hidden;
+    transition: 1000ms;
+}
+
+
+.accordion .frame {
+    margin-bottom:32px;
+    padding:32px;
+    background-color:var(--gray-100);
+    border-radius: 16px;
+
+}
+
+
+
+
+/* JUMP LINKS **********************************/
+
+#jump-links {
+    position:sticky;
+    top:-1px;
+    background-color:#fff;
+    padding: 24px 0 16px;
+    margin-top:64px;
+    z-index:100;
+    margin-bottom:64px;
+    color:var(--gray-700);
+    font-weight:700;
+}
+
+#jump-links .link-container {
+    display: flex;
+    justify-content: center;
+    gap:32px;
+}
+
+#jump-links .link {
+    font-size: var(--heading-xxs);
+    color: var(--gray-600);
+    cursor: pointer;
+    user-select: none;
+}
+
+#jump-links .link .underline {
+    width:0;
+    height:2px;
+    margin-top:4px;
+    background-color:var(--gray-400);
+    transition: all 300ms;
+}
+
+#jump-links .link:hover .underline {
+    width:100%;
+}
+
+
+#jump-links .link.active {
+    color:var(--gray-800);
+}
+
+#jump-links .link.active .underline {
+    width:100%;
+    background-color:var(--cobalt-400);
+}
+
+
+/* TABS **********************************/
+.tabs-container {
+    padding:16px;
+    background-color: var(--gray-200);
+}
+
+.tabs {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding:8px;
+    gap:32px;
+    background-color:#fff;
+    border-radius: 100px;
+}
+
+.tabs > div {
+    padding:13px 32px;
+    font-size: var(--heading-xxs);
+    font-weight:700;
+    color:var(--gray-700);
+    cursor: pointer;
+    transition: 500ms ease-in;
+}
+
+.tabs > div.active {
+    padding:13px 16px;
+    color:#fff;
+    background-color:var(--gray-800);
+    border-radius: 100px;
+    cursor:default;
+}
+
+/* CONTEXTUAL MESSAGES **********************************/
+
+.context {
+    display:grid;
+    grid-template-columns: auto 1fr;
+}
+
+.context p {
+    font-size:var(--type-sm);
+}
+
+.context.warning svg {
+    fill: var(--orange-600);
+}
+
