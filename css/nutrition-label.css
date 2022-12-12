@@ -4,10 +4,10 @@
 .nutrition-details {
     overflow:hidden;
     transition:500ms;
+    margin-top:24px;
 }
 
 .nutrition-details .nutrition-label, .nutrition-label  {
-    margin-top:24px;
     padding:8px;
     background-color:#fff;
     border:1px solid var(--gray-800);

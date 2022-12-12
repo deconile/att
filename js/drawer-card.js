@@ -9,7 +9,12 @@ $(document).ready(function(){
     //SET FIRST OPTION EXPANDED
     setTimeout(function(){
         let nutritionHeight = $('.drawer').first().find('.nutrition-label').outerHeight();
-        $('.drawer').first().find('.nutrition-details').css({height: nutritionHeight + 24 + 'px'});
+        if($('.drawer').first().hasClass('scrollable')){
+            $('.drawer').first().find('.nutrition-details').css({height: '150px'});
+        } else {
+            $('.drawer').first().find('.nutrition-details').css({height: nutritionHeight + 'px'});
+        }
+        //$('.drawer').first().find('.nutrition-details').css({height: nutritionHeight + 'px'});
         $('.drawer').first().find('.card').addClass('active');
     },100);
     
@@ -36,8 +41,12 @@ function drawerCard() {
 
             //EXPAND NUTRITION LABEL
             let nutritionHeight = $(this).find('.nutrition-label').outerHeight();
-
-            $(this).find('.nutrition-details').css({height: nutritionHeight + 24 + 'px'});
+            if($(this).parent().hasClass('scrollable')){
+                $(this).find('.nutrition-details').css({height: '150px'});
+            } else {
+                $(this).find('.nutrition-details').css({height: nutritionHeight + 'px'});
+            }
+            //$(this).find('.nutrition-details').css({height: nutritionHeight + 'px'});
 
         } else {
 

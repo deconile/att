@@ -476,6 +476,16 @@
     padding-top: 24px;
 }
 
+.drawer.scrollable .card.plan  .nutrition-details {
+    overflow-y: scroll;
+}
+
+
+/* DEVICE INFO CARD ***************************/
+.device-info {
+    display:grid;
+}
+
 
 /* FLIP CARDS *******************************/
 .flip {
