@@ -476,8 +476,45 @@
     padding-top: 24px;
 }
 
+/* SPECIAL DEMO CASES **************/
+
 .drawer.scrollable .card.plan  .nutrition-details {
     overflow-y: scroll;
+}
+
+.drawer.scrollable.full .scroll-area {
+    overflow-y: scroll;
+    border-top:1px solid var(--gray-300);
+    padding-top: 24px;
+    padding-right:24px;
+    overscroll-behavior: contain;
+}
+
+.drawer.scrollable.full .card.plan .features {
+    border-top:none;
+    padding-top: 0px;
+}
+
+.drawer.scrollable.full .card.plan  .nutrition-details {
+    overflow-y:visible;
+}
+
+.drawer.scrollable.full .scroll-call {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding-top:24px;
+    margin-top:24px;
+    gap:8px;
+    border-top:1px solid var(--gray-300);
+}
+
+.drawer.scrollable.full .scroll-call h6 {
+    margin:0;
+}
+.drawer.scrollable.full .scroll-call svg {
+    width:16px;
+    height:16px;
 }
 
 
