@@ -1,30 +1,22 @@
 $(document).ready(function(){
     drawerCard();
+    labelAccordion();
     expandAllNutrition();
     toggle();
 
     //INITIAL COLLAPSE NUTRITION LABEL CONTAINERS
-    if($('.drawer').hasClass('full')){
-        $('.drawer').find('.scroll-area').css({height: '280px'});
-    } else {
-        $('.nutrition-details').css('height','0px');
-    }
+    $('.nutrition-details').css('height','0px');
     
 
     //SET FIRST OPTION EXPANDED
     setTimeout(function(){
+        //EXPAND LABEL
         let nutritionHeight = $('.drawer').first().find('.nutrition-label').outerHeight();
-        if($('.drawer').first().hasClass('full')){
-            $('.drawer').first().find('.nutrition-details').css('height', '');
-        } else if($('.drawer').first().hasClass('scrollable')){
-            $('.drawer').first().find('.nutrition-details').css({height: '150px'});
-        } else {
-            $('.drawer').first().find('.nutrition-details').css({height: nutritionHeight + 'px'});
-        }
-        //$('.drawer').first().find('.nutrition-details').css({height: nutritionHeight + 'px'});
+        $('.drawer').first().find('.nutrition-details').css({height: nutritionHeight + 24 + 'px'});
+        //ACTIVATE CARD
         $('.drawer').first().find('.card').addClass('active');
-
-
+        //SET ACCORDION
+        $('.nutrition-label-accordion').first().addClass('active');
     },100);
     
 });
@@ -38,12 +30,22 @@ function drawerCard() {
 
             //DEACTIVATE & COLLAPSE ALL
             drawer.find('.card').removeClass('active');
-            
-            if(!$('.drawer').hasClass('full')){
-                if(!$('#drawer-nutrition').hasClass('active')){
-                    $('.nutrition-details').css({height: '0px'});
+            $('.nutrition-label-accordion').each(function(){
+                if(!$(this).hasClass('opened')){
+                    $(this).removeClass('active');
                 }
+            });
+            //drawer.find('.card').find('.nutrition-label-accordion').removeClass('active');
+            //drawer.find('.card').find('.nutrition-label-accordion').find('span').html('Show');
+            
+            if(!$('#drawer-nutrition').hasClass('active')){
+                $('.nutrition-details').each(function(){
+                    if(!$(this).siblings('.front').find('.nutrition-label-accordion').hasClass('opened')){
+                        $(this).css({height: '0px'});
+                    }
+                });
             }
+            //$('.nutrition-details').css({height: '0px'});
         
             //ACTIVATE CARD
             drawer.find('.card').removeClass('active');
@@ -52,14 +54,10 @@ function drawerCard() {
 
             //EXPAND NUTRITION LABEL
             let nutritionHeight = $(this).find('.nutrition-label').outerHeight();
-            if($(this).parent().hasClass('full')){
-                $(this).find('.nutrition-details').css('height', '');
-            } else if($(this).parent().hasClass('scrollable')) {
-                $(this).find('.nutrition-details').css({height: '150px'});
-            } else {
-                $(this).find('.nutrition-details').css({height: nutritionHeight + 'px'});
+            if(!$(this).find('.nutrition-label-accordion').hasClass('closed')){
+                $(this).find('.nutrition-details').css({height: nutritionHeight + 24 + 'px'});
+                $(this).find('.nutrition-label-accordion').addClass('active');
             }
-            //$(this).find('.nutrition-details').css({height: nutritionHeight + 'px'});
 
         } else {
 
@@ -68,17 +66,49 @@ function drawerCard() {
             $('#sticky-footer').find('.button').addClass('inactive');
 
             //COLLAPSE NUTRITION LABEL
-            if(!$('.drawer').hasClass('full')){
-                if(!$('#drawer-nutrition').hasClass('active')){
-                    $('.nutrition-details').css({height: '0px'});
-                }
+            if(!$('#drawer-nutrition').hasClass('active')){
+                $(this).find('.nutrition-details').css({height: '0px'});
+                $(this).find('.nutrition-label-accordion').removeClass('active');
+                //$('.nutrition-details').css({height: '0px'});
             }
-            
-
         };
 
         //EXPAND
 
+    });
+}
+
+function labelAccordion(){
+    let accordion = $('.nutrition-label-accordion');
+    
+    accordion.on('click', function(e){
+        //IGNORE PARENT CARD CLICK
+        e.stopPropagation();
+
+        let nutritionHeight = $(this).parent().siblings('.nutrition-details').find('.nutrition-label').outerHeight();
+
+        if(!$(this).hasClass('active')){
+            //ACTIVATE CARD STYLES
+            $(this).addClass('active');
+
+            //MARK AS USER OPENED
+            $(this).addClass('opened').removeClass('closed');
+
+            //EXPAND LABEL
+            $(this).parent().siblings('.nutrition-details').css({height: nutritionHeight + 24 + 'px'});
+
+
+        } else if(!$('#drawer-nutrition').hasClass('active')){
+            //DEACTIVATE CARD STYLES
+            $(this).removeClass('active');
+
+            //MARK AS USER CLOSED
+            $(this).addClass('closed').removeClass('opened');
+
+            //COLLAPSE LABEL
+            $(this).parent().siblings('.nutrition-details').css({height: '0px'});
+
+        }
     });
 }
 
@@ -102,13 +132,17 @@ function expandAllNutrition() {
                 let nutritionHeight = $(this).find('.nutrition-label').outerHeight();
                 $(this).find('.nutrition-details').css({height: nutritionHeight + 24 + 'px'});
             });
+
+            $('.nutrition-label-accordion').addClass('inactive');
             
         } else {
             $('.drawer').each(function(){
-                if(!$(this).find('.card').hasClass('active')){
+                if(!$(this).find('.card').hasClass('active') && !$(this).find('.nutrition-label-accordion').hasClass('opened')){
                     $(this).find('.nutrition-details').css({height: '0px'});
                 }
             });
+
+            $('.nutrition-label-accordion').removeClass('inactive');
         } 
 
     });

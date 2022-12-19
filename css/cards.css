@@ -52,6 +52,10 @@
     gap:32px;
 }
 
+.col-right .card + .card {
+    margin-top:32px;
+}
+
 
 
 
@@ -233,8 +237,30 @@
 }
 
 
+/* ACCORDION CARD *************************/
+.card.accordion {
+    padding-top:0;
+    padding-bottom:0;
+    gap:0;
+    transition: all 300ms, height 500ms;
+}
 
+.card.accordion > *:first-child {
+    padding:24px 0;
+    cursor:pointer;
+}
 
+.card.accordion > *:last-child {
+
+}
+
+.card.accordion .nutrition-label-accordion.active .carat {
+    transform: rotateZ(180deg);
+}
+
+.card.accordion .accordion-content {
+    transition:500ms;
+}
 
 
 /* PRODUCT CARDS *******************************/
@@ -453,8 +479,9 @@
 
 
 /* PLAN CARDS *******************************/
+
 .card.plan > .front > div + div {
-    margin-top:16px;
+    margin-top:24px;
 }
 
 .card.plan .head {
@@ -474,6 +501,27 @@
 .card.plan .features {
     border-top:1px solid var(--gray-300);
     padding-top: 24px;
+}
+
+/* STANDARD PLANS **************/
+.standard .card.plan {
+    transition: all 300ms, height 500ms;
+}
+
+.standard .card.plan:not(.active) .front > *:not(.head), 
+.standard .card.plan:not(.active) .legal,
+.standard .card.plan:not(.active) .strikethrough {
+    display:none;
+}
+
+.standard .card.plan:not(.active) .front .head {
+    margin:0;
+    align-items: center;
+}
+
+.standard .card.plan:not(.active) .front .head h3 {
+    font-size: var(--type-base);
+    font-weight:300;
 }
 
 /* SPECIAL DEMO CASES **************/
@@ -521,7 +569,44 @@
 /* DEVICE INFO CARD ***************************/
 .device-info {
     display:grid;
+    gap:24px;
+    position:sticky;
+    top:24px;
 }
+
+.device-info .device-image {
+    display: flex;
+    justify-content: center;
+}
+
+.device-info .device-image img {
+    height:300px;
+}
+
+.device-info .device-image {
+    display: flex;
+    justify-content: center;
+}
+
+.device-info .selection {
+    display:flex;
+    justify-content: space-between;
+    gap:24px;
+}
+
+.device-info .selection p {
+    font-size: var(--type-sm);
+}
+
+.device-info .selection svg {
+    height:24px;
+    fill:var(--cobalt-600);
+}
+
+
+
+
+
 
 
 /* FLIP CARDS *******************************/

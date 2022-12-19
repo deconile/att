@@ -4,7 +4,11 @@
 .nutrition-details {
     overflow:hidden;
     transition:500ms;
-    margin-top:24px;
+    margin-top:0px;
+}
+
+.nutrition-static .nutrition-label {
+    margin:0;
 }
 
 .nutrition-details .nutrition-label, .nutrition-label  {
@@ -15,7 +19,7 @@
 }
 
 .nutrition-label {
-    margin-top:0px;
+    margin-top:24px;
 }
 
 .nutrition-label .header {
@@ -88,6 +92,69 @@
     fill:var(--gray-800);
 }
 
+
+
+/* ACCORDION **************/
+.nutrition-label-accordion {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top:1px solid var(--gray-300);
+    padding-top:16px;
+    transition:500ms;
+}
+
+.nutrition-label-accordion .label {
+    font-size:var(--type-xs);
+    font-weight:700;
+    color: var(--gray-500);
+}
+
+.nutrition-label-accordion.active .label {
+    color: var(--gray-800);
+    transition:500ms;
+}
+
+.nutrition-label-accordion .carat {
+    transform: rotateZ(0);
+    transition:500ms;
+}
+
+.nutrition-label-accordion.active .carat {
+    transform: rotateZ(180deg);
+}
+
+
+.nutrition-label-accordion .carat svg {
+    width:16px;
+    height:16px;
+    fill:var(--gray-800);
+}
+
+.nutrition-label-accordion.inactive {
+    pointer-events: none;
+}
+
+.nutrition-label-accordion.inactive .label {
+    color:var(--gray-400);
+}
+
+.nutrition-label-accordion.inactive .carat svg {
+    fill:var(--gray-400);
+}
+
+/* FULL CARD VERSION */
+
+.nutrition-label-accordion.full-card {
+    border-top:none;
+    padding-top:0px;
+}
+
+.nutrition-label-accordion.full-card .label {
+    font-size:var(--heading-xs);
+    font-weight:700;
+    color:var(--gray-800);
+}
 
 
 

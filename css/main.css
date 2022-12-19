@@ -251,8 +251,9 @@ a:hover {
 }
 
 sup {
-    font-weight:700;
-    margin:0 2px;
+    font-size:0.5em;
+    font-weight:400;
+    margin:2px 0 0;
     color:var(--gray-800);
 }
 
@@ -267,6 +268,10 @@ ul {
 
 li + li {
     margin-top:16px;
+}
+
+li span {
+    font-size: var(--type-xs);
 }
 
 
