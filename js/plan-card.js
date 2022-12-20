@@ -54,7 +54,7 @@ function expandCard() {
             $('#sticky-footer').find('.button').removeClass('inactive');
 
             //REFRESH LABEL
-            //$('.nutrition-label').fadeOut(500).fadeIn(500);
+            $('.nutrition-label').fadeOut(500).fadeIn(500);
 
             //CHECK IF CARD HAS BEEN SELECTED
             if($(this).hasClass('initial')){
