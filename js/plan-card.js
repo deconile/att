@@ -12,6 +12,8 @@ $(document).ready(function(){
     accordionHeight = $('.accordion-content').outerHeight();
     $('.accordion-content').css('height', accordionHeight + 40 + 'px');
 
+    $('.accordion-label').find('.accordion-notice').css('display','none');
+
     expandCard();
     collapseCard();
 
@@ -52,10 +54,13 @@ function expandCard() {
             $('#sticky-footer').find('.button').removeClass('inactive');
 
             //REFRESH LABEL
-            $('.nutrition-label').fadeOut(500).fadeIn(500);
+            //$('.nutrition-label').fadeOut(500).fadeIn(500);
 
             //CHECK IF CARD HAS BEEN SELECTED
             if($(this).hasClass('initial')){
+                if(!$('.accordion-label').hasClass('active')){
+                    $('.accordion-label').find('.accordion-notice').css('display','flex');
+                }
                 $('.accordion-label').addClass('active');
                 $('.accordion-label').siblings('.accordion-content').css({height : accordionHeight + 40  + 'px'});
                 $(this).removeClass('initial');
@@ -83,6 +88,7 @@ function collapseCard(){
         } else {
             $(this).removeClass('active');
             $(this).siblings('.accordion-content').css({height : '0px'});
+            $(this).find('.accordion-notice').css('display','none');
         }
     });
 }

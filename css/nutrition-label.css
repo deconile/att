@@ -96,8 +96,8 @@
 
 /* ACCORDION **************/
 .nutrition-label-accordion {
-    display:flex;
-    justify-content: space-between;
+    display:grid;
+    grid-template-columns: 1fr auto;
     align-items: center;
     border-top:1px solid var(--gray-300);
     padding-top:16px;
@@ -108,11 +108,29 @@
     font-size:var(--type-xs);
     font-weight:700;
     color: var(--gray-500);
+    display: flex;
 }
 
 .nutrition-label-accordion.active .label {
     color: var(--gray-800);
     transition:500ms;
+}
+
+.nutrition-label-accordion .label div:last-child {
+    color: var(--cobalt-400);
+    font-size:var(--type-xs);
+    font-weight:400;
+    transition:500ms;
+    margin-left:16px;
+    display: flex;
+    align-items: center;
+}
+
+.nutrition-label-accordion .label svg {
+    width:16px;
+    height:16px;
+    fill:var(--cobalt-400);
+    margin-right:4px;
 }
 
 .nutrition-label-accordion .carat {
