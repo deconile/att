@@ -10,7 +10,7 @@ $(document).ready(function(){
     $('.standard').first().find('.card').removeClass('initial');
 
     accordionHeight = $('.accordion-content').outerHeight();
-    $('.accordion-content').css('height', accordionHeight + 40 + 'px');
+    $('.accordion-content').css('height', accordionHeight + 100 + 'px');
 
     $('.accordion-label').find('.accordion-notice').css('display','none');
 
@@ -62,7 +62,7 @@ function expandCard() {
                     $('.accordion-label').find('.accordion-notice').css('display','flex');
                 }
                 $('.accordion-label').addClass('active');
-                $('.accordion-label').siblings('.accordion-content').css({height : accordionHeight + 40  + 'px'});
+                $('.accordion-label').siblings('.accordion-content').css({height : accordionHeight + 100  + 'px'});
                 $(this).removeClass('initial');
             }
 
@@ -84,7 +84,7 @@ function collapseCard(){
     accordion.on('click', function(){
         if(!$(this).hasClass('active')){
             $(this).addClass('active');
-            $(this).siblings('.accordion-content').css({height : accordionHeight + 40  + 'px'});
+            $(this).siblings('.accordion-content').css({height : accordionHeight + 100 + 'px'});
         } else {
             $(this).removeClass('active');
             $(this).siblings('.accordion-content').css({height : '0px'});

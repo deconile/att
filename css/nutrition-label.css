@@ -15,11 +15,22 @@
     padding:8px;
     background-color:#fff;
     border:1px solid var(--gray-800);
-    border-radius:8px;
+    
 }
 
 .nutrition-label {
     margin-top:24px;
+}
+
+.nutrition-label .col {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.nutrition-label hr {
+    background-color: var(--gray-800);
+    border:none;
+    margin:2px 0;
 }
 
 .nutrition-label .header {
@@ -51,14 +62,44 @@
 }
 
 
+.nutrition-label div > div {
+    padding-left:8px;
+    
+}
+
+.nutrition-label div > .col, .nutrition-label div > div + h5 {
+    border-top:1px solid var(--gray-400);
+    padding-top:2px;
+    padding-bottom:2px;
+}
+
+.nutrition-label div > .col p:first-child {
+    color:var(--gray-600);
+}
+
 
 /* TEXT *********/
 
 .nutrition-label {
     font-size: var(--type-xs);
+    color:var(--gray-800);
 }
 
-.nutrition-label h4 {
+.nutrition-label h3, .nutrition-label h5 {
+    margin-bottom:0px;
+}
+
+.nutrition-label h5 {
+    font-size: 0.7rem;
+    margin-bottom:2px;
+}
+
+.nutrition-label p {
+    font-size: var(--type-xs);
+    margin:0;
+}
+
+.mar-b-xxs {
     margin-bottom:4px;
 }
 
@@ -66,8 +107,13 @@
     margin-top:0;
 }
 
+.nutrition-label .price p{
+    font-size:var(--type-base);
+    font-weight:700;
+}
+
 .nutrition-label a {
-    color:var(--gray-800);
+    color:var(--cobalt-600);
     font-weight:400;
     text-decoration: underline;
     transition: all 500ms;
