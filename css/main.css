@@ -949,3 +949,19 @@ nav#sub-nav .search > div {
 #footer-pricing .legal {
     margin-top:4px;
 }
+
+
+
+
+
+/* MEDIA QUERIES *******************************/
+
+@media only screen and (max-width: 600px) {
+    main > section {
+        padding-left:24px;
+        padding-right:24px;
+    }
+    .five-by-seven {
+        grid-template-columns: 1fr;
+    }
+  }
