@@ -957,6 +957,60 @@ nav#sub-nav .search > div {
 /* MEDIA QUERIES *******************************/
 
 @media only screen and (max-width: 600px) {
+
+    /* NAV BARS */
+    nav#main-nav {
+        display:none;
+    }
+
+    nav#sub-nav {
+        grid-template-columns: 1fr;
+        grid-gap:32px;
+    }
+
+    nav#sub-nav .nav-icons,
+    nav#sub-nav .search,
+    nav#sub-nav .lang
+    {
+        display:none;
+    }
+
+    nav#sub-nav .logo {
+        width:100%;
+        display:flex;
+        justify-content: center;
+    }
+
+    #breadcrumbs {
+        display:none;
+    }
+
+
+    /* FOOTER */
+    #footer-pricing > div {
+        display:flex;
+        gap:8px;
+    }
+
+    #footer-pricing > div > .pricing-details .price.sm .price-point {
+        font-size:0.8em;
+    }
+    
+    #footer-pricing > div > .pricing-details + .pricing-details {
+        padding-left:8px;
+    }
+
+    #sticky-footer {
+        padding:16px 24px;
+    }
+
+
+    /* TEXT */
+    h3 {
+        font-size:var(--heading-sm);
+    }
+
+    /* MAIN CONTENT */
     main > section {
         padding-left:24px;
         padding-right:24px;

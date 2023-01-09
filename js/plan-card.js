@@ -56,7 +56,7 @@ function expandCard() {
             $('#sticky-footer').find('.button').removeClass('inactive');
 
             //REFRESH LABEL
-            $('.nutrition-label').fadeOut(500).fadeIn(500);
+            $('.nutrition-label').hide().fadeIn(1000);
 
             //CHECK IF CARD HAS BEEN SELECTED
             if($(this).hasClass('initial')){
@@ -76,6 +76,15 @@ function expandCard() {
             $('#sticky-footer').find('.button').addClass('inactive');
 
         };
+
+
+        //GET PRICING AND PLAN
+        let price = $(this).find('.strikethrough').html().slice(0,-3);
+        let planname = $(this).find('.head').find('h3').html();
+
+        $('#planprice').html(price);
+        $('#planname').html(planname);
+
 
     });
 }

@@ -1,3 +1,5 @@
+var labelOffset;
+
 $(document).ready(function(){
     drawerCard();
     labelAccordion();
@@ -7,12 +9,17 @@ $(document).ready(function(){
     //INITIAL COLLAPSE NUTRITION LABEL CONTAINERS
     $('.nutrition-details').css('height','0px');
     
+    if (window.matchMedia('(max-width: 600px)').matches) {
+        labelOffset = 40;
+    } else {
+        labelOffset = 24;
+    }
 
     //SET FIRST OPTION EXPANDED
     setTimeout(function(){
         //EXPAND LABEL
         let nutritionHeight = $('.drawer').first().find('.nutrition-label').outerHeight();
-        $('.drawer').first().find('.nutrition-details').css({height: nutritionHeight + 24 + 'px'});
+        $('.drawer').first().find('.nutrition-details').css({height: nutritionHeight + labelOffset + 'px'});
         //ACTIVATE CARD
         $('.drawer').first().find('.card').addClass('active');
         //SET ACCORDION
@@ -55,7 +62,7 @@ function drawerCard() {
             //EXPAND NUTRITION LABEL
             let nutritionHeight = $(this).find('.nutrition-label').outerHeight();
             if(!$(this).find('.nutrition-label-accordion').hasClass('closed')){
-                $(this).find('.nutrition-details').css({height: nutritionHeight + 24 + 'px'});
+                $(this).find('.nutrition-details').css({height: nutritionHeight + labelOffset + 'px'});
                 $(this).find('.nutrition-label-accordion').addClass('active');
             }
 
@@ -95,7 +102,7 @@ function labelAccordion(){
             $(this).addClass('opened').removeClass('closed');
 
             //EXPAND LABEL
-            $(this).parent().siblings('.nutrition-details').css({height: nutritionHeight + 24 + 'px'});
+            $(this).parent().siblings('.nutrition-details').css({height: nutritionHeight + labelOffset + 'px'});
 
 
         } else if(!$('#drawer-nutrition').hasClass('active')){
@@ -130,7 +137,7 @@ function expandAllNutrition() {
         if(!$(this).hasClass('active')){
             $('.drawer').each(function(){
                 let nutritionHeight = $(this).find('.nutrition-label').outerHeight();
-                $(this).find('.nutrition-details').css({height: nutritionHeight + 24 + 'px'});
+                $(this).find('.nutrition-details').css({height: nutritionHeight + labelOffset + 'px'});
             });
 
             $('.nutrition-label-accordion').addClass('inactive');

@@ -643,3 +643,20 @@
 .flip > .card > .back {
     transform:rotateY(180deg);
 }
+
+
+
+/* MEDIA QUERIES *******************************/
+
+@media only screen and (max-width: 600px) {
+
+    .device-info .device-image img {
+        height:180px;
+    }
+
+    /* TEXT */
+    .standard .card.plan:not(.active) .front .head h3 {
+        font-size:var(--type-sm);
+    }
+
+  }
