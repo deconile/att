@@ -52,10 +52,6 @@
     gap:32px;
 }
 
-.col-right .card + .card {
-    margin-top:32px;
-}
-
 
 
 
@@ -417,8 +413,6 @@
     gap:8px;
 }
 
-
-
 .product .add {
     display:flex;
 }
@@ -480,48 +474,60 @@
 
 /* PLAN CARDS *******************************/
 
-.card.plan > .front > div + div {
-    margin-top:24px;
+.expand {
+    overflow:hidden;
+    transition: height 500ms;
 }
 
 .card.plan .head {
     display:grid;
     grid-template-columns: 1fr auto;
     column-gap:24px;
+    padding:24px 0;
 }
 
 .card.plan .head .price {
     font-weight:bold;
 }
 
-.card.plan h3 {
+.card.plan h3, .card.plan h5 {
     margin:0;
 }
 
-.card.plan .features {
-    border-top:1px solid var(--gray-300);
-    padding-top: 24px;
+.card.plan .features .container {
+    display:flex;
+    flex-direction: column;
+    gap:24px;
 }
 
 /* STANDARD PLANS **************/
-.standard .card.plan {
+.card.plan {
     transition: all 300ms, height 500ms;
 }
-
-.standard .card.plan:not(.active) .front > *:not(.head), 
-.standard .card.plan:not(.active) .legal,
-.standard .card.plan:not(.active) .strikethrough {
+ 
+.card.prod.plan:not(.active) .badge,
+.card.prod.plan:not(.active) .legal,
+.card.prod.plan:not(.active) .strikethrough {
     display:none;
 }
 
-.standard .card.plan:not(.active) .front .head {
+.card.prod.plan:not(.active) .head {
     margin:0;
+    padding:0;
     align-items: center;
 }
 
-.standard .card.plan:not(.active) .front .head h3 {
+.card.plan:not(.active) .hr {
+    opacity:0;
+}
+
+.card.prod.plan:not(.active) .head h3 {
     font-size: var(--type-base);
     font-weight:300;
+}
+
+.card.plan li div {
+    font-size:var(--type-xs);
 }
 
 /* SPECIAL DEMO CASES **************/

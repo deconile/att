@@ -11,7 +11,7 @@ $(document).ready(function(){
     $('.standard').first().find('.card').removeClass('initial');
 
     accordionHeight = $('.nutrition-label').outerHeight();
-    console.log(accordionHeight);
+    
     $('.accordion-content').css('height', accordionHeight + accordionOffset + 'px');
 
     $('.accordion-label').find('.accordion-notice').css('display','none');
@@ -30,10 +30,12 @@ function expandCard() {
 
     //SET HEIGHTS
     $('.standard').find('.card').css({height : collapseHeight + 'px'});
-    $('.standard').first().find('.card').css({height : expandHeight + 24 + 'px'});
+    $('.standard').first().find('.card').css({height : expandHeight + 96 + 'px'});
+
+
 
     plan.on('click', function(){
-        
+
         //ACTIVE CARD
         if(!$(this).hasClass('active')){
 

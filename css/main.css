@@ -264,16 +264,23 @@ sup {
 ul {
     padding-left:16px;
     font-size:var(--type-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
-
+/*
 li + li {
-    margin-top:16px;
+    padding-top:16px;
 }
-
+*/
 li span {
     font-size: var(--type-xs);
 }
 
+.hr {
+    height:1px;
+    background-color: var(--gray-400);
+}
 
 
 
@@ -322,6 +329,11 @@ main > section {
 
 
 /* GRIDS ***************************/
+.col-right, .col-left {
+    display:flex;
+    flex-direction: column;
+    gap:24px;
+}
 .five-by-seven {
     display:grid;
     grid-template-columns: 5fr 7fr;

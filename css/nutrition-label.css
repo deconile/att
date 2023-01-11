@@ -147,7 +147,12 @@
     align-items: center;
     border-top:1px solid var(--gray-300);
     padding-top:16px;
+    margin-top:16px;
     transition:500ms;
+}
+
+.nutrition-label-accordion.full-card {
+    margin-top:0;
 }
 
 .nutrition-label-accordion .label {
