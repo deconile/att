@@ -7,8 +7,20 @@
     margin-top:0px;
 }
 
-.nutrition-static .nutrition-label {
+.nutrition-static .nutrition-label, .nutrition-carousel .nutrition-label {
     margin:0;
+}
+
+.nutrition-carousel {
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.nutrition-carousel .carousel-container {
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    width:250%;
+    gap:24px
 }
 
 .nutrition-details .nutrition-label, .nutrition-label  {

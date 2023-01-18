@@ -5,9 +5,16 @@
     font-size: var(--type-sm);
     display:grid;
     grid-template-columns: 1fr auto;
+    gap:8px;
     cursor: pointer;
     user-select: none;
     padding:16px;
+}
+
+.card.config.desc > div:last-child {
+    border-top:1px solid var(--gray-400);
+    grid-column: 1 / span 2;
+    padding-top:8px;
 }
 
 .card.config.active {
@@ -49,116 +56,7 @@
 
 
 
-/* FAVORITE ICON */
-.favorite {
-    transition: all 500ms;
-    cursor: pointer;
-    transform-origin: center;
-}
 
-.favorite.active {
-    animation: fav-check 500ms ease-in-out;
-}
-
-@keyframes fav-check {
-    0% {transform:scale(1);}
-    50% {transform:scale(1.2);}
-    100% {transform:scale(1);}
-}
-
-.favorite svg {
-    width:24px;
-    fill: var(--gray-800);
-}
-
-.favorite.active svg {
-    fill: var(--cobalt-600);
-}
-
-
-
-/* SECTION | PRICING */
-
-.price {
-    display: flex;
-    flex-direction: column;
-}
-
-.price-point {
-    font-weight:700;
-}
-
-.price.xl .price-point{
-    font-size: var(--heading-xl);
-}
-
-.price.sm .price-point{
-    font-size: var(--heading-sm);
-}
-
-.price.xs .price-point{
-    font-size: var(--heading-xs);
-}
-
-.price > div:not(.price-point) {
-    font-size:var(--type-xxs);
-}
-
-.price .strikethrough {
-    color: var(--gray-600);
-    text-decoration: line-through;
-}
-
-
-.price .price-point::before {
-    content: "$";
-    font-size: 0.5em;
-    vertical-align:super;
-}
-
-.price .price-point.none::before {
-    content: "";
-}
-
-.price .add-on-mo::before {
-    content: "+$";
-}
-
-.price .plan::after, .price .add-on-mo::after {
-    content: "/mo";
-    font-size: 0.3em;
-    vertical-align:baseline;
-}
-
-#footer-pricing .price .plan::after {
-    content:"Monthy";
-    margin-left:8px;
-    font-size:0.75em;
-}
-
-.price .retail::before {
-    content: "$";
-    font-size: 0.5em;
-    vertical-align:super;
-}
-
-.price.xs .price-point::before, 
-.price.sm .price-point::before {
-    font-size:1em;
-    vertical-align: baseline;
-}
-
-.price.xs .plan::after, 
-.price.sm .plan::after, 
-.price .add-on-mo::after {
-    font-size:0.5em;
-}
-
-#footer-pricing .price .retail::after {
-    content:"Due today";
-    margin-left:8px;
-    font-size:0.75em;
-}
 
 
 
@@ -200,12 +98,6 @@
 
 .configure-option:not(.selected) .configure-option-head {
     align-items: center;
-}
-
-.configure-option-head > div {
-    /*display:flex;
-    align-items: center;*/
-    
 }
 
 .configure-option-head .label {

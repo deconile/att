@@ -260,16 +260,32 @@
 
 
 /* PRODUCT CARDS *******************************/
+
+#product-grid {
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:32px;
+}
+
 .product {
     display: grid;
     grid-template-rows: auto 1fr auto;
     gap:16px;
-    background-color:var(--gray-100);
     border:2px solid transparent;
     border-radius: var(--border-radius);
     width: 292px;
     flex-shrink: 0;
     flex-grow: 0;
+}
+
+.product .card {
+    background-color:var(--gray-100);
+    border:none;
+    padding:16px;
+    padding-bottom:48px;
+}
+.product.card {
+    padding:16px;
 }
 
 .product .header {
@@ -290,6 +306,10 @@
 
 .product > div {
     width:100%;
+}
+
+.product .badge {
+    margin-bottom:24px;
 }
 
 .product .image {
@@ -418,6 +438,35 @@
 }
 
 
+/* PRODUCT - SERVICE PROMO CARD */
+.product.service {
+    background-color:var(--gray-100);
+}
+
+.product.service .image-container {
+    height:325px;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.product.service .image-container .image {
+    height:100%;
+}
+
+.product.service .image-container .image img {
+    object-fit: cover;
+    object-position: center;
+}
+
+.product.service .main {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:8px;
+    text-align: center;
+}
+
 
 /* ALERT *********************************/
 .alert {
@@ -472,6 +521,8 @@
 }
 
 
+
+
 /* PLAN CARDS *******************************/
 
 .expand {
@@ -483,15 +534,11 @@
     display:grid;
     grid-template-columns: 1fr auto;
     column-gap:24px;
-    padding:24px 0;
+    margin-bottom:24px;
 }
 
 .card.plan .head .price {
     font-weight:bold;
-}
-
-.card.plan h3, .card.plan h5 {
-    margin:0;
 }
 
 .card.plan .features .container {
@@ -529,6 +576,9 @@
 .card.plan li div {
     font-size:var(--type-xs);
 }
+
+
+
 
 /* SPECIAL DEMO CASES **************/
 
@@ -572,6 +622,8 @@
 }
 
 
+
+
 /* DEVICE INFO CARD ***************************/
 .device-info {
     display:grid;
@@ -602,6 +654,7 @@
 
 .device-info .selection p {
     font-size: var(--type-sm);
+    margin-top:8px;
 }
 
 .device-info .selection svg {

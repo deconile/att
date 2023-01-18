@@ -8,9 +8,12 @@ $(document).on('ready', function(){
     fillInitialOptionDetails();
 
 
+    //PRESELECT ALL OPTIONS
+    preselectAllOptions();
+
     //ACTIVATE CONFIGURATION CATAGORIES & WALKTHROUGH
     activateConfigOptions();
-    initialExpandFirstOption();
+    //initialExpandFirstOption();
 
     //ACTIVATE INDIVIDUAL CONFIGURE OPTIONS
     optionPricingAdjustments();
@@ -44,16 +47,16 @@ function activateConfigOptions(){
             labelText = $(this).find('.label').html();
         
         // ANIMATE LABEL CHANGE | FADE OUT-IN
-        if(!$(this).hasClass('active')){
+        //if(!$(this).hasClass('active')){
                 
-                label.animate({opacity:'0', left:'10px'},400, function(){
-                    label.css('left','-5px');
+                label.animate({opacity:'0', top:'10px'},400, function(){
+                    label.css('top','-5px');
                 });
                 setTimeout(function(){
-                    label.html(labelText).animate({opacity:'1', left:'0px'},400);
+                    label.html(labelText).animate({opacity:'1', top:'0px'},400);
                 },400);
  
-        }
+        //}
             
 
         //ENTER SCRIPT TO CLOSE ON OPTION SELECTION
@@ -316,10 +319,10 @@ function optionPricingAdjustments(){
             }
 
             //GO TO NEXT OPTION AND EXPAND
-            openNextOption();
+            //openNextOption();
 
             //CHECK THAT ALL OPTIONS ARE COMPLETE
-            checkComplete();
+            //checkComplete();
 
         }
         
@@ -400,6 +403,7 @@ function checkComplete(){
 //SET ADDITIONAL CONFIG DETAILS & SET HEIGHTS
 function fillInitialOptionDetails(){
     $('#configure-price').find('.price-point').text(planPrice[0]);
+    $('#footer-pricing').find('.plan').text(planPrice[0]);
     $('#configure-pricing').find('.price-point.plan').text(planPrice[0]);
     $('#configure-pricing').find('.price-point.retail').text(retailPrice[0]);
 
@@ -407,9 +411,20 @@ function fillInitialOptionDetails(){
         setOptionHeights();
     },500);
 }
+
+
+function preselectAllOptions(){
+    $('.configure-option').each(function(){
+        if($(this).is('#configure-tradein') || $(this).is('#configure-upgrade')){
+            $(this).find('.config').last().addClass('active');
+        } else {
+            $(this).find('.config').first().addClass('active');
+        }
+    });
+}
+
+
 //CONFIGURATION WALKTHROUGH
-
-
 function initialExpandFirstOption(){
     let option = $('.configure-option');
 

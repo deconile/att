@@ -1,13 +1,6 @@
 
 #device-carousel {
-    margin-top:32px;
-}
-
-/* TOP MENU ICONS */
-#device-carousel .device-views {
-    display: flex;
-    justify-content: flex-end;
-    gap:16px;
+    
 }
 
 
@@ -18,7 +11,7 @@
 }
 
 #device-carousel .device-carousel .page-control {
-    width:64px;
+    width:32px;
     display:flex;
     align-items: center;
 }
@@ -73,4 +66,22 @@
 #device-carousel .pagination > div.active {
     width:64px;
     background-color:var(--gray-500);
+}
+
+
+
+/* SHARE ICONS */
+#share-icons {
+    display:flex;
+    justify-content: space-between;
+}
+
+
+/* MENU ICONS */
+#device-carousel .device-views {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:16px;
+    margin-top:32px;
 }

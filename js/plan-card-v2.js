@@ -1,25 +1,23 @@
 var accordionHeight;
-var accordionOffset = 134;
+var accordionOffset = 130;
 
 $(document).ready(function(){
 
-    //DELAY INVOKE 
-    setTimeout(function(){
-        planCard();
-
-    }, 100);
     
     //SET INITIAL CLICK STATUS
     $('.card').addClass('initial');
     $('.card').first().removeClass('initial');
 
+    //SET ACCORDION
     accordionHeight = $('.nutrition-label').outerHeight();
-    
     $('.accordion-content').css('height', accordionHeight + accordionOffset + 'px');
-
     $('.accordion-label').find('.accordion-notice').css('display','none');
 
-    collapseCard();
+    //DELAY INVOKE 
+    setTimeout(function(){
+        planCard();
+        collapseCard();
+    }, 100);
 
 });
 
@@ -65,12 +63,23 @@ function planCard() {
                     $(this).removeClass('initial');
                 }
                 
-                //GET PRICING AND PLAN
-                let price = $(this).find('.strikethrough').html().slice(0,-3);
-                let planname = $(this).find('.head').find('h3').html();
+                //SWAPPING LABEL | CHANGE CONTENT AND FADE IN
+                if($(this).parent().hasClass('.dynamic-label')){
+                    //GET PRICING AND PLAN
+                    let price = $(this).find('.strikethrough').html().slice(0,-3);
+                    let planname = $(this).find('.head').find('h3').html();
 
-                $('#planprice').html(price);
-                $('#planname').html(planname);
+                    $('#planprice').html(price);
+                    $('#planname').html(planname);
+
+                    //REFRESH LABEL
+                    $('.nutrition-label').hide().fadeIn(1000);
+                }
+
+                //SCROLL TO MATCHING LABEL
+                //if($(this).parent().hasClass('.carousel-label')){}
+                
+
             } else {
                 $(this).find('.expand').css('height','0px');
                 $('#sticky-footer').find('.button').addClass('inactive');
@@ -79,8 +88,6 @@ function planCard() {
 
         //SET INITIAL STATES
         plan.not(":first").find('.expand').css('height','0px');
-
-        
 
     });
 
