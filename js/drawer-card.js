@@ -6,6 +6,8 @@ $(document).ready(function(){
     expandAllNutrition();
     toggle();
 
+    console.log('Hello!');
+
     //INITIAL COLLAPSE NUTRITION LABEL CONTAINERS
     $('.nutrition-details').css('height','0px');
     
@@ -30,14 +32,16 @@ function drawerCard() {
     drawer = $('.drawer');
     drawer.find('.card').on('click', function(){
         
-        $(this).toggleClass('active');
+        //$(this).toggleClass('active');
 
         //ACTIVE CARD
         if(!$(this).hasClass('active')){
             //ACTIVATE CARD
             drawer.find('.card').removeClass('active');
+            $(this).addClass('active');
             $('#sticky-footer').find('.button').removeClass('inactive');
         } else {
+            $(this).removeClass('active');
             $('#sticky-footer').find('.button').addClass('inactive');
         };
 
@@ -87,11 +91,16 @@ function expandAllNutrition() {
                 let nutritionHeight = $(this).find('.nutrition-label').outerHeight();
                 $(this).find('.nutrition-details').css({height: nutritionHeight + labelOffset + 'px'});
             });
+            $('.nutrition-label-accordion').addClass('active');
 
         } else {
             $('.drawer').find('.nutrition-details').css({height: '0px'});
+            $('.nutrition-label-accordion').removeClass('active');
         } 
 
     });
 }
+
+
+
 

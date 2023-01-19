@@ -246,3 +246,9 @@
     border:none;
     border-radius:0;
 }
+
+/* SCROLLABLE ****************/
+.nutrition-label.scrollable {
+    height:300px;
+    overflow-x: auto;
+}

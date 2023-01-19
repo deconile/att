@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Plans | Drawer</title>
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <link rel="stylesheet" href="css/config.css">
+    <link rel="stylesheet" href="css/nutrition-label.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/content-nav.js"></script>
+    <script src="js/drawer-card.js"></script>
+    
+    <!--script src="js/device-carousel.js"></script-->
+
+</head>
+<body>
+
+
+    <header>
+        <nav id="main-nav">
+            <div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+                <div></div>
+            </div>
+        </nav>
+        <nav id="sub-nav">
+            <div class="logo">
+                <img src="images/logo/att_globe_symbol_limited_use_rgb_pos.png" />
+            </div>
+            <div class="nav-icons">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="search">
+                <div></div>
+            </div>
+            <div class="lang">
+                <div></div>
+                <div></div>
+            </div>
+        </nav>
+
+        <div class="border-bottom">
+            <div id="breadcrumbs">
+                <div class="header">
+                    <div class="eyebrow sm" style="display:none;">Phones & Devices</div>
+                    <div class="title">
+                        <h4>Configure your device</h4>
+                        <div class="step-count">Step [N] of [N]</div>
+                    </div>
+                </div>
+                <div class="tab-container">
+                    <div class="completed" onClick="window.location = 'plp.html'">Select device</div>
+                    <div class="completed" onClick="window.location = 'pdp.html'">Configure device</div>
+                    <div class="active">Choose plan</div>
+                    <div>Select add-ons</div>
+                    <div>View cart</div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <div id="page">
+        
+        <div id="main-content">
+
+            <section id="" class="five-by-seven limited">
+                <div class="col-left">
+
+                    <div class="card unselectable device-info">
+                        <div class="device-image">
+                            <img src="images/devices/AlpineGreen-1.png" />
+                        </div>
+                        <div class="selection">
+                            <div>
+                                <h4>Apple iPhone 13 Pro Max</h4>
+                                <p>Alpine Green - 128 GB - AT&T Installment Plan</p>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M29.12 4.29L27.7 2.87a3 3 0 00-4.24 0L5.81 20.5a4.91 4.91 0 00-1.27 2.15L2.6 29.37l6.73-1.94a5.13 5.13 0 002.15-1.27L29.12 8.54a3 3 0 000-4.25zM10.06 24.74a3 3 0 01-1.29.77l-3.25.93.94-3.24a3 3 0 01.76-1.29L19.59 9.56l2.84 2.83zM27.71 7.12L23.85 11 21 8.15l3.86-3.86a1 1 0 01.72-.29 1 1 0 01.7.29l1.43 1.42a1 1 0 01.29.71 1 1 0 01-.29.7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-right">
+
+                        <div class="card unselectable content">
+
+                            <div id="plans-header" class="copy-block">
+                                <h3>Plan options</h3>
+                                <p>Pick the best plan for each line.</p>
+                                <p>All AT&T unlimited plans include unlimited talk, text, and data in the U.S., Canada, and Mexico and 5G access at no extra charge.</p>
+                                <p class="legal">Price is only for devices purchased at full price, bring your own, or on installment plan, and after AutoPay & paperless billing discount (starts within 2 bill cycles). Taxes & fees extra.</p>
+                            
+                                <div id="drawer-nutrition" class="toggle">
+                                    <div class="switch"></div>
+                                    <div>View all Broadband Facts</div>
+                                </div>
+
+                            </div>
+
+                            <div id="plans-cards" class="config-options">
+
+                                <div class="drawer">
+                                    <div class="card plan">
+                                        <div class="front">
+                                            <div class="badge">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M23.48 20.73l1.65 9.6-8.62-4.53a1.08 1.08 0 00-1 0l-8.64 4.53 1.65-9.6a1.1 1.1 0 00-.31-1l-7-6.8 9.64-1.4a1.09 1.09 0 00.82-.6L16 2.24 20.31 11a1.09 1.09 0 00.82.6l9.64 1.4-7 6.8a1.1 1.1 0 00-.29.93z"/></svg>
+                                                <span>Featured</span>
+                                            </div>
+                                            <div class="head">
+                                                <h3>AT&T Unlimited Premium<sup>SM</sup> Plan</h3>
+                                                <div class="price">
+                                                    <div class="price sm">
+                                                        <div class="strikethrough">$60.00/mo</div>
+                                                        <div class="price-point plan">50.00</div>
+                                                    </div>
+                                                </div>
+                                                <p class="legal"><u>Lorem ipsum dolor</u></p>
+                                            </div>
+                                            <div class="features">
+                                                <h5 class="mar-md-b">Features</h5>
+                                                <ul>
+                                                    <li>Unlimited talk, text, and data<br><span>Unlimited high-speed data that can't slow down based on how much you use</span></li>
+                                                    <li>5G access included</li>
+                                                    <li>50GB mobile hotspot per line, per month</li>
+                                                    <li>AT&T ActiveArmor<sup>SM</sup> advanced mobile security<br><span>Free app with public Wi-Fi protection, identity monitoring and more</span></li>
+                                                </ul>
+                                            </div>
+                                            <div class="nutrition-label-accordion">
+                                                <div class="label">Mobile Broadband Consumer Disclosure</div>
+                                                <div class="carat">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path class="svg-base" d="M8 11.05L2.65 5.7l.7-.7L8 9.63 12.65 5l.7.71z"/></svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="nutrition-details">
+                                            <div class="nutrition-label scrollable">
+                                                <h3>Broadband Facts</h3>
+                                                <hr style="height:2px;">
+                                                <p>AT&T</p>
+                                                <h5>AT&T Unlimited Premium<sup>SM</sup> Plan</h5>
+                                                <p>Mobile Broadband Consumer Disclosure</p>
+
+
+                                                <hr style="height:8px;">
+                                            
+                                                <div class="col price">
+                                                    <p>Monthly Price</p>
+                                                    <p>$60.00</p>
+                                                </div>
+                                            
+
+                                                <hr style="height:4px;">
+
+                                                <p style="margin-bottom:4px;">This Monthly Price is not an introductory rate.</p>
+                                                <p>This Monthly Price does require a 36 month contract. <a href="">att.com/36MonthContractTerms</a></p>
+                                            
+                                                <hr style="height:2px;">
+                                                <div>
+                                                    <h5>Additional Charges & Terms</h5>
+                                                    <div>
+
+                                                        <h5>Provider Monthly Fees</h5>
+                                                        <div class="col">
+                                                            <p>Administrative Fee</p>
+                                                            <p>Up to $1.99</p>
+                                                        </div>
+                                                        <div class="col">
+                                                            <p>Regulatory Cost Recovery Fee</p>
+                                                            <p>Up to $1.50</p>
+                                                        </div>
+                                                        <div class="col">
+                                                            <p>Federal Universal Service Fee</p>
+                                                            <p>Varies by location</p>
+                                                        </div>
+                                                        <div class="col">
+                                                            <p>State Universal Service Fee</p>
+                                                            <p>Up to $1.75</p>
+                                                        </div>
+                                                        <div class="col">
+                                                            <p>Property Tax Allotment Fee</p>
+                                                            <p>$0.26</p>
+                                                        </div>
+                                                        <div class="col">
+                                                            <p>State & Local Cost Recovery Fees</p>
+                                                            <p>Up to $4.00</p>
+                                                        </div>
+
+                                                        <h5>One-time Fees at the Time of Purchase</h5>
+                                                        <div class="col">
+                                                            <p>Activation Fee</p>
+                                                            <p>$35.00</p>
+                                                        </div>
+
+                                                        
+                                                        <div class="col" style="padding:0;">
+                                                            <h5>Early Termination Fee</h5>
+                                                            <p>$58 - $325</p>
+                                                        </div>
+
+                                                        <div class="col" style="padding:0;">
+                                                            <h5>Government Taxes</h5>
+                                                            <p>Vary by location</p>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <hr style="height:2px;">
+                                                
+                                                <div>
+                                                    <h5>Discounts & Bundles</h5>
+                                    
+                                                    <div>
+
+                                                        <p style="margin-bottom:4px;"><a href="">att.com/bundles</a> for available billing discounts and pricing options for broadband service bundled with other services like video, phone, and wireless service, and use of your own equipment like modems and routers.</p>
+
+                                                        <div class="col">
+                                                            <p>Device Offers & Promotions</p>
+                                                            <p><a href="">att.com/Devices</a></p>
+                                                        </div>
+
+                                                        <div class="col">
+                                                            <p>AutoPay & Paperless Billing</p>
+                                                            <p><a href="">att.com/appb</a></p>
+                                                        </div>
+
+                                                        <div class="col">
+                                                            <p>Signature</p>
+                                                            <p><a href="">att.com/Signature</a></p>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <hr style="height:2px;">
+
+                                                <div>
+                                                    <h5>Affordable Connectivity Program (ACP)</h5>
+                                    
+                                                    <div>
+
+                                                        <p style="margin-bottom:4px;">The ACP is a government program to help lower the monthly cost of internet service. To learn more abou tthe ACP, including to find out whether you qualify, visit <a href="">affordableconnectivity.gov</a></p>
+
+                                                        <div class="col">
+                                                            <p>Participates in the ACP</p>
+                                                            <p>Yes</p>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <hr style="height:2px;">
+
+                                                <div>
+                                                    <h5>Speeds Provided with Plan</h5>
+                                    
+
+                                                        <div class="col">
+                                                            <p>Typical Download Speed</p>
+                                                            <p>13.4 - 68.4 Mbps (4G LTE)<br>
+                                                                32.3 - 118.5 Mbps (5G)</p>
+                                                        </div>
+
+                                                        <div class="col">
+                                                            <p>Typical Upload Speed</p>
+                                                            <p>1.8 - 12.0 Mbps (4G LTE)<br>
+                                                                3.6 - 18.9 Mbps (5G)</p>
+                                                        </div>
+
+                                                        <div class="col">
+                                                            <p>Typical Latency</p>
+                                                            <p>28 - 44 milliseconds (4G LTE)<br>
+                                                                26 - 43 milliseconds (5G)</p>
+                                                        </div>
+                                                </div>
+
+                                                <hr style="height:2px;">
+
+                                                <div class="col">
+                                                    <h5>Data Included with Monthly Price</h5>
+                                                    <h5>Unlimited</h5>
+                                                </div>
+
+                                                <div>
+                                                    <div class="col">
+                                                        <p>Charges for Additional Data Usage</p>
+                                                        <p>n/a</p>
+                                                    </div>
+
+                                                </div>
+
+                                                <hr style="height:2px;">
+
+                                                <div class="col">
+                                                    <h5>Network Management</h5>
+                                                    <p><a href="">att.com/networkmgmt</a></p>
+                                                </div>
+
+                                                <div class="col">
+                                                    <h5>Privacy</h5>
+                                                    <p><a href="">att.com/privacy</a></p>
+                                                </div>
+
+
+                                                <hr style="height:8px;">
+
+                                                <div>
+                                                    <h5>Customer Support</h5>
+                                                    <div>
+                                                        <p>Contact Us: <a href="">att.com/support</a> | <a href="">((800) 331-0500)</a></p>
+                                                    </div>
+                                                </div>
+
+                                                <hr style="height:2px;">
+
+                                                <p style="margin-bottom:4px;">Learn more about the terms used on this label by visiting the Federal Communications Commission's Consumer Resource Center.</p>
+                                                <p style="margin-bottom:4px;"><a href="">fcc.com/consumer</a></p>
+                                                <p>unique Plan Identifier Ex. F00674638ASDF736484</p>
+                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="drawer">
+                                    <div class="card plan">
+                                        <div class="front">
+                                            <div class="head">
+                                                <h3>AT&T Unlimited Extra<sup>®</sup> Plan</h3>
+                                                <div class="price">
+                                                    <div class="price sm">
+                                                        <div class="strikethrough">$50.00/mo</div>
+                                                        <div class="price-point plan">40.00</div>
+                                                    </div>
+                                                </div>
+                                                <p class="legal"><u>Lorem ipsum dolor</u></p>
+                                            </div>
+                                            <div class="features">
+                                                <h5 class="mar-md-b">Features</h5>
+                                                <ul>
+                                                    <li>Unlimited talk, text, data + 50GB of Premium Data<br><span>After 50GB, AT&T may temporarily slow data speeds if the network is busy.</span></li>
+                                                    <li>5G access included</li>
+                                                    <li>15GB hotspot data per line</li>
+                                                    <li>AT&T ActiveArmor<sup>SM</sup> advance security<br><span>Free app with Public Wi-Fi Protection, Identity Monitoring, and more.</span></li>
+                                                </ul>
+                                            </div>
+                                            <div class="nutrition-label-accordion">
+                                                <div class="label">Mobile Broadband Consumer Disclosure</div>
+                                                <div class="carat">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path class="svg-base" d="M8 11.05L2.65 5.7l.7-.7L8 9.63 12.65 5l.7.71z"/></svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="nutrition-details">
+                                            <div class="nutrition-label scrollable">
+                                                <h3>Broadband Facts</h3>
+                                                <hr style="height:2px;">
+                                                <p>AT&T</p>
+                                                <h5>AT&T Unlimited Extra<sup>®</sup> Plan</h5>
+                                                <p>Mobile Broadband Consumer Disclosure</p>
+
+
+                                                <hr style="height:8px;">
+                                            
+                                                <div class="col price">
+                                                    <p>Monthly Price</p>
+                                                    <p>$50.00</p>
+                                                </div>
+                                            
+
+                                                <hr style="height:4px;">
+
+                                                <p style="margin-bottom:4px;">This Monthly Price is not an introductory rate.</p>
+                                                <p>This Monthly Price does require a 36 month contract. <a href="">att.com/36MonthContractTerms</a></p>
+                                            
+                                                <hr style="height:2px;">
+                                                <div>
+                                                    <h5>Additional Charges & Terms</h5>
+                                                    <div>
+
+                                                        <h5>Provider Monthly Fees</h5>
+                                                        <div class="col">
+                                                            <p>Administrative Fee</p>
+                                                            <p>Up to $1.99</p>
+                                                        </div>
+                                                        <div class="col">
+                                                            <p>Regulatory Cost Recovery Fee</p>
+                                                            <p>Up to $1.50</p>
+                                                        </div>
+                                                        <div class="col">
+                                                            <p>Federal Universal Service Fee</p>
+                                                            <p>Varies by location</p>
+                                                        </div>
+                                                        <div class="col">
+                                                            <p>State Universal Service Fee</p>
+                                                            <p>Up to $1.75</p>
+                                                        </div>
+                                                        <div class="col">
+                                                            <p>Property Tax Allotment Fee</p>
+                                                            <p>$0.26</p>
+                                                        </div>
+                                                        <div class="col">
+                                                            <p>State & Local Cost Recovery Fees</p>
+                                                            <p>Up to $4.00</p>
+                                                        </div>
+
+                                                        <h5>One-time Fees at the Time of Purchase</h5>
+                                                        <div class="col">
+                                                            <p>Activation Fee</p>
+                                                            <p>$35.00</p>
+                                                        </div>
+
+                                                        
+                                                        <div class="col" style="padding:0;">
+                                                            <h5>Early Termination Fee</h5>
+                                                            <p>$58 - $325</p>
+                                                        </div>
+
+                                                        <div class="col" style="padding:0;">
+                                                            <h5>Government Taxes</h5>
+                                                            <p>Vary by location</p>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <hr style="height:2px;">
+                                                
+                                                <div>
+                                                    <h5>Discounts & Bundles</h5>
+                                    
+                                                    <div>
+
+                                                        <p style="margin-bottom:4px;"><a href="">att.com/bundles</a> for available billing discounts and pricing options for broadband service bundled with other services like video, phone, and wireless service, and use of your own equipment like modems and routers.</p>
+
+                                                        <div class="col">
+                                                            <p>Device Offers & Promotions</p>
+                                                            <p><a href="">att.com/Devices</a></p>
+                                                        </div>
+
+                                                        <div class="col">
+                                                            <p>AutoPay & Paperless Billing</p>
+                                                            <p><a href="">att.com/appb</a></p>
+                                                        </div>
+
+                                                        <div class="col">
+                                                            <p>Signature</p>
+                                                            <p><a href="">att.com/Signature</a></p>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <hr style="height:2px;">
+
+                                                <div>
+                                                    <h5>Affordable Connectivity Program (ACP)</h5>
+                                    
+                                                    <div>
+
+                                                        <p style="margin-bottom:4px;">The ACP is a government program to help lower the monthly cost of internet service. To learn more abou tthe ACP, including to find out whether you qualify, visit <a href="">affordableconnectivity.gov</a></p>
+
+                                                        <div class="col">
+                                                            <p>Participates in the ACP</p>
+                                                            <p>Yes</p>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <hr style="height:2px;">
+
+                                                <div>
+                                                    <h5>Speeds Provided with Plan</h5>
+                                    
+
+                                                        <div class="col">
+                                                            <p>Typical Download Speed</p>
+                                                            <p>13.4 - 68.4 Mbps (4G LTE)<br>
+                                                                32.3 - 118.5 Mbps (5G)</p>
+                                                        </div>
+
+                                                        <div class="col">
+                                                            <p>Typical Upload Speed</p>
+                                                            <p>1.8 - 12.0 Mbps (4G LTE)<br>
+                                                                3.6 - 18.9 Mbps (5G)</p>
+                                                        </div>
+
+                                                        <div class="col">
+                                                            <p>Typical Latency</p>
+                                                            <p>28 - 44 milliseconds (4G LTE)<br>
+                                                                26 - 43 milliseconds (5G)</p>
+                                                        </div>
+                                                </div>
+
+                                                <hr style="height:2px;">
+
+                                                <div class="col">
+                                                    <h5>Data Included with Monthly Price</h5>
+                                                    <h5>Unlimited</h5>
+                                                </div>
+
+                                                <div>
+                                                    <div class="col">
+                                                        <p>Charges for Additional Data Usage</p>
+                                                        <p>n/a</p>
+                                                    </div>
+
+                                                </div>
+
+                                                <hr style="height:2px;">
+
+                                                <div class="col">
+                                                    <h5>Network Management</h5>
+                                                    <p><a href="">att.com/networkmgmt</a></p>
+                                                </div>
+
+                                                <div class="col">
+                                                    <h5>Privacy</h5>
+                                                    <p><a href="">att.com/privacy</a></p>
+                                                </div>
+
+
+                                                <hr style="height:8px;">
+
+                                                <div>
+                                                    <h5>Customer Support</h5>
+                                                    <div>
+                                                        <p>Contact Us: <a href="">att.com/support</a> | <a href="">((800) 331-0500)</a></p>
+                                                    </div>
+                                                </div>
+
+                                                <hr style="height:2px;">
+
+                                                <p style="margin-bottom:4px;">Learn more about the terms used on this label by visiting the Federal Communications Commission's Consumer Resource Center.</p>
+                                                <p style="margin-bottom:4px;"><a href="">fcc.com/consumer</a></p>
+                                                <p>unique Plan Identifier Ex. F00674638ASDF736484</p>
+                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="drawer">
+                                    <div class="card plan">
+                                        <div class="front">
+                                            <div class="head">
+                                                <h3>AT&T Unlimited Starter<sup>®</sup> Plan</h3>
+                                                <div class="price">
+                                                    <div class="price sm">
+                                                        <div class="strikethrough">$45.00/mo</div>
+                                                        <div class="price-point plan">35.00</div>
+                                                    </div>
+                                                </div>
+                                                <p class="legal"><u>Lorem ipsum dolor</u></p>
+                                            </div>
+                                            <div class="features">
+                                                <h5 class="mar-md-b">Features</h5>
+                                                <ul>
+                                                    <li>Unlimited talk, text, and data<br><span>AT&T may temporarily slow data speeds if the network is busy.</span></li>
+                                                    <li>5G access included</li>
+                                                    <li>3GB hotspot data per line</li>
+                                                    <li>AT&T ActiveArmor<sup>SM</sup> mobile security<br><span>Including spam & fraud call blocking, and more.</span></li>
+                                                </ul>
+                                            </div>
+                                            <div class="nutrition-label-accordion">
+                                                <div class="label">Mobile Broadband Consumer Disclosure</div>
+                                                <div class="carat">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path class="svg-base" d="M8 11.05L2.65 5.7l.7-.7L8 9.63 12.65 5l.7.71z"/></svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="nutrition-details">
+                                            <div class="nutrition-label scrollable">
+                                                <h3>Broadband Facts</h3>
+                                                <hr style="height:2px;">
+                                                <p>AT&T</p>
+                                                <h5>AT&T Unlimited Starter<sup>®</sup> Plan</h5>
+                                                <p>Mobile Broadband Consumer Disclosure</p>
+
+
+                                                <hr style="height:8px;">
+                                            
+                                                <div class="col price">
+                                                    <p>Monthly Price</p>
+                                                    <p>$45.00</p>
+                                                </div>
+                                            
+
+                                                <hr style="height:4px;">
+
+                                                <p style="margin-bottom:4px;">This Monthly Price is not an introductory rate.</p>
+                                                <p>This Monthly Price does require a 36 month contract. <a href="">att.com/36MonthContractTerms</a></p>
+                                            
+                                                <hr style="height:2px;">
+                                                <div>
+                                                    <h5>Additional Charges & Terms</h5>
+                                                    <div>
+
+                                                        <h5>Provider Monthly Fees</h5>
+                                                        <div class="col">
+                                                            <p>Administrative Fee</p>
+                                                            <p>Up to $1.99</p>
+                                                        </div>
+                                                        <div class="col">
+                                                            <p>Regulatory Cost Recovery Fee</p>
+                                                            <p>Up to $1.50</p>
+                                                        </div>
+                                                        <div class="col">
+                                                            <p>Federal Universal Service Fee</p>
+                                                            <p>Varies by location</p>
+                                                        </div>
+                                                        <div class="col">
+                                                            <p>State Universal Service Fee</p>
+                                                            <p>Up to $1.75</p>
+                                                        </div>
+                                                        <div class="col">
+                                                            <p>Property Tax Allotment Fee</p>
+                                                            <p>$0.26</p>
+                                                        </div>
+                                                        <div class="col">
+                                                            <p>State & Local Cost Recovery Fees</p>
+                                                            <p>Up to $4.00</p>
+                                                        </div>
+
+                                                        <h5>One-time Fees at the Time of Purchase</h5>
+                                                        <div class="col">
+                                                            <p>Activation Fee</p>
+                                                            <p>$35.00</p>
+                                                        </div>
+
+                                                        
+                                                        <div class="col" style="padding:0;">
+                                                            <h5>Early Termination Fee</h5>
+                                                            <p>$58 - $325</p>
+                                                        </div>
+
+                                                        <div class="col" style="padding:0;">
+                                                            <h5>Government Taxes</h5>
+                                                            <p>Vary by location</p>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <hr style="height:2px;">
+                                                
+                                                <div>
+                                                    <h5>Discounts & Bundles</h5>
+                                    
+                                                    <div>
+
+                                                        <p style="margin-bottom:4px;"><a href="">att.com/bundles</a> for available billing discounts and pricing options for broadband service bundled with other services like video, phone, and wireless service, and use of your own equipment like modems and routers.</p>
+
+                                                        <div class="col">
+                                                            <p>Device Offers & Promotions</p>
+                                                            <p><a href="">att.com/Devices</a></p>
+                                                        </div>
+
+                                                        <div class="col">
+                                                            <p>AutoPay & Paperless Billing</p>
+                                                            <p><a href="">att.com/appb</a></p>
+                                                        </div>
+
+                                                        <div class="col">
+                                                            <p>Signature</p>
+                                                            <p><a href="">att.com/Signature</a></p>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <hr style="height:2px;">
+
+                                                <div>
+                                                    <h5>Affordable Connectivity Program (ACP)</h5>
+                                    
+                                                    <div>
+
+                                                        <p style="margin-bottom:4px;">The ACP is a government program to help lower the monthly cost of internet service. To learn more abou tthe ACP, including to find out whether you qualify, visit <a href="">affordableconnectivity.gov</a></p>
+
+                                                        <div class="col">
+                                                            <p>Participates in the ACP</p>
+                                                            <p>Yes</p>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <hr style="height:2px;">
+
+                                                <div>
+                                                    <h5>Speeds Provided with Plan</h5>
+                                    
+
+                                                        <div class="col">
+                                                            <p>Typical Download Speed</p>
+                                                            <p>13.4 - 68.4 Mbps (4G LTE)<br>
+                                                                32.3 - 118.5 Mbps (5G)</p>
+                                                        </div>
+
+                                                        <div class="col">
+                                                            <p>Typical Upload Speed</p>
+                                                            <p>1.8 - 12.0 Mbps (4G LTE)<br>
+                                                                3.6 - 18.9 Mbps (5G)</p>
+                                                        </div>
+
+                                                        <div class="col">
+                                                            <p>Typical Latency</p>
+                                                            <p>28 - 44 milliseconds (4G LTE)<br>
+                                                                26 - 43 milliseconds (5G)</p>
+                                                        </div>
+                                                </div>
+
+                                                <hr style="height:2px;">
+
+                                                <div class="col">
+                                                    <h5>Data Included with Monthly Price</h5>
+                                                    <h5>Unlimited</h5>
+                                                </div>
+
+                                                <div>
+                                                    <div class="col">
+                                                        <p>Charges for Additional Data Usage</p>
+                                                        <p>n/a</p>
+                                                    </div>
+
+                                                </div>
+
+                                                <hr style="height:2px;">
+
+                                                <div class="col">
+                                                    <h5>Network Management</h5>
+                                                    <p><a href="">att.com/networkmgmt</a></p>
+                                                </div>
+
+                                                <div class="col">
+                                                    <h5>Privacy</h5>
+                                                    <p><a href="">att.com/privacy</a></p>
+                                                </div>
+
+
+                                                <hr style="height:8px;">
+
+                                                <div>
+                                                    <h5>Customer Support</h5>
+                                                    <div>
+                                                        <p>Contact Us: <a href="">att.com/support</a> | <a href="">((800) 331-0500)</a></p>
+                                                    </div>
+                                                </div>
+
+                                                <hr style="height:2px;">
+
+                                                <p style="margin-bottom:4px;">Learn more about the terms used on this label by visiting the Federal Communications Commission's Consumer Resource Center.</p>
+                                                <p style="margin-bottom:4px;"><a href="">fcc.com/consumer</a></p>
+                                                <p>unique Plan Identifier Ex. F00674638ASDF736484</p>
+                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                </div>
+            </section>
+    
+        </div>
+
+        <div id="sticky-footer">
+            <div id="footer-pricing">
+                <div>
+                    <div id="price-monthly" class="pricing-details">
+                        <div class="price sm">
+                            <div class="price-point plan adjustable-price">0.00</div>
+                        </div>
+                    </div>
+
+                    <div id="price-today" class="pricing-details">
+                        <div class="price sm">
+                            <div class="price-point retail adjustable-price">0.00</div>
+                        </div>
+                    </div>
+
+                </div>
+                <p class="legal">Prices are estimated. Fees and taxes are not included.</p>
+            </div>
+            <div>
+                <div id="continue" class="button">
+                    <span>Continue</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer style="background-color:var(--gray-200);height:0px;">
+
+    </footer>
+    
+</body>
+</html>
