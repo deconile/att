@@ -3,13 +3,12 @@ $(document).on('ready', function(){
     fillColorOptions();
     createCapacityOptions();
     
-    
     //FILL REMAINING DETAILS FOR STATIC CONFIG OPTIONS
     fillInitialOptionDetails();
 
-
     //PRESELECT ALL OPTIONS
     preselectAllOptions();
+    setInitialSelectionLabels();
 
     //ACTIVATE CONFIGURATION CATAGORIES & WALKTHROUGH
     activateConfigOptions();
@@ -72,6 +71,7 @@ function activateConfigOptions(){
     });
 
 }
+
 
 
 
@@ -424,6 +424,15 @@ function preselectAllOptions(){
 }
 
 
+function setInitialSelectionLabels(){
+    //SET INITIAL SELECTED OPTIONS
+    $('.configure-option').each(function(){
+        let selectedLabel = $(this).find('.configure-option-container').find('.active').find('.label').html();
+        $(this).find('.configure-option-head').find('.selection').html(selectedLabel);
+    });
+}
+
+
 //CONFIGURATION WALKTHROUGH
 function initialExpandFirstOption(){
     let option = $('.configure-option');
@@ -435,6 +444,8 @@ function initialExpandFirstOption(){
     },1000);
     
 }
+
+
 
 function openNextOption(){
     let option = $('.configure-option-container');

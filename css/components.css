@@ -86,6 +86,7 @@
     border:1px solid var(--gray-600);
     border-radius: 4px;
     transition: 300ms;
+    cursor:pointer;
 }
 
 .checkbox svg {

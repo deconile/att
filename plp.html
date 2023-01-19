@@ -82,7 +82,7 @@
         
         <div id="main-content">
 
-            <div class="tabs-container limited">
+            <div id="tabs-plp" class="tabs-container limited mb-hide">
                 <div class="tabs mar-lg-b">
                     <div class="active">Phones</div>
                     <div>AT&T Prepaid</div>
@@ -95,13 +95,13 @@
 
             <div class="three-by-nine limited">
 
-                <div class="col-left">
+                <div class="col-left mb-hide">
 
                     <div id="filters" class="filters">
                         
                         <div class="header">
                             <div>Filters</div>
-                            <div><a href="" class="sm line light">Clear all</a></div>
+                            <div><a href="javascript:void(0);" class="sm line light">Clear all</a></div>
                         </div>
 
                         <div class="locator">
@@ -110,7 +110,7 @@
                                 <div class="icon px16 blue">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path class="svg-base" d="M8 3a3 3 0 103 3 3 3 0 00-3-3zm0 5a2 2 0 112-2 2 2 0 01-2 2zm0-8a5.72 5.72 0 00-5.73 5.7c0 4.48 5.16 9.66 5.38 9.88l.35.35.35-.35c.22-.22 5.38-5.4 5.38-9.88A5.72 5.72 0 008 0zm0 14.5c-1.15-1.24-4.73-5.37-4.73-8.8a4.73 4.73 0 019.46 0c0 3.43-3.58 7.56-4.73 8.8z"/></svg>
                                 </div>
-                                <div><a href="">Find stores</a></div>
+                                <div><a href="javascript:void(0);">Find stores</a></div>
                             </div>
                         </div>
 
@@ -138,7 +138,7 @@
                                 <p>When you switch to AT&T and bring your own phone. </p>
 
                                 <p class="legal">Get a free SIM and waived activation fees when you add a line. </p>
-                                <p class="legal">LTD time. Req's port-in of new line from elig. carrier & elig. svc. Limit two lines. Other terms apply. <a href="">See offer details</a></p>
+                                <p class="legal">LTD time. Req's port-in of new line from elig. carrier & elig. svc. Limit two lines. Other terms apply. <a href="javascript:void(0);" >See offer details</a></p>
                             
                             </div>
 
@@ -278,6 +278,12 @@
             let duplicateProd = $('#product-grid').find('.product').last().clone();
             $('#product-grid').append(duplicateProd);
         }
+
+        //APPLY VISUAL CHANGES
+        $('.product').eq(2).find('.title').html('iPhone 12 Pro');
+        $('.product').eq(2).find('.badge').find('.label').html('Up to $700 off w/trade');
+        $('.product').eq(2).find('.badge').find('svg').remove();
+
     });
 </script>
     

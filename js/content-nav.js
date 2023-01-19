@@ -10,9 +10,6 @@ $(document).ready(function(){
     //ICON CARDS
     iconCard();
 
-    //CHECKBOX & RADIO
-    checkBox();
-
     // QUANTITY INCREMENTOR
     quantity();
 
@@ -23,8 +20,14 @@ $(document).ready(function(){
     collapseAllAccordions();
     accordion();
 
-    //FAVORITE
-    favorite();
+    setTimeout(function(){
+        //CHECKBOX & RADIO
+        checkBox();
+
+        //FAVORITE
+        favorite();
+    },1000);
+
 });
 
 
@@ -305,7 +308,6 @@ function accordion(){
 /* FAVORITE HEART TOGGLE */
 function favorite(){
     $('.favorite').on('click', function(){
-
         if($(this).hasClass('active')){
             $(this).empty().append(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M16 29.9L3.46 17.36a8.41 8.41 0 0111.9-11.9l.64.64.64-.64a8.41 8.41 0 0111.9 11.9zM9.41 5a6.41 6.41 0 00-4.53 11L16 27.07 27.12 16a6.41 6.41 0 00-9.07-9.07l-2.05 2-2-2.05A6.41 6.41 0 009.41 5z"/></svg>`).removeClass('active');
         } else {

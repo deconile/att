@@ -103,6 +103,7 @@
 .configure-option-head .label {
     display:flex;
     flex-direction: column;
+    gap:4px;
     transition: 500ms;
 }
 
@@ -113,7 +114,6 @@
 
 .configure-option .label .type {
     transition: 500ms;
-    height:24px;
     overflow:hidden;
 }
 
@@ -159,6 +159,22 @@
 
 .configure-option.opened .configure-option-container {
     height:100%;
+}
+
+.configure-option.opened .configure-option-head .selection {
+    display:none;
+}
+
+#configure-color.configure-option.opened .configure-option-head .selection {
+    display:block;
+}
+
+
+/********* SPECIAL CASES */
+#configure-color.configure-option.opened .configure-option-head .label {
+    display:flex;
+    flex-direction:row;
+    gap:4px;
 }
 
 

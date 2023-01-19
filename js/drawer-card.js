@@ -15,15 +15,13 @@ $(document).ready(function(){
         labelOffset = 24;
     }
 
-    //SET FIRST OPTION EXPANDED
+    //SET FIRST OPTION ACTIVE & OPEN ALL NT LABELS
     setTimeout(function(){
         //EXPAND LABEL
         let nutritionHeight = $('.drawer').first().find('.nutrition-label').outerHeight();
-        $('.drawer').first().find('.nutrition-details').css({height: nutritionHeight + labelOffset + 'px'});
+        $('.drawer').find('.nutrition-details').css({height: nutritionHeight + labelOffset + 'px'});
         //ACTIVATE CARD
         $('.drawer').first().find('.card').addClass('active');
-        //SET ACCORDION
-        $('.nutrition-label-accordion').first().addClass('active');
     },100);
     
 });
@@ -32,102 +30,52 @@ function drawerCard() {
     drawer = $('.drawer');
     drawer.find('.card').on('click', function(){
         
+        $(this).toggleClass('active');
+
         //ACTIVE CARD
         if(!$(this).hasClass('active')){
-
-            //DEACTIVATE & COLLAPSE ALL
-            drawer.find('.card').removeClass('active');
-            $('.nutrition-label-accordion').each(function(){
-                if(!$(this).hasClass('opened')){
-                    $(this).removeClass('active');
-                }
-            });
-            //drawer.find('.card').find('.nutrition-label-accordion').removeClass('active');
-            //drawer.find('.card').find('.nutrition-label-accordion').find('span').html('Show');
-            
-            if(!$('#drawer-nutrition').hasClass('active')){
-                $('.nutrition-details').each(function(){
-                    if(!$(this).siblings('.front').find('.nutrition-label-accordion').hasClass('opened')){
-                        $(this).css({height: '0px'});
-                    }
-                });
-            }
-            //$('.nutrition-details').css({height: '0px'});
-        
             //ACTIVATE CARD
             drawer.find('.card').removeClass('active');
-            $(this).addClass('active');
             $('#sticky-footer').find('.button').removeClass('inactive');
-
-            //EXPAND NUTRITION LABEL
-            let nutritionHeight = $(this).find('.nutrition-label').outerHeight();
-            if(!$(this).find('.nutrition-label-accordion').hasClass('closed')){
-                $(this).find('.nutrition-details').css({height: nutritionHeight + labelOffset + 'px'});
-                $(this).find('.nutrition-label-accordion').addClass('active');
-            }
-
         } else {
-
-            //DEACTIVATE CARD
-            $(this).removeClass('active');
             $('#sticky-footer').find('.button').addClass('inactive');
-
-            //COLLAPSE NUTRITION LABEL
-            if(!$('#drawer-nutrition').hasClass('active')){
-                $(this).find('.nutrition-details').css({height: '0px'});
-                $(this).find('.nutrition-label-accordion').removeClass('active');
-                //$('.nutrition-details').css({height: '0px'});
-            }
         };
-
-        //EXPAND
 
     });
 }
 
 function labelAccordion(){
     let accordion = $('.nutrition-label-accordion');
+
+    //ACTIVE ALL NT LABEL ACCORDIONS
+    accordion.addClass('active');
     
     accordion.on('click', function(e){
         //IGNORE PARENT CARD CLICK
         e.stopPropagation();
 
+        //$(this).toggleClass('active');
+
         let nutritionHeight = $(this).parent().siblings('.nutrition-details').find('.nutrition-label').outerHeight();
 
-        if(!$(this).hasClass('active')){
-            //ACTIVATE CARD STYLES
-            $(this).addClass('active');
-
-            //MARK AS USER OPENED
-            $(this).addClass('opened').removeClass('closed');
-
-            //EXPAND LABEL
-            $(this).parent().siblings('.nutrition-details').css({height: nutritionHeight + labelOffset + 'px'});
-
-
-        } else if(!$('#drawer-nutrition').hasClass('active')){
-            //DEACTIVATE CARD STYLES
-            $(this).removeClass('active');
-
-            //MARK AS USER CLOSED
-            $(this).addClass('closed').removeClass('opened');
-
+        if($(this).hasClass('active')){
             //COLLAPSE LABEL
             $(this).parent().siblings('.nutrition-details').css({height: '0px'});
-
+            $(this).removeClass('active');
+        } else {
+            //EXPAND LABEL
+            $(this).parent().siblings('.nutrition-details').css({height: nutritionHeight + labelOffset + 'px'});
+            $(this).addClass('active');
         }
     });
 }
 
 function toggle() {
-    $('.toggle').on('click', function(){
-        
-        if(!$(this).hasClass('active')){
-            $(this).addClass('active');
-        } else {
-            $(this).removeClass('active');
-        }
+    //ACTIVATE NEXT LINE TO SET TOGGLE TO "ON" ON START
+    $('.toggle').addClass('active');
 
+    $('.toggle').on('click', function(){
+        $(this).toggleClass('active');
     });
 }
 
@@ -140,16 +88,8 @@ function expandAllNutrition() {
                 $(this).find('.nutrition-details').css({height: nutritionHeight + labelOffset + 'px'});
             });
 
-            $('.nutrition-label-accordion').addClass('inactive');
-            
         } else {
-            $('.drawer').each(function(){
-                if(!$(this).find('.card').hasClass('active') && !$(this).find('.nutrition-label-accordion').hasClass('opened')){
-                    $(this).find('.nutrition-details').css({height: '0px'});
-                }
-            });
-
-            $('.nutrition-label-accordion').removeClass('inactive');
+            $('.drawer').find('.nutrition-details').css({height: '0px'});
         } 
 
     });

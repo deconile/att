@@ -486,6 +486,7 @@ main > section {
 .full-left {
     display:grid;
     grid-template-columns: 1fr auto;
+    gap:24px;
 }
 
 .five-by-seven {
@@ -1164,6 +1165,13 @@ nav#sub-nav .search > div {
 
 @media only screen and (max-width: 600px) {
 
+
+    /* HIDE COMPONENTS */
+    .mb-hide {
+        display:none!important;
+    }
+
+
     /* NAV BARS */
     nav#main-nav {
         display:none;
@@ -1199,11 +1207,17 @@ nav#sub-nav .search > div {
     }
 
     #footer-pricing > div > .pricing-details .price.sm .price-point {
-        font-size:0.8em;
+        
     }
     
     #footer-pricing > div > .pricing-details + .pricing-details {
         padding-left:8px;
+    }
+
+    /* PRICING */
+    #footer-pricing .price .plan::after, #footer-pricing .price .retail::after {
+        display:block;
+        margin:0
     }
 
     #sticky-footer {
@@ -1221,7 +1235,22 @@ nav#sub-nav .search > div {
         padding-left:24px;
         padding-right:24px;
     }
-    .five-by-seven {
+
+    .limited {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+
+
+    /* GRIDS */
+    .stack {
         grid-template-columns: 1fr;
     }
+    .five-by-seven, .seven-by-five, .three-by-nine {
+        grid-template-columns: 1fr;
+        gap:24px;
+    }
+
+
   }

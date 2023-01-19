@@ -273,7 +273,7 @@
     gap:16px;
     border:2px solid transparent;
     border-radius: var(--border-radius);
-    width: 292px;
+    /*width: 292px;*/
     flex-shrink: 0;
     flex-grow: 0;
 }
@@ -716,6 +716,11 @@
     /* TEXT */
     .standard .card.plan:not(.active) .front .head h3 {
         font-size:var(--type-sm);
+    }
+
+    #product-grid {
+        grid-template-columns: repeat(2,1fr);
+        gap:16px;
     }
 
   }
