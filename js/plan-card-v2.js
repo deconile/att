@@ -38,6 +38,7 @@ function planCard() {
             $(this).toggleClass('active');
 
             if($(this).hasClass('active')){
+                
                 plan.not(this).removeClass('active');
                 plan.find('.expand').css('height','0px');
                 $(this).find('.expand').css('height',expandHeight + 'px');
@@ -64,7 +65,8 @@ function planCard() {
                 }
                 
                 //SWAPPING LABEL | CHANGE CONTENT AND FADE IN
-                if($(this).parent().hasClass('.dynamic-label')){
+                if($(this).parent().hasClass('dynamic-label')){
+                    
                     //GET PRICING AND PLAN
                     let price = $(this).find('.strikethrough').html().slice(0,-3);
                     let planname = $(this).find('.head').find('h3').html();
