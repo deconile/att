@@ -1,109 +1,123 @@
-var accordionHeight;
-var accordionOffset = 134;
+var initHeight;
+var accHeight;
 
 $(document).ready(function(){
+    selectCard();
+    setTimeout(function(){
+        //INITIAL HIDE CARD ACCORDIONS
+        getHeaderHeights();
+        getCollapsedAccordionHeights()
+        $('#plans-cards').find('.card').css('height',initHeight+'px');
 
-    //ACTIVE FIRST CARD
-    $('.standard').first().find('.card').addClass('active');
-
-    //SET INITIAL CLICK STATUS
-    $('.standard').find('.card').addClass('initial');
-    $('.standard').first().find('.card').removeClass('initial');
-
-    accordionHeight = $('.nutrition-label').outerHeight();
-    
-    $('.accordion-content').css('height', accordionHeight + accordionOffset + 'px');
-
-    $('.accordion-label').find('.accordion-notice').css('display','none');
-
-    expandCard();
-    collapseCard();
-
+        openAccordions();
+    },50);
 });
 
 
+function selectCard() {
+    let plan = $('#plans-cards').find('.card');
 
-function expandCard() {
-    let plan = $('.standard').find('.card');
-    let expandHeight = $('.standard').first().find('.card').outerHeight();
-    let collapseHeight = $('.standard').last().find('.card').outerHeight();
-
-    //SET HEIGHTS
-    $('.standard').find('.card').css({height : collapseHeight + 'px'});
-    $('.standard').first().find('.card').css({height : expandHeight + 96 + 'px'});
-
-
-
-    plan.on('click', function(){
-
-        //ACTIVE CARD
+    plan.on('click',function(){
         if(!$(this).hasClass('active')){
-
-            //DEACTIVATE ALL
             plan.removeClass('active');
-
-            //ACTIVATE CARD
             $(this).addClass('active');
-
-            //EXPAND CARD
-            plan.each(function(){
-                if($(this).hasClass('active')){
-                    $(this).css({height: expandHeight + 24 + 'px'});
-                } else {
-                    $(this).css({height: collapseHeight + 'px'});
-                }
-            });
-
-            //ACTIVATE CONTINUE
-            $('#sticky-footer').find('.button').removeClass('inactive');
-
-            //REFRESH LABEL
-            $('.nutrition-label').hide().fadeIn(1000);
-
-            //CHECK IF CARD HAS BEEN SELECTED
-            if($(this).hasClass('initial')){
-                if(!$('.accordion-label').hasClass('active')){
-                    $('.accordion-label').find('.accordion-notice').css('display','flex');
-                }
-                $('.accordion-label').addClass('active');
-                $('.accordion-label').siblings('.accordion-content').css({height : accordionHeight + accordionOffset  + 'px'});
-                $(this).removeClass('initial');
-            }
-
         } else {
+            plan.removeClass('active');
+        }
 
-            //DEACTIVATE CARD
-            $(this).removeClass('active');
-            $(this).css({height: collapseHeight + 'px'});
-            $('#sticky-footer').find('.button').addClass('inactive');
-
-        };
-
-
-        //GET PRICING AND PLAN
-        let price = $(this).find('.strikethrough').html().slice(0,-3);
-        let planname = $(this).find('.head').find('h3').html();
-
-        $('#planprice').html(price);
-        $('#planname').html(planname);
-
-
+        //ACTIVATE CONTINUE
+        activateContinue();
     });
 }
 
-function collapseCard(){
-    let accordion = $('.accordion-label');
- 
-    accordion.on('click', function(){
-        if(!$(this).hasClass('active')){
-            $(this).addClass('active');
-            $(this).siblings('.accordion-content').css({height : accordionHeight + accordionOffset + 'px'});
+function activateContinue(){
+
+    if($('#plans-cards').find('.card').hasClass('active')){
+        $('#continue').removeClass('inactive');
+    } else {
+        $('#continue').addClass('inactive');
+    }
+}
+
+function getHeaderHeights(){
+    let ih = []
+    $('#plans-cards').find('.card').each(function(){
+        ih.push($(this).find('.header').outerHeight())
+    })
+    initHeight = Math.max(...ih) + 48;
+}
+
+function getCollapsedAccordionHeights(){
+    $('#plans-cards').find('.card').each(function(){
+        let amt = $(this).find('.accordion').length;
+        let h = $(this).find('.accordion').outerHeight() * amt
+        accHeight = h;
+    });
+}
+
+function openAccordions(){
+    let plan = $('#plans-cards').find('.card');
+    let extended = false;
+
+    plan.on('click', function(){
+
+        var card = $(this);
+
+        if($(this).hasClass('active')){
+
+            plan.css('height',initHeight);
+
+            // if(!extended){
+            //     $(this).css('height',initHeight + accHeight);
+            //     extended = true;
+            // }
+
+            //EXPAND CARDS
+            $(this).css('height','auto');
+            if(!$(this).find('#acc-nl').hasClass('manual')){
+                $(this).find('#acc-nl').addClass('expanded');
+                let nlh = $(this).find('#acc-nl').find('.content').attr('data')
+                $(this).find('#acc-nl').find('.content').css('height',parseInt(nlh));
+            }
+                
         } else {
-            $(this).removeClass('active');
-            $(this).siblings('.accordion-content').css({height : '0px'});
-            $(this).find('.accordion-notice').css('display','none');
+            plan.find('.accordion').removeClass('expanded');
+            plan.find('.content').css('height','0px');
+            // let h = $(this).outerHeight()
+            // plan.css('height',h+'px');
+            $(this).css('height',initHeight);
+            extended = false;
         }
     });
+    
+    // plan.each(function(){
+    //     let accordion = $(this).find('.accordion');
+    //     var accHeights = [];
+
+    //     accordion.each(function(){
+    //         accHeights.push($(this).find('.content').outerHeight());
+    //     });
+
+    //     $(this).on('click',function(){
+    //         //CLOSE OTHERS
+
+    //         plan.find('.accordion').removeClass('expanded');
+    //         plan.find('.content').css('height','0px');
+    //         $('#plans-cards').find('.card').css('height',initHeight);
+
+    //         if($(this).hasClass('active')){
+    //             //for(h=0; h < accHeights.length; h++){
+    //                 $(this).find('.accordion').eq(1).addClass('expanded');
+    //                 $(this).find('.content').eq(1).css('height',accHeights[1]+'px');
+    //             //}
+    //             $(this).css('height','auto');
+    //         } else {
+    //             $(this).find('.accordion').removeClass('expanded');
+    //             $(this).find('.content').css('height','0px');
+    //             $(this).css('height',initHeight);
+    //         }
+    //     });
+    // });
 }
 
 

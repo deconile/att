@@ -56,6 +56,10 @@ body {
 
 
 /* SPACING */
+.mar-lg-t {margin-top:32px;}
+.mar-md-t {margin-top:16px;}
+.mar-sm-t {margin-top:8px;}
+
 .mar-lg-b {margin-bottom:32px;}
 .mar-md-b {margin-bottom:16px;}
 .mar-sm-b {margin-bottom:8px;}
@@ -121,9 +125,7 @@ body {
     --eyebrow-xxl: 26px;
     --eyebrow-xxxl: 28px;
 
-
     --type-legal: 11px;
-
 
     --drawer-right-width: 508px;
     --drawer-left-width: 724px;
@@ -357,6 +359,14 @@ li span {
     font-size: var(--heading-xl);
 }
 
+.price.lg .price-point{
+    font-size: var(--heading-lg);
+}
+
+.price.md .price-point{
+    font-size: var(--heading-md);
+}
+
 .price.sm .price-point{
     font-size: var(--heading-sm);
 }
@@ -487,6 +497,12 @@ main > section {
     display:grid;
     grid-template-columns: 1fr auto;
     gap:24px;
+}
+
+.auto-left {
+    display:grid;
+    grid-template-columns: auto 1fr;
+    gap:32px;
 }
 
 .five-by-seven {
@@ -1247,7 +1263,7 @@ nav#sub-nav .search > div {
     .stack {
         grid-template-columns: 1fr;
     }
-    .five-by-seven, .seven-by-five, .three-by-nine {
+    .five-by-seven, .seven-by-five, .three-by-nine, .auto-left {
         grid-template-columns: 1fr;
         gap:24px;
     }

@@ -2,6 +2,9 @@ $(document).ready(function(){
     //TABS
     tabs();
 
+    //BUTTON GROUP
+    buttonGroup();
+
     //JUMP LINKS
     jumpLinks();
     getScrollPositions();
@@ -10,23 +13,28 @@ $(document).ready(function(){
     //ICON CARDS
     iconCard();
 
+    //TOGGLE
+    toggle();
+
     // QUANTITY INCREMENTOR
     quantity();
 
     //FILTER DROPDOWN
     displayFilters();
 
-    //ACCORDION
-    collapseAllAccordions();
-    accordion();
-
+    //FOR SCRIPTS THAT NEED TO ENSURE ALL HTML & CSS HAS BEEN APPLIED
     setTimeout(function(){
         //CHECKBOX & RADIO
         checkBox();
 
         //FAVORITE
         favorite();
-    },1000);
+        
+        //ACCORDION
+        setAccordionHeights();
+        unifyMatchingAccordions();
+        accordion();
+    },50);
 
 });
 
@@ -60,6 +68,19 @@ function tabs(){
         
     });
 
+}
+
+
+// BUTTON GROUP FUNCTIONALITY ////////////////////////////////////////
+function buttonGroup(){
+    btnGroup = $('.button-group');
+
+    btnGroup.find('.button').on('click',function(){
+        if(!$(this).hasClass('active')){
+            $(this).siblings().removeClass('active');
+            $(this).addClass('active');
+        }
+    });
 }
 
 
@@ -191,6 +212,13 @@ function checkBox(){
     });
 }
 
+// QUANTITY INCREMENTOR //////////////////////////////////////
+function toggle(){
+    $('.toggle').on('click', function(){
+        $(this).toggleClass('active');
+    });
+}
+
 
 
 // QUANTITY INCREMENTOR //////////////////////////////////////
@@ -278,29 +306,84 @@ function displayFilters(){
 
 //ACCORDION FUNCTIONALITY ////////////////////////////////////
 
-var accordionHeight;
+function setAccordionHeights(){
+    $('.accordion').each(function(){
+        let h = $(this).find('.content').find('.wrapper').outerHeight();
+        $(this).find('.content').attr('data',h)
+    });
+}
+
+//UNIFY MATCHING ACCORDIONS
+function unifyMatchingAccordions() {
+    $('.accordion.matching').each(function(){
+        
+    });
+}
 
 //INITIALLY COLLASPE ALL ACCORDIONS
 function collapseAllAccordions(){
-    let content = $('.accordion').find('.content');
-    content.css('height','0px');
+    $('.accordion').find('.content').css('height','0px');
 }
 
 function accordion(){
-    let accordion = $('.accordion').find('.control');
+    let accordion = $('.accordion');
 
-    accordion.on('click', function(){
-        if(!$(this).parent().hasClass('expanded')){
-            $(this).parent().addClass('expanded');
-
-            accordionHeight = $(this).siblings('.content').find('.content-container').outerHeight();
-            $(this).siblings('.content').css('height',accordionHeight+'px');
-
-        } else {
-            $(this).parent().removeClass('expanded');
-            $(this).siblings('.content').css('height','0px');
-        }
+    //LINK MATCHING ACCORDIONS
+    $('.accordion.matching').each(function(){
+        $(this).addClass($(this).attr('id'));
     });
+
+    //GET HEIGHT OF CONTENT
+    accordion.each(function(){
+        //APPLY CONTENT HEIGHT
+        let ah = $(this).find('.content').attr('data');
+
+        //CLOSE ALL
+        $(this).find('.content').css('height','0px');
+
+        $(this).find('.control').on('click', function(e){
+            e.stopPropagation();
+            $(this).addClass('manual');
+            if($(this).parent().hasClass('matching')){
+                accId = '.'+$(this).parent().attr('id');
+                if(!$(this).parent().hasClass('expanded')){
+                    let h = [];
+                    $(accId).each(function(){
+                        h.push(parseInt($(this).find('.content').attr('data')));
+                    });
+                    let fh = Math.max(...h);
+                    $(accId).addClass('expanded');
+                    $(accId).find('.content').css('height',fh+'px');
+                } else {
+                    $(accId).removeClass('expanded');
+                    $(accId).find('.content').css('height','0px');
+                }
+            } else {
+                $(this).parent().addClass('manual');
+                if(!$(this).parent().hasClass('expanded')){
+                    $(this).parent().addClass('expanded');
+                    $(this).siblings('.content').css('height',ah+'px');
+                } else {
+                    $(this).parent().removeClass('expanded');
+                    $(this).siblings('.content').css('height','0px');
+                }
+            }
+
+            //SPECIAL CASE FOR HORIZONTAL PLANS CARDS
+            //$('#plans-cards').find('.card').find('.accordion').each(function(){
+
+            //});
+            if($('#plans-cards').find('.card').find('.accordion').hasClass('expanded')){
+                $('#pagination').addClass('extended');
+            } else {
+                setTimeout(function(){
+                    $('#pagination').removeClass('extended');
+                },500);
+            }
+        
+        });
+    });
+    
 }
 
 

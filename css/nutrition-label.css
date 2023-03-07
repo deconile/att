@@ -24,14 +24,11 @@
 }
 
 .nutrition-details .nutrition-label, .nutrition-label  {
-    padding:8px;
-    background-color:#fff;
-    border:1px solid var(--gray-800);
     
 }
 
 .nutrition-label {
-    margin-top:24px;
+
 }
 
 .nutrition-label .col {

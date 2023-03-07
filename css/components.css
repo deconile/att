@@ -74,6 +74,48 @@
 }
 
 
+/* BUTTON GROUP **************************/
+.button-group {
+    display:flex;
+}
+.button-group .button {
+    display:block;
+    width:100%;
+    text-align: center;
+    background-color:transparent;
+    color:var(--cobalt-600);
+    border:2px solid var(--cobalt-600);
+    border-radius:0;
+}
+
+.button-group .button:first-child {
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+}
+
+.button-group .button:last-child {
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+}
+
+.button-group .button + .button {
+    border-left:none;
+}
+
+.button-group .button.active {
+    background-color:var(--cobalt-600);
+    border-color:var(--cobalt-600);
+    color:#fff;
+}
+
+.button-group .button:hover {
+    background-color:var(--cobalt-400);
+    border-color:var(--cobalt-400);
+    color:#fff;
+}
+
+
+
 
 /* CHECKBOX **************************/
 .checkbox {
@@ -202,7 +244,6 @@
     font-weight:700;
     background-color:var(--blue-200);
     border-radius: 4px;
-    margin-bottom:24px;
 }
 
 .badge svg {
@@ -307,20 +348,29 @@
 .accordion {
     border-top:1px solid var(--gray-300);
     border-bottom:1px solid var(--gray-300);
-    transition: 500ms;
+}
+
+.accordion + .accordion {
+    border-top:none;
+}
+
+.accordion.framed {
+    border:none;
+    padding:0 16px;
+    background-color:var(--gray-200);
+    border-radius:16px;
 }
 
 .accordion.expanded {
-    padding-bottom:32px;
+    padding-bottom:24px;
 }
 
 .accordion .control {
+    padding:24px 0;
     position: relative;
     display:grid;
     grid-template-columns: 1fr auto;
     column-gap:16px;
-    row-gap: 8px;
-    padding:32px 0;
     cursor:pointer;
     transition: 500ms;
 }
@@ -336,7 +386,7 @@
 }
 
 .accordion .control .label {
-    font-size:var(--heading-sm);
+    font-size:var(--heading-xs);
     font-weight:700;
     transition:500ms;
 }
@@ -345,23 +395,29 @@
     padding-top:32px;
 } 
 
-.accordion .control .chevron svg {
-    transition: 500ms;
+.accordion .control .carat {
+    display:flex;
+    align-items: center;
 }
 
-.accordion.expanded .control .chevron svg {
-    transform: rotateZ(180deg);
-}
-
-.accordion .control .chevron svg {
+.accordion .control .carat svg {
     max-width:20px;
     max-height:20px;
     fill:var(--gray-600);
+    transition: 500ms;
+}
+
+.accordion.expanded .control .carat svg {
+    transform: rotateZ(180deg);
 }
 
 .accordion .content {
     overflow: hidden;
-    transition: 1000ms;
+    transition: 500ms;
+}
+
+.accordion.expanded .content {
+    
 }
 
 

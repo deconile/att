@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Plans | Drawer</title>
+    <title>Plans | Vertical Cards</title>
 
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components.css">
@@ -16,7 +16,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="js/config.js"></script>
     <script src="js/content-nav.js"></script>
-    <script src="js/drawer-card.js"></script>
+    <script src="js/plan-card.js"></script>
     
     <!--script src="js/device-carousel.js"></script-->
 
@@ -115,52 +115,62 @@
                 </div>
                 <div class="col-right">
 
-                        <div class="card unselectable content">
+                    <div class="card unselectable content">
 
-                            <div id="plans-header" class="copy-block">
-                                <h3>Plan options</h3>
-                                <p>Pick the best plan for each line.</p>
-                                <div class="button-group">
-                                    <div class="button active">Unlimited Your Way (3)</div>
-                                    <div class="button">Other Plans (2)</div>
-                                </div>
-                                <p>All AT&T unlimited plans include unlimited talk, text, and data in the U.S., Canada, and Mexico and 5G access at no extra charge.</p>
-                                <p class="legal">Price is only for devices purchased at full price, bring your own, or on installment plan, and after AutoPay & paperless billing discount (starts within 2 bill cycles). Taxes & fees extra.</p>
-                            
-                                <div id="drawer-nutrition" class="toggle">
-                                    <div class="switch"></div>
-                                    <div>View all Broadband Facts</div>
-                                </div>
-
+                        <div id="plans-header" class="copy-block">
+                            <h3>Plan options</h3>
+                            <p>Pick the best plan for each line.</p>
+                            <div class="button-group">
+                                <div class="button active">Unlimited Your Way (3)</div>
+                                <div class="button">Other Plans (2)</div>
                             </div>
+                            <p>All AT&T unlimited plans include unlimited talk, text, and data in the U.S., Canada, and Mexico and 5G access at no extra charge.</p>
+                            <p class="legal">Price is only for devices purchased at full price, bring your own, or on installment plan, and after AutoPay & paperless billing discount (starts within 2 bill cycles). Taxes & fees extra.</p>
+                        
+                            <!--<div id="drawer-nutrition" class="toggle">
+                                <div class="switch"></div>
+                                <div>View all Broadband Facts</div>
+                            </div>-->
 
-                            <div id="plans-cards" class="config-options">
+                        </div>
 
-                                <div class="card plan">
-                                    <div class="header">
-                                        <!--<div class="badge">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M23.48 20.73l1.65 9.6-8.62-4.53a1.08 1.08 0 00-1 0l-8.64 4.53 1.65-9.6a1.1 1.1 0 00-.31-1l-7-6.8 9.64-1.4a1.09 1.09 0 00.82-.6L16 2.24 20.31 11a1.09 1.09 0 00.82.6l9.64 1.4-7 6.8a1.1 1.1 0 00-.29.93z"/></svg>
-                                            <span>Featured</span>
-                                        </div>-->
-                                        <div class="head">
-                                            <h3>AT&T Unlimited Premium<sup>SM</sup> Plan</h3>
-                                            <div class="price">
-                                                <div class="price sm">
-                                                    <div class="strikethrough">$60.00/mo</div>
-                                                    <div class="price-point plan">50.00</div>
-                                                </div>
+                        <div id="plans-cards" class="config-options">
+                            
+                            <div class="card plan">
+                                <div class="header">
+                                    <!--<div class="badge">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M23.48 20.73l1.65 9.6-8.62-4.53a1.08 1.08 0 00-1 0l-8.64 4.53 1.65-9.6a1.1 1.1 0 00-.31-1l-7-6.8 9.64-1.4a1.09 1.09 0 00.82-.6L16 2.24 20.31 11a1.09 1.09 0 00.82.6l9.64 1.4-7 6.8a1.1 1.1 0 00-.29.93z"/></svg>
+                                        <span>Featured</span>
+                                    </div>-->
+                                    <div class="head">
+                                        <h3>AT&T Unlimited Premium<sup>SM</sup> Plan</h3>
+                                        <div class="price">
+                                            <div class="price sm">
+                                                <div class="strikethrough">$60.00/mo</div>
+                                                <div class="price-point plan">50.00</div>
                                             </div>
-                                            <p class="legal"><u>Lorem ipsum dolor</u></p>
                                         </div>
+                                        <p class="legal"><u>Lorem ipsum dolor</u></p>
                                     </div>
-                                    <div class="features">
-                                        <h5 class="mar-md-b">Features</h5>
-                                        <ul>
-                                            <li>Unlimited talk, text, and data<br><span>Unlimited high-speed data that can't slow down based on how much you use</span></li>
-                                            <li>5G access included</li>
-                                            <li>50GB mobile hotspot per line, per month</li>
-                                            <li>AT&T ActiveArmor<sup>SM</sup> advanced mobile security<br><span>Free app with public Wi-Fi protection, identity monitoring and more</span></li>
-                                        </ul>
+                                </div>
+                                <div class="accordions">
+                                    <div class="accordion">
+                                        <div class="control">
+                                            <div class="label">Features & Benefits</div>
+                                            <div class="carat">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path class="svg-base" d="M8 11.05L2.65 5.7l.7-.7L8 9.63 12.65 5l.7.71z"/></svg>
+                                            </div>
+                                        </div>
+                                        <div class="content">
+                                            <div class="wrapper">
+                                                <ul>
+                                                    <li>Unlimited talk, text, and data<div>Unlimited high-speed data that can't slow down based on how much you use</div></li>
+                                                    <li>5G access included</li>
+                                                    <li>50GB mobile hotspot per line, per month</li>
+                                                    <li>AT&T ActiveArmor<sup>SM</sup> advanced mobile security<div>Free app with public Wi-Fi protection, identity monitoring and more</div></li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div id="acc-nl" class="accordion">
                                         <div class="control">
@@ -170,7 +180,7 @@
                                             </div>
                                         </div>
                                         <div class="content">
-                                            <div class="wrapper scrollable">
+                                            <div class="wrapper">
                                                 <div class="nutrition-label">
                                                     <h3>Broadband Facts</h3>
                                                     <hr style="height:2px;">
@@ -360,29 +370,44 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
 
-                                <div class="card plan">
-                                    <div class="header">
-                                        <div class="head">
-                                            <h3>AT&T Unlimited Extra<sup>®</sup> Plan</h3>
-                                            <div class="price">
-                                                <div class="price sm">
-                                                    <div class="strikethrough">$50.00/mo</div>
-                                                    <div class="price-point plan">40.00</div>
-                                                </div>
+                            <div class="card plan">
+                                <div class="header">
+                                    <!--<div class="badge">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M23.48 20.73l1.65 9.6-8.62-4.53a1.08 1.08 0 00-1 0l-8.64 4.53 1.65-9.6a1.1 1.1 0 00-.31-1l-7-6.8 9.64-1.4a1.09 1.09 0 00.82-.6L16 2.24 20.31 11a1.09 1.09 0 00.82.6l9.64 1.4-7 6.8a1.1 1.1 0 00-.29.93z"/></svg>
+                                        <span>Featured</span>
+                                    </div>-->
+                                    <div class="head">
+                                        <h3>AT&T Unlimited Extra<sup>®</sup> Plan</h3>
+                                        <div class="price">
+                                            <div class="price sm">
+                                                <div class="strikethrough">$50.00/mo</div>
+                                                <div class="price-point plan">40.00</div>
                                             </div>
-                                            <p class="legal"><u>Lorem ipsum dolor</u></p>
                                         </div>
+                                        <p class="legal"><u>Lorem ipsum dolor</u></p>
                                     </div>
-                                    <div class="features">
-                                        <h5 class="mar-md-b">Features</h5>
-                                        <ul>
-                                            <li>Unlimited talk, text, data + 50GB of Premium Data<br><span>After 50GB, AT&T may temporarily slow data speeds if the network is busy.</span></li>
-                                            <li>5G access included</li>
-                                            <li>15GB hotspot data per line</li>
-                                            <li>AT&T ActiveArmor<sup>SM</sup> advance security<br><span>Free app with Public Wi-Fi Protection, Identity Monitoring, and more.</span></li>
-                                        </ul>
+                                </div>
+                                <div class="accordions">
+                                    <div class="accordion">
+                                        <div class="control">
+                                            <div class="label">Features & Benefits</div>
+                                            <div class="carat">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path class="svg-base" d="M8 11.05L2.65 5.7l.7-.7L8 9.63 12.65 5l.7.71z"/></svg>
+                                            </div>
+                                        </div>
+                                        <div class="content">
+                                            <div class="wrapper">
+                                                <ul>
+                                                    <li>Unlimited talk, text, data + 50GB of Premium Data<br><span>After 50GB, AT&T may temporarily slow data speeds if the network is busy.</span></li>
+                                                    <li>5G access included</li>
+                                                    <li>15GB hotspot data per line</li>
+                                                    <li>AT&T ActiveArmor<sup>SM</sup> advance security<br><span>Free app with Public Wi-Fi Protection, Identity Monitoring, and more.</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div id="acc-nl" class="accordion">
                                         <div class="control">
@@ -392,7 +417,7 @@
                                             </div>
                                         </div>
                                         <div class="content">
-                                            <div class="wrapper scrollable">
+                                            <div class="wrapper">
                                                 <div class="nutrition-label">
                                                     <h3>Broadband Facts</h3>
                                                     <hr style="height:2px;">
@@ -582,28 +607,43 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                <div class="card plan">
-                                    <div class="header">
-                                        <div class="head">
-                                            <h3>AT&T Unlimited Starter<sup>®</sup> Plan</h3>
-                                            <div class="price">
-                                                <div class="price sm">
-                                                    <div class="strikethrough">$45.00/mo</div>
-                                                    <div class="price-point plan">35.00</div>
-                                                </div>
+                            <div class="card plan">
+                                <div class="header">
+                                    <!--<div class="badge">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M23.48 20.73l1.65 9.6-8.62-4.53a1.08 1.08 0 00-1 0l-8.64 4.53 1.65-9.6a1.1 1.1 0 00-.31-1l-7-6.8 9.64-1.4a1.09 1.09 0 00.82-.6L16 2.24 20.31 11a1.09 1.09 0 00.82.6l9.64 1.4-7 6.8a1.1 1.1 0 00-.29.93z"/></svg>
+                                        <span>Featured</span>
+                                    </div>-->
+                                    <div class="head">
+                                        <h3>AT&T Unlimited Starter<sup>®</sup> Plan</h3>
+                                        <div class="price">
+                                            <div class="price sm">
+                                                <div class="strikethrough">$45.00/mo</div>
+                                                <div class="price-point plan">35.00</div>
                                             </div>
-                                            <p class="legal"><u>Lorem ipsum dolor</u></p>
                                         </div>
+                                        <p class="legal"><u>Lorem ipsum dolor</u></p>
                                     </div>
-                                    <div class="features">
-                                        <h5 class="mar-md-b">Features</h5>
-                                        <ul>
-                                            <li>Unlimited talk, text, and data<br><span>AT&T may temporarily slow data speeds if the network is busy.</span></li>
-                                            <li>5G access included</li>
-                                            <li>3GB hotspot data per line</li>
-                                            <li>AT&T ActiveArmor<sup>SM</sup> mobile security<br><span>Including spam & fraud call blocking, and more.</span></li>
-                                        </ul>
+                                </div>
+                                <div class="accordions">
+                                    <div class="accordion">
+                                        <div class="control">
+                                            <div class="label">Features & Benefits</div>
+                                            <div class="carat">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path class="svg-base" d="M8 11.05L2.65 5.7l.7-.7L8 9.63 12.65 5l.7.71z"/></svg>
+                                            </div>
+                                        </div>
+                                        <div class="content">
+                                            <div class="wrapper">
+                                                <ul>
+                                                    <li>Unlimited talk, text, and data<br><span>AT&T may temporarily slow data speeds if the network is busy.</span></li>
+                                                    <li>5G access included</li>
+                                                    <li>3GB hotspot data per line</li>
+                                                    <li>AT&T ActiveArmor<sup>SM</sup> mobile security<br><span>Including spam & fraud call blocking, and more.</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div id="acc-nl" class="accordion">
                                         <div class="control">
@@ -613,7 +653,7 @@
                                             </div>
                                         </div>
                                         <div class="content">
-                                            <div class="wrapper scrollable">
+                                            <div class="wrapper">
                                                 <div class="nutrition-label">
                                                     <h3>Broadband Facts</h3>
                                                     <hr style="height:2px;">
@@ -803,12 +843,10 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
-
                         </div>
-
+                    </div>
+                    
                 </div>
             </section>
     
@@ -833,7 +871,7 @@
                 <p class="legal">Prices are estimated. Fees and taxes are not included.</p>
             </div>
             <div>
-                <div id="continue" class="button">
+                <div id="continue" class="button inactive">
                     <span>Continue</span>
                 </div>
             </div>
