@@ -343,9 +343,10 @@ function accordion(){
 
         $(this).find('.control').on('click', function(e){
             e.stopPropagation();
-            $(this).addClass('manual');
+            $(this).parent().addClass('manual');
             if($(this).parent().hasClass('matching')){
                 accId = '.'+$(this).parent().attr('id');
+                $(accId).addClass('manual');
                 if(!$(this).parent().hasClass('expanded')){
                     let h = [];
                     $(accId).each(function(){
@@ -359,7 +360,6 @@ function accordion(){
                     $(accId).find('.content').css('height','0px');
                 }
             } else {
-                $(this).parent().addClass('manual');
                 if(!$(this).parent().hasClass('expanded')){
                     $(this).parent().addClass('expanded');
                     $(this).siblings('.content').css('height',ah+'px');

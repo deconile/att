@@ -763,9 +763,9 @@
 .card.plan .wrapper.scrollable {
     overflow-y: scroll;
     height:250px;
-    border:1px solid var(--gray-300);
-    background-color:#fff;
     padding:16px;
+    background-color: #fff;
+    border:1px solid var(--gray-300);
     overscroll-behavior: contain;
 }
 
@@ -971,6 +971,16 @@
     #product-grid {
         grid-template-columns: repeat(2,1fr);
         gap:16px;
+    }
+
+    /* CARDS | GENERAL */
+    .card {
+        
+    }
+    .card.unselectable {
+        border-left:none;
+        border-right:none;
+        border-radius:0;
     }
 
     /* COLLAPSIBLE CARD */

@@ -8,7 +8,7 @@
     border-radius: 100px;
     cursor: pointer;
     padding: 15px 32px;
-    font-size: 14px;
+    font-size: var(--heading-xxs);
     font-weight:700;
     color:#fff;
     background-color: var(--cobalt-600);
@@ -81,6 +81,7 @@
 .button-group .button {
     display:block;
     width:100%;
+    padding:15px 24px;
     text-align: center;
     background-color:transparent;
     color:var(--cobalt-600);
@@ -148,18 +149,20 @@
     opacity: 1;
 }
 
+/* TOGGLE ****************/
 .toggle {
     display:flex;
     align-items: center;
-    gap:8px;
-    font-size:var(--type-xs);
-    margin-top:24px;
+    gap:48px;
+    font-size:15px;
     cursor:pointer;
 }
 
 .toggle .switch {
-    width:32px;
-    height:18px;
+    position: relative;
+    width:34px;
+    height:21px;
+    margin-top:4px;
     background-color:var(--gray-500);
     border-radius:100px;
     position:relative;
@@ -167,12 +170,22 @@
 }
 
 .toggle .switch::before {
+    content:'OFF';
+    position:absolute;
+    left:-36px;
+    font-size:14px;
+    text-transform: uppercase;
+    color:var(--gray-700);
+    font-weight:600;
+}
+
+.toggle .switch::after {
     position:absolute;
     content:"";
     top:2px;
     left:2px;
-    width: 14px;
-    height: 14px;
+    width: 17px;
+    height: 17px;
     background-color:#fff;
     border-radius:100px;
     transition: 500ms;
@@ -183,7 +196,18 @@
 }
 
 .toggle.active .switch::before {
-    transform:translateX(100%);
+    content:'ON';
+}
+
+.toggle.active .switch::after {
+    transform:translateX(13px);
+}
+
+.toggle .state {
+    font-size:14px;
+    text-transform: uppercase;
+    color:var(--gray-700);
+    font-weight:600;
 }
 
 
@@ -604,4 +628,14 @@
 .filters .locator > *:last-child {
     display:flex;
     gap:8px;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+    .button-group .button {
+        padding:8px 24px;
+        font-size:12px;
+    }
+
 }

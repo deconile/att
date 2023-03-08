@@ -63,6 +63,8 @@ function openAccordions(){
 
     plan.on('click', function(){
 
+        var card = $(this);
+
         if($(this).hasClass('active')){
 
             if(!extended){
@@ -81,8 +83,8 @@ function openAccordions(){
                     });
                     $('#pagination').addClass('extended');
                 }
-                
             },500);
+
 
         } else {
             plan.find('.accordion').removeClass('expanded');

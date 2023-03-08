@@ -6,7 +6,7 @@ $(document).ready(function(){
     setTimeout(function(){
         //INITIAL HIDE CARD ACCORDIONS
         getHeaderHeights();
-        getCollapsedAccordionHeights()
+        getCollapsedAccordionHeights();
         $('#plans-cards').find('.card').css('height',initHeight+'px');
 
         openAccordions();
@@ -65,27 +65,51 @@ function openAccordions(){
 
         if($(this).hasClass('active')){
 
-            plan.css('height',initHeight);
+            //SMOOTH TRANSITION
+            plan.not(this).find('.accordion').removeClass('expanded');
+            plan.not(this).find('.content').css('height','0px');
+            plan.not(this).css('height',initHeight + accHeight + 'px');
+            setTimeout(function(){
+                plan.not(card).css('height',initHeight + 'px');
+            },10);
+            extended = false;
 
-            // if(!extended){
-            //     $(this).css('height',initHeight + accHeight);
-            //     extended = true;
-            // }
+            if(!extended){
+                $(this).css('height',initHeight + accHeight + 'px');
+                extended = true;
+            }
+
+            setTimeout(function(){
+                card.css('height','auto');
+                if(!card.find('#acc-nl').hasClass('manual')){
+                    card.find('#acc-nl').addClass('expanded');
+                    let nlh = card.find('#acc-nl').find('.content').attr('data')
+                    card.find('#acc-nl').find('.content').css('height',parseInt(nlh) + 'px');
+                }
+                //SCROLL TO TOP OF SELECTED CARD
+                $('html, body').delay(250).animate({
+                    scrollTop: card.offset().top - 24
+                },500);
+            },500);
+
+            
 
             //EXPAND CARDS
-            $(this).css('height','auto');
-            if(!$(this).find('#acc-nl').hasClass('manual')){
-                $(this).find('#acc-nl').addClass('expanded');
-                let nlh = $(this).find('#acc-nl').find('.content').attr('data')
-                $(this).find('#acc-nl').find('.content').css('height',parseInt(nlh));
-            }
+            // $(this).css('height','auto');
+            // if(!$(this).find('#acc-nl').hasClass('manual')){
+            //     $(this).find('#acc-nl').addClass('expanded');
+            //     let nlh = $(this).find('#acc-nl').find('.content').attr('data')
+            //     $(this).find('#acc-nl').find('.content').css('height',parseInt(nlh));
+            // }
                 
         } else {
-            plan.find('.accordion').removeClass('expanded');
-            plan.find('.content').css('height','0px');
-            // let h = $(this).outerHeight()
-            // plan.css('height',h+'px');
-            $(this).css('height',initHeight);
+            $(this).find('.accordion').removeClass('expanded');
+            $(this).find('.content').css('height','0px');
+            let h = $(this).outerHeight();
+            $(this).css('height',h+'px');
+            setTimeout(function(){
+                card.css('height',initHeight);
+            },10);
             extended = false;
         }
     });
