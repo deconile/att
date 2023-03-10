@@ -33,8 +33,11 @@ $(document).ready(function(){
         //ACCORDION
         setAccordionHeights();
         unifyMatchingAccordions();
+        sizeMatchingAccordions()
         accordion();
-    },50);
+        collapseAllAccordions();
+
+    },100);
 
 });
 
@@ -309,37 +312,53 @@ function displayFilters(){
 function setAccordionHeights(){
     $('.accordion').each(function(){
         let h = $(this).find('.content').find('.wrapper').outerHeight();
-        $(this).find('.content').attr('data',h)
+        $(this).find('.content').attr('data',h);
     });
 }
 
 //UNIFY MATCHING ACCORDIONS
+var uniqueAcc = [];
+var uniqueH = [];
+var matchedH;
 function unifyMatchingAccordions() {
+
     $('.accordion.matching').each(function(){
-        
+        let id = $(this).attr('id');
+        $(this).addClass(id);
+
+        let dup = jQuery.inArray(id, uniqueAcc);
+        if (dup >= 0) {
+            uniqueAcc.splice(dup, 1);
+        } else {
+            uniqueAcc.push(id);
+        }
     });
+}
+
+function sizeMatchingAccordions(){
+    for(m = 0; m < uniqueAcc.length; m++){
+        $('.accordion.'+ uniqueAcc[m]).each(function(){
+            uniqueH.push($(this).find('.content').find('.wrapper').outerHeight());
+            matchedH = Math.max(...uniqueH);
+        });
+        $('.' + uniqueAcc[m]).find('.content').attr('data',matchedH);
+        uniqueH = [];
+    }
 }
 
 //INITIALLY COLLASPE ALL ACCORDIONS
 function collapseAllAccordions(){
     $('.accordion').find('.content').css('height','0px');
+    $('.accordion').find('.content').find('a').attr('tabIndex','-1');
 }
 
 function accordion(){
     let accordion = $('.accordion');
 
-    //LINK MATCHING ACCORDIONS
-    $('.accordion.matching').each(function(){
-        $(this).addClass($(this).attr('id'));
-    });
-
     //GET HEIGHT OF CONTENT
     accordion.each(function(){
         //APPLY CONTENT HEIGHT
         let ah = $(this).find('.content').attr('data');
-
-        //CLOSE ALL
-        $(this).find('.content').css('height','0px');
 
         $(this).find('.control').on('click', function(e){
             e.stopPropagation();
@@ -348,12 +367,13 @@ function accordion(){
                 accId = '.'+$(this).parent().attr('id');
                 $(accId).addClass('manual');
                 if(!$(this).parent().hasClass('expanded')){
-                    let h = [];
-                    $(accId).each(function(){
-                        h.push(parseInt($(this).find('.content').attr('data')));
-                    });
-                    let fh = Math.max(...h);
+                    // let h = [];
+                    // $(accId).each(function(){
+                    //     h.push(parseInt($(this).find('.content').attr('data')));
+                    // });
+                    // let fh = Math.max(...h);
                     $(accId).addClass('expanded');
+                    let fh = parseInt($(accId).first().find('.content').attr('data'));
                     $(accId).find('.content').css('height',fh+'px');
                 } else {
                     $(accId).removeClass('expanded');
@@ -369,16 +389,11 @@ function accordion(){
                 }
             }
 
-            //SPECIAL CASE FOR HORIZONTAL PLANS CARDS
-            //$('#plans-cards').find('.card').find('.accordion').each(function(){
-
-            //});
-            if($('#plans-cards').find('.card').find('.accordion').hasClass('expanded')){
-                $('#pagination').addClass('extended');
+            //ADD / REMOVE TAB INDEXING
+            if(!$(this).parent().hasClass('expanded')){
+                $(this).siblings().find('a').attr('tabIndex','-1');
             } else {
-                setTimeout(function(){
-                    $('#pagination').removeClass('extended');
-                },500);
+                $(this).siblings().find('a').attr('tabIndex','');
             }
         
         });

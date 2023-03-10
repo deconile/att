@@ -9,8 +9,10 @@ $(document).ready(function(){
         //EXPAND ALL LABELS
         $('#plans-cards').find('.card').each(function(){
             $(this).find('.accordion').addClass('expanded');
+            $(this).find('.accordion').find('.content').find('a').attr('tabIndex','');
             let nlh = $(this).find('.accordion').find('.content').attr('data');
             $(this).find('.accordion').find('.content').css('height',parseInt(nlh));
+            
         });
         
         //ACTIVATE CARD
@@ -30,7 +32,6 @@ function drawerCard() {
             $(this).removeClass('active');
             $('#sticky-footer').find('.button').addClass('inactive');
         };
-
     });
 
 }
@@ -53,24 +54,6 @@ function toggleNL() {
         }
     });
 }
-
-// function expandAllNutrition() {
-//     $('#drawer-nutrition').on('click', function(){
-
-//         if(!$(this).hasClass('active')){
-//             $('.drawer').each(function(){
-//                 let nutritionHeight = $(this).find('.nutrition-label').outerHeight();
-//                 $(this).find('.nutrition-details').css({height: nutritionHeight + labelOffset + 'px'});
-//             });
-//             $('.nutrition-label-accordion').addClass('active');
-
-//         } else {
-//             $('.drawer').find('.nutrition-details').css({height: '0px'});
-//             $('.nutrition-label-accordion').removeClass('active');
-//         } 
-
-//     });
-// }
 
 
 

@@ -360,11 +360,11 @@ li span {
 }
 
 .price.lg .price-point{
-    font-size: var(--heading-lg);
+    font-size: 34px;
 }
 
 .price.md .price-point{
-    font-size: var(--heading-md);
+    font-size: 24px;
 }
 
 .price.sm .price-point{
@@ -376,14 +376,13 @@ li span {
 }
 
 .price > div:not(.price-point) {
-    font-size:var(--type-xxs);
+    font-size:11px;
 }
 
 .price .strikethrough {
     color: var(--gray-600);
     text-decoration: line-through;
 }
-
 
 .price .price-point::before {
     content: "$";
@@ -1007,9 +1006,10 @@ nav#sub-nav .search > div {
 
 /* BREADCRUMBS *********************************/
 #breadcrumbs {
-    padding-top:16px;
-    padding-bottom:16px;
+    padding:16px 32px;
     background-color:#fff;
+    max-width:var(--main-area-max);
+    margin:auto;
 }
 
 #breadcrumbs {
@@ -1065,7 +1065,6 @@ nav#sub-nav .search > div {
 #breadcrumbs .tab-container > div.active {
     color: var(--gray-800);
     background-color:var(--blue-100);
-    cursor:pointer;
 }
 
 
@@ -1179,13 +1178,18 @@ nav#sub-nav .search > div {
     position:sticky;
     z-index:100;
     bottom:0;
+    background-color:#fff;
+    border-top: 1px solid var(--cobalt-600);
+}
+
+#sticky-footer-container {
+    max-width:var(--main-area-max);
     display:grid;
     grid-template-columns: 1fr auto;
     align-items: center;
     column-gap:32px;
-    background-color:#fff;
-    border-top: 1px solid var(--cobalt-600);
-    padding:16px 64px;
+    padding:8px 24px;
+    margin:auto;
 }
 
 #footer-pricing {
@@ -1215,6 +1219,39 @@ nav#sub-nav .search > div {
 /* MEDIA QUERIES *******************************/
 
 @media only screen and (max-width: 600px) {
+
+    /* VARIABLES */
+
+:root {
+
+    --border-radius: 16px;
+
+    --heading-xxxs: 10px;
+    --heading-xxs: 11px;
+    --heading-xs: 12px;
+    --heading-sm: 16px;
+    --heading-md: 20px;
+    --heading-lg: 24px;
+    --heading-xl: 28px;
+    --heading-xxl: 32px;
+    --heading-xxxl: 36px;
+
+    --type-xxs: 10px;
+    --type-xs: 11px;
+    --type-sm: 14px;
+    --type-base: 16px;
+    --type-lg: 18px;
+
+    --eyebrow-sm: 12px;
+    --eyebrow-md: 14px;
+    --eyebrow-lg: 16px; 
+    --eyebrow-xl: 20px;
+    --eyebrow-xxl: 22px;
+    --eyebrow-xxxl: 24px;
+
+    --type-legal: 11px;
+
+}
 
 
     /* HIDE COMPONENTS */
@@ -1253,9 +1290,6 @@ nav#sub-nav .search > div {
 
     /* FOOTER */
 
-    #sticky-footer {
-        padding:16px 24px;
-    }
 
     /* PRICING */
     #footer-pricing .price .plan::after, #footer-pricing .price .retail::after {

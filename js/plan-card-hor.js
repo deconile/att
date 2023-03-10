@@ -11,8 +11,9 @@ $(document).ready(function(){
         getHeaderHeights();
         getCollapsedAccordionHeights();
         $('#plans-cards').find('.card').css('height',initHeight+'px');
+        setPagination()
         openAccordions();
-    },50);
+    },100);
 });
 
 function getHeaderHeights(){
@@ -20,24 +21,44 @@ function getHeaderHeights(){
     $('#plans-cards').find('.card').each(function(){
         ih.push($(this).find('.header').outerHeight())
     });
-    initHeight = Math.max(...ih) + 40;
+    initHeight = Math.max(...ih);
 }
 
 function getCollapsedAccordionHeights(){
-    $('#plans-cards').find('.card').each(function(){
-        let amt = $(this).find('.accordion').length;
-        let h = $(this).find('.accordion').outerHeight() * amt
-        accHeight = h;
+    let amt = $('#plans-cards').find('.card').first().find('.accordion').length;
+    let h = $('#plans-cards').find('.card').first().find('.accordion').outerHeight() * amt
+    accHeight = h;
+}
+
+function openNutritionLabels(){
+    let plan = $('#plans-cards').find('.card');
+    plan.each(function(){
+        let nlh = $(this).find('#acc-nl').find('.content').attr('data');
+        $(this).find('#acc-nl').addClass('expanded');
+        $(this).find('#acc-nl').find('.content').css('height',parseInt(nlh) + 'px');
     });
+}
+
+function setPagination(){
+    //SET HEIGHT
+    let pagHeight = $('#plans-header').outerHeight() + initHeight + 56;
+    $('#pagination').css('height', 'calc(100% - '+ pagHeight +'px)');
+
+    //SET LOCATION
+    let footerHeight = $('#sticky-footer').outerHeight();
+    let pagContHeight = $('#pagination').find('#nav-container').outerHeight();
+    let pagLoc = footerHeight + pagContHeight;
+    $('#pagination').find('#nav-container').css('top', 'calc(100% - '+ pagLoc +'px)');
 }
 
 function selectCard() {
     let plan = $('#plans-cards').find('.card');
 
-    plan.on('click',function(){
-        if(!$(this).hasClass('active')){
+    plan.find('.header').on('click',function(){
+        console.log('plan clicked');
+        if(!$(this).parent().hasClass('active')){
             plan.removeClass('active');
-            $(this).addClass('active');
+            $(this).parent().addClass('active');
         } else {
             plan.removeClass('active');
         }
@@ -58,17 +79,21 @@ function activateContinue(){
 
 function openAccordions(){
     let plan = $('#plans-cards').find('.card');
-    let accordion = plan.find('.accordion');
     let extended = false;
 
-    plan.on('click', function(){
+    plan.find('.header').on('click', function(){
 
-        var card = $(this);
+        if($(this).parent().hasClass('active')){
 
-        if($(this).hasClass('active')){
+            //GET FULL HEIGHT
+            //let head = $(this).find('.header').outerHeight();
+            //let acc = $(this).find('.accordions').outerHeight();
+            //let fullHeight = head + acc + 72;
+            //EXPAND
+            //$(this).css('height', fullHeight + 'px');
 
             if(!extended){
-                plan.css('height',initHeight + accHeight);
+                plan.css('height',initHeight + accHeight + 'px');
                 extended = true;
             }
 
@@ -81,7 +106,9 @@ function openAccordions(){
                         let nlh = $(this).find('.acc-nl').find('.content').attr('data')
                         $(this).find('.acc-nl').find('.content').css('height',parseInt(nlh));
                     });
-                    $('#pagination').addClass('extended');
+                    $('html, body').delay(100).animate({
+                        scrollTop: plan.offset().top - 24
+                    },500);
                 }
             },500);
 
@@ -89,37 +116,60 @@ function openAccordions(){
         } else {
             plan.find('.accordion').removeClass('expanded');
             plan.find('.content').css('height','0px');
-            let h = $(this).outerHeight()
+            let h = $(this).parent().outerHeight()
             plan.css('height',h+'px');
             setTimeout(function(){
                 plan.css('height',initHeight);
                 extended = false;
             },10);
-            setTimeout(function(){
-                $('#pagination').removeClass('extended');
-            },500);
         }
     });
 }
 
 function cardCarousel(){
+    let scrollDis = 0;
+    let cardWidth = $('#plans-carousel').find('#cards').find('.card').first().outerWidth() + 24;
     let carousel = $('#plans-carousel').find('#cards');
+
+    //ADD PAGE BUBBLES
+    let bubbleElem = `<div class="pag-bubble"></div>`;
+    let pages = carousel.find('.card').length;
+    //
+    for(b = 0; b < pages; b++){
+        $('#pag-bubbles').append(bubbleElem);
+    }
+
+    //DELETE ONE IF DESKTOP
+    if ($(window).width() > 600) {
+        $('#pag-bubbles').children().last().remove();
+    }
+
     let prev = $('#pagination').find('#prev');
     let next = $('#pagination').find('#next');
-    let bubble = $('#pagination').find('.pag-bubble');
+    let bubbles = $('#pagination').find('#pag-bubbles');
+
+    bubbles.find('.pag-bubble').first().addClass('active');
 
     next.on('click',function(){
-        carousel.scrollLeft(304);
-        $(this).addClass('inactive');
+        scrollDis = scrollDis + cardWidth;
+        carousel.scrollLeft(scrollDis);
+        bubbles.find('.active').next().addClass('active');
+        bubbles.find('.active').first().removeClass('active');
+        if(bubbles.find('.pag-bubble').last().hasClass('active')){
+            $(this).addClass('inactive');
+        }
         prev.removeClass('inactive');
-        bubble.toggleClass('active');
     });
 
     prev.on('click',function(){
-        carousel.scrollLeft(-304);
-        $(this).addClass('inactive');
+        scrollDis = scrollDis - cardWidth;
+        carousel.scrollLeft(scrollDis);
+        bubbles.find('.active').prev().addClass('active');
+        bubbles.find('.active').last().removeClass('active');
+        if(bubbles.find('.pag-bubble').first().hasClass('active')){
+            $(this).addClass('inactive');
+        }
         next.removeClass('inactive');
-        bubble.toggleClass('active');
     });
 }
 
@@ -147,32 +197,18 @@ function collapseDetails(){
 }
 
 function resizeAccordions(){
-    // let r = 0;
-    // let plan = $('#plans-cards').find('.card');
-    // while(r < 500){
-    //     setAccordionHeights();
-
-    //     if($('#acc-nl').hasClass('expanded')){
-    //         plan.each(function(){
-    //             $(this).find('.acc-nl').addClass('expanded');
-    //             nlh = $(this).find('.acc-nl').find('.content').attr('data')
-    //             $(this).find('.acc-nl').find('.content').css('height',parseInt(nlh));
-    //         });
-    //     }
-    //     r++
-    // }
 
     setTimeout(function(){
-        setAccordionHeights();
+        sizeMatchingAccordions();
 
-        let plan = $('#plans-cards').find('.card');
-        if($('#acc-nl').hasClass('expanded')){
-            plan.each(function(){
-                $(this).find('.acc-nl').addClass('expanded');
-                let nlh = $(this).find('.acc-nl').find('.content').attr('data')
-                $(this).find('.acc-nl').find('.content').css('height',parseInt(nlh));
-            });
-        }
+        let acc = $('#plans-cards').find('.card').find('.accordion');
+        acc.each(function(){
+            h = parseInt($(this).find('.content').attr('data'));
+            if($(this).hasClass('expanded')){
+                $(this).find('.content').css('height',h+'px');
+            }
+        });
+
     },500);
 }
 

@@ -553,14 +553,19 @@
     overflow:hidden;
     transition: height 500ms;
 }
+.card.plan .header {
+    margin:-24px;
+    padding:24px;
+}
 
 .card.plan .head {
     display:grid;
     grid-template-columns: 1fr auto;
-    column-gap:24px;
+    column-gap:16px;
 }
 
 .card.plan .head .price {
+    grid-row: span 2;
     font-weight:bold;
 }
 
@@ -625,6 +630,11 @@
     padding:16px;
 }
 
+.plan.horizontal .header {
+    margin:-16px;
+    padding:16px;
+}
+
 .plan.horizontal .head {
     grid-template-columns: 1fr;
 }
@@ -674,13 +684,10 @@
     width:100%;
     pointer-events: none;
 }
-#pagination.extended {
-    height:100%;
-}
 
 #pagination #nav-container {
     position:sticky;
-    top:80%;
+    top:0;
     left:0px;
     display:flex;
     justify-content: center;
@@ -990,6 +997,11 @@
 
     .device-info.collapsible .minimize {
         display:none;
+    }
+
+    /* HORIZONTAL PLAN CARDS */
+    .plan.horizontal .head h3 {
+        margin-bottom:16px;
     }
 
   }

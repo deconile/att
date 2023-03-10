@@ -154,7 +154,7 @@
     display:flex;
     align-items: center;
     gap:48px;
-    font-size:15px;
+    font-size:var(--type-sm);
     cursor:pointer;
 }
 
@@ -171,9 +171,8 @@
 
 .toggle .switch::before {
     content:'OFF';
-    position:absolute;
+    position:relative;
     left:-36px;
-    font-size:14px;
     text-transform: uppercase;
     color:var(--gray-700);
     font-weight:600;
@@ -393,6 +392,7 @@
     padding:24px 0;
     position: relative;
     display:grid;
+    align-items: center;
     grid-template-columns: 1fr auto;
     column-gap:16px;
     cursor:pointer;
@@ -633,9 +633,5 @@
 
 @media only screen and (max-width: 600px) {
 
-    .button-group .button {
-        padding:8px 24px;
-        font-size:12px;
-    }
 
 }

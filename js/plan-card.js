@@ -5,22 +5,26 @@ $(document).ready(function(){
     selectCard();
     setTimeout(function(){
         //INITIAL HIDE CARD ACCORDIONS
-        getHeaderHeights();
-        getCollapsedAccordionHeights();
-        $('#plans-cards').find('.card').css('height',initHeight+'px');
-
+        setHeaderHeights();
+        setCollapsedAccordionHeights();
+        //SET INITIAL HEIGHTS
+        $('#plans-cards').find('.card').each(function(){
+            let ih = parseInt($(this).find('.header').attr('data'));
+            $(this).css('height',ih+'px');
+        });
+        openNutritionLabels()
         openAccordions();
-    },50);
+    },100);
 });
 
 
 function selectCard() {
     let plan = $('#plans-cards').find('.card');
 
-    plan.on('click',function(){
-        if(!$(this).hasClass('active')){
+    plan.find('.header').on('click',function(){
+        if(!$(this).parent().hasClass('active')){
             plan.removeClass('active');
-            $(this).addClass('active');
+            $(this).parent().addClass('active');
         } else {
             plan.removeClass('active');
         }
@@ -39,109 +43,83 @@ function activateContinue(){
     }
 }
 
-function getHeaderHeights(){
-    let ih = []
+function setHeaderHeights(){
     $('#plans-cards').find('.card').each(function(){
-        ih.push($(this).find('.header').outerHeight())
-    })
-    initHeight = Math.max(...ih) + 48;
+        let hh = $(this).find('.header').outerHeight();
+        $(this).find('.header').attr('data',hh);
+    });
 }
 
-function getCollapsedAccordionHeights(){
-    $('#plans-cards').find('.card').each(function(){
-        let amt = $(this).find('.accordion').length;
-        let h = $(this).find('.accordion').outerHeight() * amt
-        accHeight = h;
-    });
+function setCollapsedAccordionHeights(){
+    let amt = $('#plans-cards').find('.card').first().find('.accordion').length;
+    let h = $('#plans-cards').find('.card').first().find('.accordion').outerHeight() * amt
+    accHeight = h;
 }
 
 function openAccordions(){
     let plan = $('#plans-cards').find('.card');
-    let extended = false;
 
-    plan.on('click', function(){
+    plan.find('.header').on('click', function(){
 
-        var card = $(this);
+        var card = $(this).parent();
 
-        if($(this).hasClass('active')){
+        if($(this).parent().hasClass('active')){
 
             //SMOOTH TRANSITION
-            plan.not(this).find('.accordion').removeClass('expanded');
-            plan.not(this).find('.content').css('height','0px');
-            plan.not(this).css('height',initHeight + accHeight + 'px');
+            //GET FULL HEIGHT
+            let head = $(this).outerHeight();
+            let acc = $(this).siblings().outerHeight() + 26;
+            let fullHeight = head + acc;
+            //EXPAND
+            $(this).parent().css('height', fullHeight + 'px');
+
+            //APPLY CURRENT HEIGHT to SIBLINGS & COLLAPSE
+            plan.not(card).each(function(){
+                h = $(this).outerHeight();
+                $(this).css('height',h + 'px');
+            });
             setTimeout(function(){
-                plan.not(card).css('height',initHeight + 'px');
+                plan.not(card).each(function(){
+                    let hh = parseInt($(this).find('.header').attr('data'));
+                    console.log(hh);
+                    $(this).css('height',hh + 'px');
+                });
             },10);
-            extended = false;
 
-            if(!extended){
-                $(this).css('height',initHeight + accHeight + 'px');
-                extended = true;
-            }
+            //TOGGLE TAB INDEXING
+            plan.find('#acc-nl').find('.content').find('a').attr('tabIndex','-1');
+            $(this).parent().find('#acc-nl').find('.content').find('a').attr('tabIndex','');
 
+            //END OF TRANSITIONS
             setTimeout(function(){
+                //SET TO AUTO HEIGHT
                 card.css('height','auto');
-                if(!card.find('#acc-nl').hasClass('manual')){
-                    card.find('#acc-nl').addClass('expanded');
-                    let nlh = card.find('#acc-nl').find('.content').attr('data')
-                    card.find('#acc-nl').find('.content').css('height',parseInt(nlh) + 'px');
-                }
                 //SCROLL TO TOP OF SELECTED CARD
-                $('html, body').delay(250).animate({
+                $('html, body').delay(100).animate({
                     scrollTop: card.offset().top - 24
                 },500);
             },500);
-
-            
-
-            //EXPAND CARDS
-            // $(this).css('height','auto');
-            // if(!$(this).find('#acc-nl').hasClass('manual')){
-            //     $(this).find('#acc-nl').addClass('expanded');
-            //     let nlh = $(this).find('#acc-nl').find('.content').attr('data')
-            //     $(this).find('#acc-nl').find('.content').css('height',parseInt(nlh));
-            // }
                 
         } else {
-            $(this).find('.accordion').removeClass('expanded');
-            $(this).find('.content').css('height','0px');
-            let h = $(this).outerHeight();
-            $(this).css('height',h+'px');
+            let h = $(this).parent().outerHeight();
+            $(this).parent().css('height',h+'px');
             setTimeout(function(){
-                card.css('height',initHeight);
+                let hh = parseInt(card.find('.header').attr('data'));
+                card.css('height',hh+'px');
             },10);
-            extended = false;
+            $(this).parent().find('#acc-nl').find('.content').find('a').attr('tabIndex','-1');
         }
     });
-    
-    // plan.each(function(){
-    //     let accordion = $(this).find('.accordion');
-    //     var accHeights = [];
 
-    //     accordion.each(function(){
-    //         accHeights.push($(this).find('.content').outerHeight());
-    //     });
+}
 
-    //     $(this).on('click',function(){
-    //         //CLOSE OTHERS
-
-    //         plan.find('.accordion').removeClass('expanded');
-    //         plan.find('.content').css('height','0px');
-    //         $('#plans-cards').find('.card').css('height',initHeight);
-
-    //         if($(this).hasClass('active')){
-    //             //for(h=0; h < accHeights.length; h++){
-    //                 $(this).find('.accordion').eq(1).addClass('expanded');
-    //                 $(this).find('.content').eq(1).css('height',accHeights[1]+'px');
-    //             //}
-    //             $(this).css('height','auto');
-    //         } else {
-    //             $(this).find('.accordion').removeClass('expanded');
-    //             $(this).find('.content').css('height','0px');
-    //             $(this).css('height',initHeight);
-    //         }
-    //     });
-    // });
+function openNutritionLabels(){
+    let plan = $('#plans-cards').find('.card');
+    plan.each(function(){
+        let nlh = $(this).find('#acc-nl').find('.content').attr('data');
+        $(this).find('#acc-nl').addClass('expanded');
+        $(this).find('#acc-nl').find('.content').css('height',parseInt(nlh) + 'px');
+    });
 }
 
 
