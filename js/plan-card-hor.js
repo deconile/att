@@ -1,7 +1,7 @@
 var initHeight;
 var accHeight;
 
-$(document).ready(function(){
+$(window).load(function(){
     selectCard();
     cardCarousel();
     collapseDetails();

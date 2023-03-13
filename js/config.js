@@ -1,4 +1,4 @@
-$(document).on('ready', function(){
+$(window).load(function(){
     //WRITE HTML ELEMENTS
     fillColorOptions();
     createCapacityOptions();
@@ -124,8 +124,6 @@ function createCapacityOptions(){
     }
 }
 
-
-
 //SET HEIGHTS OF ALL OPTION CONTAINERS
 function setOptionHeights(){
     $('.configure-option-container').each(function(){
@@ -134,9 +132,6 @@ function setOptionHeights(){
     });
 };
 
-
-
-
 // SWAP PRICING DEPENDING ON OPTIONS SELECTED
 
 function optionPricingAdjustments(){
@@ -144,15 +139,12 @@ function optionPricingAdjustments(){
     let c = 0;
 
     option.on('click', function(){
-
-
         if(!$(this).hasClass('active')){
 
             //SET CAPACITY INDEX FOR OPTION ARRAYS
             if($(this).parents().is('#configure-capacity')){
                 c = $(this).index()
             }
-
 
             //CAPACITY CONFIG OPTIONS
             if($(this).parents().is('#configure-capacity')){
@@ -171,6 +163,7 @@ function optionPricingAdjustments(){
                 } 
                 
                 $('#config-retail').find('.price-point').text(retailPrice[c]);
+                $('#configure-price').find('.disclosure').find('span').text(retailPrice[c].toLocaleString('en', {minimumFractionDigits: 2}));
 
                 $('#config-tradein-true').find('.price-point').text(tradePrice[c] + nextUp);
                 $('#config-tradein-false').find('.price-point').text(planPrice[c] + nextUp);
@@ -181,15 +174,6 @@ function optionPricingAdjustments(){
             //PLAN & RETAIL CONFIG OPTIONS
             if($(this).is('#config-plan')){
                 pricingType = 'plan';
-
-                //CHECK IF NEXT UP WAS SELECTED
-                // if($('#config-upgrade-true').hasClass('active')){
-                //     nextUp = 5;
-                // }
-                // //CHECK IF TRADE IN WAS SELECTED
-                // if($('#config-tradein-true').hasClass('active')){
-                //     tradeIn = true;
-                // }
 
                 if(tradeIn){
                     for(p = 0; p < tradePrice.length; p++){
@@ -203,12 +187,9 @@ function optionPricingAdjustments(){
                     updatePriceTo = planPrice[c] + nextUp;
                 }
 
-                //UPDATE PRICING PLAN
-                $()
-
                 //CHANGE PRICE APPEARANCE
                 $('#configure-price').find('.price-point').removeClass('retail').addClass('plan');
-                
+                $('#configure-price').find('.disclosure').show();
             }
             
             if($(this).is('#config-retail')){
@@ -226,7 +207,7 @@ function optionPricingAdjustments(){
 
                 //CHANGE PRICE APPEARANCE
                 $('#configure-price').find('.price-point').removeClass('plan').addClass('retail');
-
+                $('#configure-price').find('.disclosure').hide();
             }
 
 
@@ -264,11 +245,9 @@ function optionPricingAdjustments(){
                 $('#config-tradein-false').find('.price-point').text(planPrice[c] + nextUp);
 
             }
-            
-
+        
 
             //TRADE IN CONFIG OPTIONS
-    
             if($(this).is('#config-tradein-true')){
                 tradeIn = true;
                 for(p = 0; p < tradePrice.length; p++){
@@ -291,7 +270,6 @@ function optionPricingAdjustments(){
 
 
             //ADJUST MAIN PRICES & CONVERT CONFIG PRICES
-            
             if(!$(this).hasClass('swatch')){
                 adjustPrice();
                 convertToPrices();
@@ -406,6 +384,7 @@ function fillInitialOptionDetails(){
     $('#footer-pricing').find('.plan').text(planPrice[0]);
     $('#configure-pricing').find('.price-point.plan').text(planPrice[0]);
     $('#configure-pricing').find('.price-point.retail').text(retailPrice[0]);
+    $('#configure-price').find('.disclosure').find('span').text(retailPrice[0]);
 
     setTimeout(function(){
         setOptionHeights();

@@ -675,7 +675,7 @@
 
 #plans-carousel #cards::-webkit-scrollbar {
     display: none;
-  }
+}
 
 #pagination {
     position:absolute;
@@ -804,6 +804,7 @@
     width:100%;
     height:300px;
     object-fit:contain;
+    pointer-events: none;
     /*transition:500ms;*/
 }
 

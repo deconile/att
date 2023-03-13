@@ -351,6 +351,10 @@ li span {
     flex-direction: column;
 }
 
+.price.right {
+    align-items: flex-end;
+}
+
 .price-point {
     font-weight:700;
 }

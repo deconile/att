@@ -1,7 +1,7 @@
 var accordionHeight;
 var accordionOffset = 130;
 
-$(document).ready(function(){
+$(window).load(function(){
 
     
     //SET INITIAL CLICK STATUS

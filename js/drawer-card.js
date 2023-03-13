@@ -1,6 +1,6 @@
 
 
-$(document).ready(function(){
+$(window).load(function(){
     drawerCard();
     toggleNL();
 
@@ -17,7 +17,7 @@ $(document).ready(function(){
         
         //ACTIVATE CARD
         $('#plans-cards').find('.card').first().addClass('active');
-    },100);
+    },50);
     
 });
 

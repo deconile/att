@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(window).ready(function(){
     //TABS
     tabs();
 
@@ -37,7 +37,7 @@ $(document).ready(function(){
         accordion();
         collapseAllAccordions();
 
-    },100);
+    },50);
 
 });
 

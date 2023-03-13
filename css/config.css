@@ -172,9 +172,7 @@
 
 /********* SPECIAL CASES */
 #configure-color.configure-option.opened .configure-option-head .label {
-    display:flex;
-    flex-direction:row;
-    gap:4px;
+
 }
 
 
