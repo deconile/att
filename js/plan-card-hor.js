@@ -55,7 +55,14 @@ function selectCard() {
     let plan = $('#plans-cards').find('.card');
 
     plan.find('.header').on('click',function(){
-        console.log('plan clicked');
+        
+        let card = $(this);
+        //PREVENT ACCIDENTAL DOUBLE CLICK
+        $(this).parent().addClass('disable');
+        setTimeout(function(){
+            card.parent().removeClass('disable');
+        },500);
+
         if(!$(this).parent().hasClass('active')){
             plan.removeClass('active');
             $(this).parent().addClass('active');

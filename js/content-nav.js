@@ -37,7 +37,7 @@ $(window).load(function(){
         accordion();
         collapseAllAccordions();
 
-    },50);
+    },100);
 
 });
 
