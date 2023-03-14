@@ -1,7 +1,7 @@
 var initHeight;
 var accHeight;
 
-$(document).ready(function(){
+$(window).load(function(){
     selectCard();
     setTimeout(function(){
         //INITIAL HIDE CARD ACCORDIONS
@@ -22,6 +22,14 @@ function selectCard() {
     let plan = $('#plans-cards').find('.card');
 
     plan.find('.header').on('click',function(){
+
+        let card = $(this);
+        //PREVENT ACCIDENTAL DOUBLE CLICK
+        $(this).parent().addClass('disable');
+        setTimeout(function(){
+            card.parent().removeClass('disable');
+        },500);
+        
         if(!$(this).parent().hasClass('active')){
             plan.removeClass('active');
             $(this).parent().addClass('active');
