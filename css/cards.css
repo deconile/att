@@ -606,6 +606,7 @@
 }
 
 .card.plan li div {
+    margin-top:8px;
     font-size:var(--type-xs);
 }
 
@@ -665,11 +666,11 @@
     padding-bottom:72px;
 }
 
-#plans-carousel.expanded {
+#plans-carousel.false {
     padding-bottom:8px;
 }
 
-#plans-carousel #cards {
+#plans-carousel .cards {
     overflow-x:scroll;
     scroll-behavior: smooth;
     display:flex;
@@ -677,7 +678,7 @@
     padding:24px 24px 16px 24px;
 }
 
-#plans-carousel #cards::-webkit-scrollbar {
+#plans-carousel .cards::-webkit-scrollbar {
     display: none;
 }
 
@@ -848,8 +849,12 @@
     gap:16px;
 }
 
-.device-info.collapsible {
+.device-info {
     width:508px;
+}
+
+.device-info.collapsible {
+    padding-right:32px;
 }
 
 .device-info.collapsible.collapsed {
@@ -862,15 +867,37 @@
 .device-info .minimize {
     position:absolute;
     display:none;
-    top:16px;
-    right:16px;
-    width:24px;
-    height:24px;
+    top:0;
+    right:0;
+    width:16px;
+    height:100%;
+    background-color: var(--gray-200);
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
     cursor: pointer;
+    transition: 500ms;
+}
+
+.device-info .minimize svg {
+    width:16px;
+    height:16px;
+    fill:var(--gray-500);
+    transition: 500ms;
+}
+
+.device-info .minimize:hover {
+    background-color: var(--cobalt-600);
+    width:24px;
+}
+
+.device-info .minimize:hover svg {
+    fill:#fff;
 }
 
 .device-info.collapsible .minimize {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .device-info.collapsible.collapsed .minimize {

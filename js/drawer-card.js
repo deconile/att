@@ -17,7 +17,7 @@ $(window).load(function(){
         
         //ACTIVATE CARD
         $('#plans-cards').find('.card').first().addClass('active');
-    },50);
+    },100);
     
 });
 

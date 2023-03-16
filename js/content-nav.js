@@ -1,4 +1,7 @@
 $(window).load(function(){
+    //DISABLE LINK w/o LOCATION
+    disableLinks();
+
     //TABS
     tabs();
 
@@ -40,6 +43,16 @@ $(window).load(function(){
     },100);
 
 });
+
+
+// DIABLE ANY LINKS WITHOUT AN HREF /////////////
+function disableLinks(){
+    $(document).find('a').each(function(){
+        if($(this).attr('href') === ''){
+            $(this).attr('href','JavaScript:void(0)')
+        }
+    });
+}
 
 
 // TABS FUNCTIONALITY ////////////////////////////////////////

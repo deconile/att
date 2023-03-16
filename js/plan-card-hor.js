@@ -27,7 +27,7 @@ function getHeaderHeights(){
 function getCollapsedAccordionHeights(){
     let amt = $('#plans-cards').find('.card').first().find('.accordion').length;
     let h = $('#plans-cards').find('.card').first().find('.accordion').outerHeight() * amt
-    accHeight = h;
+    accHeight = h + 8;
 }
 
 function openNutritionLabels(){
@@ -129,14 +129,17 @@ function openAccordions(){
                 plan.css('height',initHeight);
                 extended = false;
             },10);
+            $('html, body').delay(100).animate({
+                scrollTop: $('.col-right').offset().top - 24
+            },500)
         }
     });
 }
 
 function cardCarousel(){
     let scrollDis = 0;
-    let cardWidth = $('#plans-carousel').find('#cards').find('.card').first().outerWidth() + 24;
-    let carousel = $('#plans-carousel').find('#cards');
+    let cardWidth = $('#plans-carousel').find('.cards').find('.card').first().outerWidth() + 24;
+    let carousel = $('#plans-carousel').find('.cards');
 
     //ADD PAGE BUBBLES
     let bubbleElem = `<div class="pag-bubble"></div>`;
@@ -188,7 +191,7 @@ function collapseDetails(){
     min.on('click',function(e){
         e.stopPropagation();
         card.addClass('collapsed').removeClass('unselectable');
-        $('#plans-carousel').addClass('expanded');
+        $('#plans-carousel').addClass('false');
         nav.hide();
         resizeAccordions();
     });
@@ -196,7 +199,7 @@ function collapseDetails(){
     card.on('click',function(){
         if($(this).hasClass('collapsed')){
             $(this).removeClass('collapsed').addClass('unselectable');
-            $('#plans-carousel').removeClass('expanded');
+            $('#plans-carousel').removeClass('false');
             nav.show();
             resizeAccordions();
         }
@@ -217,5 +220,6 @@ function resizeAccordions(){
         });
 
     },500);
+    
 }
 

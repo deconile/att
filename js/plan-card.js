@@ -89,7 +89,6 @@ function openAccordions(){
             setTimeout(function(){
                 plan.not(card).each(function(){
                     let hh = parseInt($(this).find('.header').attr('data'));
-                    console.log(hh);
                     $(this).css('height',hh + 'px');
                 });
             },10);
@@ -103,9 +102,11 @@ function openAccordions(){
                 //SET TO AUTO HEIGHT
                 card.css('height','auto');
                 //SCROLL TO TOP OF SELECTED CARD
-                $('html, body').delay(100).animate({
-                    scrollTop: card.offset().top - 24
-                },500);
+                if(card.find('#acc-nl').hasClass('expanded')){
+                    $('html, body').delay(100).animate({
+                        scrollTop: card.offset().top - 24
+                    },500);
+                }
             },500);
                 
         } else {
