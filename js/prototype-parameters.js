@@ -1,8 +1,12 @@
 
 $(document).ready(function(){
     getQuery();
+    
     //DISABLE COLLAPSIBLE DEVICE INFO PANEL
     disableDeviceInfoCollapse();
+    
+    //SET SCROLLABLE NUTRITION LABELS
+    scrollableNL();
 });
 
 // QUERY VALUES ****************************/
@@ -26,10 +30,22 @@ function getQuery(){
 
 // QUERY VALUES
 // cdip = Collapse Device Info Panel
-
+// USED ON HORIZONTAL PLANS
 function disableDeviceInfoCollapse(){
     let param = getQuery()['cdip'];
     if(param === 'false'){
         $('.device-info').removeClass('collapsible');
+        $('.link-expand').remove();
+    }
+}
+
+
+// QUERY VALUES
+// scr = Collapse Device Info Panel
+// USED IN DRAWER PLANS PAGE
+function scrollableNL(){
+    let param = getQuery()['scr'];
+    if(param === 'true'){
+        $('#plans-cards').find('.accordion').find('.wrapper').addClass('scrollable scrollbar thin');
     }
 }

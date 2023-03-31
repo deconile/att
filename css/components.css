@@ -116,28 +116,32 @@
 }
 
 
+
 /* CTA **************************/
 .cta {
-    font-size:var(--type-xs);
+    display: inline-block;
+    font-size:var(--type-sm);
     font-weight:700;
     color:var(--cobalt-600);
     cursor: pointer;
 }
 .cta.primary {
-    display:flex;
-    gap:4px;
+    display:inline-flex;
+    gap:8px;
     align-items: center;
 }
 
 .cta.primary svg {
-    width:12px;
-    height:12px;
+    width: 16px;
+    height: 16px;
     fill:var(--cobalt-600);
 }
 
 .cta.primary.black {
     color:var(--gray-800);
 }
+
+
 
 
 /* CHECKBOX **************************/
@@ -179,7 +183,6 @@
     align-items: center;
     gap:48px;
     font-size:var(--type-sm);
-    cursor:pointer;
 }
 
 .toggle .switch {
@@ -191,6 +194,7 @@
     border-radius:100px;
     position:relative;
     transition: 500ms;
+    cursor:pointer;
 }
 
 .toggle .switch::before {
@@ -214,15 +218,15 @@
     transition: 500ms;
 }
 
-.toggle.active .switch {
+.toggle .switch.active{
     background-color:var(--cobalt-600);
 }
 
-.toggle.active .switch::before {
+.toggle .switch.active::before {
     content:'ON';
 }
 
-.toggle.active .switch::after {
+.toggle .switch.active::after {
     transform:translateX(13px);
 }
 
@@ -236,18 +240,45 @@
 
 /* PROGRESS INDICATOR *********************************/
 #progress-indicator {
-    padding:16px 32px;
+    z-index:1;
+}
+
+
+#progress-indicator #progress-indicator-block {
+    width:100%;
+    transition:500ms;
+}
+
+#progress-indicator.sticky #progress-indicator-block {
+    position:fixed;
+    top:0px;
     background-color:#fff;
+    box-shadow: 0px 2px 8px rgba(37, 48, 58, 0.2), 0px 2px 4px -1px rgba(37, 48, 58, 0.12), 0px 2px 12px rgba(37, 48, 58, 0.1);
+}
+
+#progress-indicator.sticky.done #progress-indicator-block {
+    transform: translateY(calc(-100% - 10px));
+}
+
+
+#progress-indicator #progress-indicator-container {
+    padding:16px 32px 0;
     max-width:var(--main-area-max);
     margin:auto;
 }
 
-#progress-indicator {
-    padding-left: 32px;
-    padding-right: 32px;
-    max-width:var(--main-area-max);
-    margin:auto;
+
+#progress-indicator #progress-indicator-container .container {
+    background-color:#fff;
+    border-radius:16px;
+    padding-bottom:16px;
 }
+
+
+#progress-indicator.gray #progress-indicator-container .container {
+    padding:16px 32px;
+}
+
 
 /* HEADER */
 #progress-indicator .header {
@@ -306,28 +337,29 @@
 #progress-indicator .tab-container > div {
     padding:4px 16px;
     border-radius: 64px;
-    color: var(--gray-400);
-    font-size:var(--heading-xxxs);
-    font-weight:700;
+    color: var(--gray-600);
+    font-size:var(--type-sm);
     user-select: none;
     white-space: nowrap;
 }
 
 #progress-indicator .tab-container > div.completed {
     color: var(--cobalt-600);
+    font-weight:700;
     cursor:pointer;
 }
 
 #progress-indicator .tab-container > div.active {
     color: var(--gray-800);
     background-color:var(--blue-100);
+    font-weight:700;
 }
 
 #progress-indicator .checkout {
     display:flex;
     align-items: center;
     padding:0 16px;
-    font-size:var(--type-xs);
+    font-size:var(--type-sm);
     color:var(--gray-600);
     background-color:var(--gray-200);
     border:1px solid var(--gray-300);
@@ -777,6 +809,42 @@
 }
 
 
+/* FIBER AVAILBLE*/
+.card .available {
+    display:grid;
+    gap:16px;
+    text-align: center;
+}
+
+.card .available .icon {
+    width:64px;
+    height:64px;
+    margin:auto;
+}
+
+.card .available .address {
+    font-size:var(--type-xs);
+}
+
+.card .available .address .cta {
+    font-size:var(--type-xs);
+    margin-left:32px;
+}
+
+
+/* MICROBANNERS */
+.micro-banner {
+    background-color:var(--blue-100);
+    padding:16px;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.micro-banner.help {
+    background-color:var(--blue-100);
+    color: var(--gray-700)
+}
+
 @media only screen and (max-width: 600px) {
 
     /* ACCORDION */
@@ -785,6 +853,10 @@
     }
 
     /* PROGRESS INDICATOR */
+
+    #progress-indicator #progress-indicator-container {
+        padding:16px 24px;
+    }
     
     #progress-indicator .indicator.dt {
         display:none;
@@ -792,9 +864,7 @@
     #progress-indicator .indicator.mb {
         display:block;
     }
-    #progress-indicator {
-        padding-left: 24px;
-        padding-right: 24px;
-    }
+
+    /* */
 
 }

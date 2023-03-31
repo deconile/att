@@ -63,30 +63,34 @@
             </div>
         </nav>
 
-        <div class="border-bottom">
-            <div id="progress-indicator">
-                <div class="header">
-                    <div class="eyebrow sm" style="display:none;">Phones & Devices</div>
-                    <div class="title">
-                        <h4>Configure your device</h4>
-                        <div class="step-count">Step [N] of [N]</div>
+        <div id="progress-indicator">
+            <div id="progress-indicator-block">
+                <div id="progress-indicator-container">
+                    <div class="container">
+                        <div class="header">
+                            <div class="eyebrow sm" style="display:none;">Phones & Devices</div>
+                            <div class="title">
+                                <h4>Configure your device</h4>
+                                <!--<div class="step-count">Step [N] of [N]</div>-->
+                            </div>
+                        </div>
+                        <div class="indicator dt">
+                            <div class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M22 31H10a3 3 0 01-3-3V4a3 3 0 013-3h12a3 3 0 013 3v24a3 3 0 01-3 3zM10 3a1 1 0 00-1 1v24a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1zm9 2h-6v2h6z"/></svg>
+                            </div>
+                            <div class="tab-container">
+                                <div class="completed">1. Pick your device</div>
+                                <div class="completed">2. Customize your phone</div>
+                                <div class="active">3. Choose your plan</div>
+                                <div>4. Get add-ons</div>
+                                <div>5. Review your cart</div>
+                            </div>
+                            <div class="checkout">Checkout</div>
+                        </div>
+                        <div class="indicator mb">
+                            <div class="progress-bar"><div></div></div>
+                        </div>
                     </div>
-                </div>
-                <div class="indicator dt">
-                    <div class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M23.85 30a4.8 4.8 0 01-1.58-.26 31.8 31.8 0 01-20-20 5 5 0 011.2-5.09l1.75-1.78a3.08 3.08 0 014.24 0l3.25 3.25a3 3 0 01.64 3.31l-1.42 3.32a12.37 12.37 0 007.32 7.32l3.32-1.42a3 3 0 013.31.64l3.25 3.25a3 3 0 010 4.24l-1.77 1.77A5 5 0 0123.85 30zM7.34 4a1 1 0 00-.71.3L4.86 6.05a3 3 0 00-.72 3.05A29.82 29.82 0 0022.9 27.86a3 3 0 003.1-.72l1.77-1.77a1 1 0 000-1.42l-3.31-3.25a1 1 0 00-1.1-.21l-3.67 1.57a1 1 0 01-.71 0A14.42 14.42 0 019.91 13a1 1 0 010-.71l1.57-3.68a1 1 0 00-.21-1.1L8.05 4.29A1 1 0 007.34 4z"/></svg>
-                    </div>
-                    <div class="tab-container">
-                        <div class="completed">Select device</div>
-                        <div class="completed">Configure device</div>
-                        <div class="active">Choose plan</div>
-                        <div>Select add-ons</div>
-                        <div>View cart</div>
-                    </div>
-                    <div class="checkout">Checkout</div>
-                </div>
-                <div class="indicator mb">
-                    <div class="progress-bar"><div></div></div>
                 </div>
             </div>
         </div>
@@ -137,10 +141,10 @@
                         <div id="plans-header" class="copy-block">
                             <h3>Plan options</h3>
                             <p>Pick the best plan for each line.</p>
-                            <!--<div class="button-group">
+                            <div class="button-group">
                                 <div class="button active">Unlimited Your Way</div>
                                 <div class="button">Other Plans</div>
-                            </div>-->
+                            </div>
                             <p>All AT&T unlimited plans include unlimited talk, text, and data in the U.S., Canada, and Mexico and 5G access at no extra charge.</p>
                             <p class="legal">Price is only for devices purchased at full price, bring your own, or on installment plan, and after AutoPay & paperless billing discount (starts within 2 bill cycles). Taxes & fees extra.</p>
                         
@@ -160,7 +164,7 @@
                                         <span>Featured</span>
                                     </div>-->
                                     <div class="head">
-                                        <h3>AT&T Unlimited Premium<sup>SM</sup> Plan</h3>
+                                        <h3>AT&T Unlimited Premium<sup>SM</sup></h3>
                                         <div class="price">
                                             <div class="price sm">
                                                 <div class="strikethrough">$60.00/mo</div>

@@ -10,6 +10,13 @@
     cursor:pointer;
     user-select: none;
 }
+.gray .card {
+    border: none;
+}
+
+.gray .card .card {
+    border: 1px solid var(--gray-300);
+}
 
 .card.unselectable {
     cursor:default;
@@ -19,7 +26,7 @@
     box-shadow: 0px 2px 8px rgba(37, 48, 58, 0.2), 0px 2px 4px -1px rgba(37, 48, 58, 0.12), 0px 2px 12px rgba(37, 48, 58, 0.1);
 }
 
-.card.active {
+.card.active, .gray .card .card.active {
     border:2px solid var(--cobalt-600);
     background-color:var(--blue-000);
 }
@@ -382,24 +389,30 @@
     gap:8px;
 }
 
-.product .offers .icon {
+.alert-icon {
     position: relative;
     display: flex;
     align-items: flex-end;
-    padding-top:8px;
-    padding-right:8px;
 }
-
-.product .offers .icon svg {
+.alert-icon svg {
     max-width: 24px;
     max-height: 24px;
+    fill: var(--gray-800);
+}
+
+.alert-icon.lg svg {
+    max-width: 32px;
+    max-height: 32px;
+}
+
+.alert-icon.blue svg {
     fill: var(--cobalt-600);
 }
 
-.product .offers .alert {
+.alert-icon .alert {
     position:absolute;
-    top:0;
-    right:0;
+    top:-4px;
+    right:-4px;
     border:1px solid #fff;
 }
 
@@ -505,6 +518,10 @@
     color:#fff;
 }
 
+.alert.blue {
+    background-color: var(--cobalt-600);
+}
+
 
 /* LEGAL ***********************************/
 .product .legal {
@@ -573,6 +590,12 @@
     font-weight:bold;
 }
 
+.card.plan .head .teaser {
+    padding-top:24px;
+    font-size:var(--heading-xxs);
+    font-weight:700;
+}
+
 .card.plan .features .container {
     display:flex;
     flex-direction: column;
@@ -631,8 +654,12 @@
 }
 
 .plan.horizontal {
-    min-width:280px;
+    min-width:46%;
     padding:16px;
+}
+
+.cards.expanded .plan.horizontal {
+    min-width:30%;
 }
 
 .plan.horizontal .header {
@@ -650,7 +677,18 @@
 
 .plan.horizontal .badge {
     margin-bottom:16px;
-    display:none;
+}
+
+.plan .special-offer {
+    display:grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap:8px;
+}
+
+.plan .special-offer .icon {
+    width:48px;
+    height:48px;
 }
 
 /*.plan.horizontal #acc-nl .content {
@@ -781,6 +819,14 @@
     overscroll-behavior: contain;
 }
 
+#plans-header .link-expand .cta:not(.expanded) svg:last-of-type {
+    display:none;
+}
+
+#plans-header .link-expand .cta.expanded svg:first-of-type {
+    display:none;
+} 
+
 
 
 
@@ -810,7 +856,11 @@
     height:300px;
     object-fit:contain;
     pointer-events: none;
-    /*transition:500ms;*/
+}
+
+.device-info .device-image.lifestyle img {
+    object-fit:cover;
+    border-radius: 16px;
 }
 
 .device-info .selection {
@@ -854,7 +904,7 @@
 }
 
 .device-info.collapsible {
-    padding-right:32px;
+    /*padding-right:32px;*/
 }
 
 .device-info.collapsible.collapsed {
@@ -955,8 +1005,57 @@
 }
 
 /* OFFERS */
-.device-info.collapsed .offer .icon {
+
+.device-info .offer {
+    display:flex;
+    flex-direction: column;
+    gap:4px;
     background-color:var(--gray-200);
+    border-radius:16px;
+    padding:16px;
+}
+
+.device-info.collapsed .offer {
+    background-color:var(--gray-200);
+    padding:0;
+}
+
+
+
+/* FIBER SPECIFIC */
+.fiber .device-info.collapsed #full {
+    display:grid;
+}
+
+.fiber .device-info.collapsed #condensed {
+    display:none;
+}
+
+.fiber .device-info.collapsed {
+    overflow:hidden;
+    width:0;
+    margin-right:-64px;
+    padding:0;
+    border:none;
+    transition: 500ms;
+}
+
+.fiber .device-info.collapsed {
+    opacity:0;
+}
+
+.fiber .device-info {
+    margin-right:32px;
+}
+
+.fiber .auto-left {
+    gap:0;
+    row-gap:24px;
+}
+
+.fiber .device-info.collapsed .device-image img {
+    width:100%;
+    height:300px;
 }
 
 
@@ -1013,9 +1112,11 @@
     }
 
     /* CARDS | GENERAL */
-    .card {
-        
+    .card .accordion:last-child {
+        border-bottom:none;
+        margin-bottom:-16px;
     }
+
     .card.unselectable {
         border-left:none;
         border-right:none;
@@ -1023,7 +1124,7 @@
     }
 
     /* COLLAPSIBLE CARD */
-    .device-info.collapsible {
+    .device-info {
         width:100%;
     }
 
@@ -1032,8 +1133,15 @@
     }
 
     /* HORIZONTAL PLAN CARDS */
+
+    .plan.horizontal {
+        min-width:94%;
+    }
+
     .plan.horizontal .head h3 {
         margin-bottom:16px;
     }
+
+    
 
   }

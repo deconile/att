@@ -38,10 +38,10 @@ function drawerCard() {
 
 function toggleNL() {
     //ACTIVATE NEXT LINE TO SET TOGGLE TO "ON" ON START
-    $('.toggle').addClass('active');
+    $('.toggle').find('.switch').addClass('active');
     let nl = $('#plans-cards').find('.card').find('.accordion');
 
-    $('.toggle').on('click',function(){
+    $('.toggle').find('.switch').on('click',function(){
         if($(this).hasClass('active')){
             nl.each(function(){
                 $(this).addClass('expanded');

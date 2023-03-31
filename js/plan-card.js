@@ -66,6 +66,7 @@ function setCollapsedAccordionHeights(){
 
 function openAccordions(){
     let plan = $('#plans-cards').find('.card');
+    let pih = $('#progress-indicator').outerHeight();
 
     plan.find('.header').on('click', function(){
 
@@ -104,7 +105,7 @@ function openAccordions(){
                 //SCROLL TO TOP OF SELECTED CARD
                 if(card.find('#acc-nl').hasClass('expanded')){
                     $('html, body').delay(100).animate({
-                        scrollTop: card.offset().top - 24
+                        scrollTop: card.offset().top - pih - 24
                     },500);
                 }
             },500);

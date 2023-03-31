@@ -2,6 +2,9 @@ $(window).load(function(){
     //DISABLE LINK w/o LOCATION
     disableLinks();
 
+    //PROGRESS INDICATOR
+    stickProgressIndicator();
+
     //TABS
     tabs();
 
@@ -50,6 +53,35 @@ function disableLinks(){
     $(document).find('a').each(function(){
         if($(this).attr('href') === ''){
             $(this).attr('href','JavaScript:void(0)')
+        }
+    });
+}
+
+
+//PROGRESS INDICATOR ////////////////////////////////////////
+function stickProgressIndicator(){
+    let pih = $('#progress-indicator').outerHeight();
+
+    $('.device-info').css('top',pih + 24 + 'px');
+
+    if($(window).scrollTop() >= $('#progress-indicator').offset().top){
+        $('#progress-indicator').addClass('sticky');
+        $('#progress-indicator').css('height',pih + 'px');
+    }
+
+    $(window).on('scroll',function(){
+        if($(this).scrollTop() >= $('#progress-indicator').offset().top){
+            $('#progress-indicator').addClass('sticky');
+            $('#progress-indicator').css('height',pih + 'px');
+        } else {
+            $('#progress-indicator').removeClass('sticky');
+            $('#progress-indicator').css('height','');
+        }
+
+        if($(this).scrollTop() >= $('#sticky-footer').offset().top - pih){
+            $('#progress-indicator').addClass('done');
+        } else {
+            $('#progress-indicator').removeClass('done');
         }
     });
 }
@@ -228,9 +260,10 @@ function checkBox(){
     });
 }
 
+
 // QUANTITY INCREMENTOR //////////////////////////////////////
 function toggle(){
-    $('.toggle').on('click', function(){
+    $('.toggle').find('.switch').on('click', function(){
         $(this).toggleClass('active');
     });
 }
