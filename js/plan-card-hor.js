@@ -265,6 +265,7 @@ function collapseDetails(){
                 $('#plans-carousel').addClass('false');
                 nav.hide();
             }
+            $('#available').addClass('hidden');
         } else {
             $(this).removeClass('expanded');
             carousel.removeClass('expanded');
@@ -272,7 +273,13 @@ function collapseDetails(){
             card.removeClass('collapsed');
             $('#plans-carousel').removeClass('false');
             nav.show();
+            $('#available').removeClass('hidden');
         }
+        setTimeout(function(){
+            $('html, body').delay(100).animate({
+                scrollTop: min.offset().top - $('#progress-indicator').outerHeight() - 24
+            },500);
+        },500);
         setTimeout(setHeaderHeights,500);
         resizeAccordions();
         setTimeout(setPages,500);

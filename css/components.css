@@ -831,6 +831,13 @@
     margin-left:32px;
 }
 
+.card.hidden {
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+    margin-bottom: -24px;
+}
+
 
 /* MICROBANNERS */
 .micro-banner {
