@@ -104,12 +104,14 @@ function openAccordions(){
                 //EXPAND CARDS  
                 $('#plans-cards').find('.card').css('height','auto');
 
-                if(!$('.acc-nl').hasClass('manual')){
-                    $('html, body').delay(100).animate({
-                        scrollTop: plan.offset().top - pih - 24
-                    },500);
-                }
+                // if(!$('.acc-nl').hasClass('manual')){
+                //     $('html, body').delay(100).animate({
+                //         scrollTop: plan.offset().top - pih - 24
+                //     },500);
+                // }
             },500);
+
+            plan.addClass('expanded');
 
 
         } else {
@@ -120,11 +122,13 @@ function openAccordions(){
             setTimeout(function(){
                 plan.css('height',initHeight);
             },10);
-            if(!$('.acc-nl').hasClass('manual')){
-                $('html, body').delay(100).animate({
-                    scrollTop: plan.offset().top - pih - 24
-                },500);
-            }
+            // if(!$('.acc-nl').hasClass('manual')){
+            //     $('html, body').delay(100).animate({
+            //         scrollTop: plan.offset().top - pih - 24
+            //     },500);
+            // }
+            plan.removeClass('expanded');
+
         }
     });
 }
@@ -275,11 +279,11 @@ function collapseDetails(){
             nav.show();
             $('#available').removeClass('hidden');
         }
-        setTimeout(function(){
-            $('html, body').delay(100).animate({
-                scrollTop: min.offset().top - $('#progress-indicator').outerHeight() - 24
-            },500);
-        },500);
+        // setTimeout(function(){
+        //     $('html, body').delay(100).animate({
+        //         scrollTop: min.offset().top - $('#progress-indicator').outerHeight() - 24
+        //     },500);
+        // },500);
         setTimeout(setHeaderHeights,500);
         resizeAccordions();
         setTimeout(setPages,500);

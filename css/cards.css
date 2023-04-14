@@ -568,7 +568,8 @@
     display:flex;
     flex-direction: column;
     gap:24px;
-    overflow: hidden;
+    overflow:hidden;
+    position:relative;
 }
 .expand {
     overflow:hidden;
@@ -619,9 +620,9 @@
     align-items: center;
 }
 
-.card.plan:not(.active) .hr {
+/* .card.plan:not(.active) .hr {
     opacity:0;
-}
+} */
 
 .card.prod.plan:not(.active) .head h3 {
     font-size: var(--type-base);
@@ -656,6 +657,7 @@
 .plan.horizontal {
     min-width:46%;
     padding:16px;
+    overflow:visible;
 }
 
 .cards.expanded .plan.horizontal {
@@ -665,6 +667,10 @@
 .plan.horizontal .header {
     margin:-16px;
     padding:16px;
+}
+
+.plan.horizontal .accordions {
+    padding-top:24px;
 }
 
 .plan.horizontal .head {
@@ -691,6 +697,14 @@
     height:48px;
 }
 
+.plan.horizontal .tooltip {
+    display:none;
+}
+
+.plan.horizontal.expanded .tooltip {
+    display:flex;
+}
+
 /*.plan.horizontal #acc-nl .content {
     transition: 1000ms;
 }*/
@@ -710,6 +724,7 @@
 
 #plans-carousel .cards {
     overflow-x:scroll;
+    overflow-y:hidden;
     scroll-behavior: smooth;
     display:flex;
     gap:24px;

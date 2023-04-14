@@ -35,6 +35,9 @@ $(window).load(function(){
 
         //FAVORITE
         favorite();
+
+        //TOOLTIP
+        tooltip();
         
         //ACCORDION
         setAccordionHeights();
@@ -315,6 +318,30 @@ function quantity(){
 }
 
 
+// TOOLTIPS //////////////////////////////
+function tooltip(){
+    $('.tooltip').on('click', function(e){
+        e.stopPropagation();
+        // $('.tooltip').removeClass('active');
+        if(!$(this).hasClass('active')){
+            $(this).addClass('active');
+            $(this).find('.block').fadeIn();
+        } else {
+            $(this).removeClass('active');
+            $(this).find('.block').fadeOut();
+        }
+    });
+
+    // $('.tooltip').find('.close').on('click', function(e){
+    //     e.stopPropagation();    
+    //     $(this).parent('.block').fadeOut();
+    // });
+
+    $(document).on('click', function(){
+        $(this).find('.block').fadeOut();
+        $('.tooltip').removeClass('active');
+    });
+}
 
 
 // FILTER DROPDOWN //////////////////////////////////////////////////
