@@ -705,6 +705,14 @@
     display:flex;
 }
 
+.plan.horizontal .legal span {
+    display:none;
+}
+
+.plan.horizontal.expanded .legal span {
+    display:inline;
+}
+
 /*.plan.horizontal #acc-nl .content {
     transition: 1000ms;
 }*/
