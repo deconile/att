@@ -713,6 +713,14 @@
     display:inline;
 }
 
+.plan.horizontal .eyebrow {
+    display:none;
+}
+
+.plan.horizontal.expanded .eyebrow {
+    display:block;
+}
+
 /*.plan.horizontal #acc-nl .content {
     transition: 1000ms;
 }*/

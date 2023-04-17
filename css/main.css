@@ -275,17 +275,15 @@ a.line:hover {text-decoration:none;}
 
 .eyebrow {
     font-size: var(--eyebrow-md);
-    text-transform: uppercase;
+    color: var(--gray-700);
 }
 
 .eyebrow.sm {
     font-size: var(--eyebrow-sm);
-    text-transform: uppercase;
 }
 
 .eyebrow.xs {
     font-size: var(--eyebrow-xs);
-    text-transform: uppercase;
 }
 
 .legal, .legal p {
