@@ -98,8 +98,9 @@ function openAccordions(){
                 uh.push(h);
                 ch = Math.max(...uh);
             });
+            plan.addClass('expanded');
+            setHeaderHeights();
             plan.css('height',initHeight + ch + 28 + 'px');
-
             setTimeout(function(){
                 //EXPAND CARDS  
                 $('#plans-cards').find('.card').css('height','auto');
@@ -111,14 +112,13 @@ function openAccordions(){
                 // }
             },500);
 
-            plan.addClass('expanded');
-
-
         } else {
             //plan.find('.accordion').removeClass('expanded');
             //plan.find('.content').css('height','0px');
-            let h = $(this).parent().outerHeight()
+            let h = $(this).parent().outerHeight();
             plan.css('height',h+'px');
+            plan.removeClass('expanded');
+            setHeaderHeights();
             setTimeout(function(){
                 plan.css('height',initHeight);
             },10);
