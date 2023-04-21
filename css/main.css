@@ -408,12 +408,14 @@ li span {
 }
 
 .price > div:not(.price-point) {
-    font-size:11px;
+    font-size:var(--type-xxs);
 }
 
 .price .strikethrough {
+    font-size:var(--type-sm)!important;
     color: var(--gray-600);
     text-decoration: line-through;
+    font-weight:400;
 }
 
 .price .price-point::before {
@@ -468,6 +470,9 @@ li span {
     font-weight:400;
 }
 
+
+/* TOOLTIP *******************************/
+
 .tooltip {
     width:16px;
     height:16px;
@@ -518,8 +523,23 @@ li span {
     display:grid;
     gap:8px;
     position:relative;
+    font-size:var(--type-xxs);
     
 }
+
+.tooltip.dark .content,
+.tooltip.dark .block .tip {
+    background-color:var(--gray-700);
+    color:#fff;
+    box-shadow:none;
+    padding:8px;
+}
+
+
+.tooltip.dark .close svg {
+    fill:#fff;
+}
+
 
 .tooltip .content .breakdown {
     display:grid;
@@ -542,8 +562,10 @@ li span {
 
 .tooltip .content .breakdown .discounts svg {
     fill:var(--green-600);
-    width:16px;
-    height:16px;
+    min-width:16px;
+    min-height:16px;
+    max-width:16px;
+    max-height:16px;
 }
 
 .tooltip .content .breakdown .discounts > div:first-child {
@@ -554,6 +576,10 @@ li span {
 
 .tooltip .content .breakdown .discounts > div:last-child {
     color:var(--green-600);
+}
+
+.tooltip .content .breakdown .signature {
+    margin-top:0;
 }
 
 

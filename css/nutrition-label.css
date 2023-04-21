@@ -36,6 +36,28 @@
     grid-template-columns: 1fr auto;
 }
 
+.nutrition-label .multi {
+    font-size:var(--heading-xs);
+    font-weight:700;
+}
+
+.nutrition-label .multi > .breakdown {
+    display:flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.nutrition-label .multi > div,
+.nutrition-label .multi > .breakdown > div,
+.nutrition-label .multi > .breakdown > div > div {
+    padding-left:0;
+}
+
+.nutrition-label .multi > .breakdown > div > div:first-child {
+    font-size:var(--type-sm);
+    font-weight:400;
+}
+
 .nutrition-label hr {
     background-color: var(--gray-800);
     border:none;

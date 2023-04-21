@@ -7,6 +7,12 @@ $(document).ready(function(){
     
     //SET SCROLLABLE NUTRITION LABELS
     scrollableNL();
+
+    //REMOVES ALL INSTANCES OF SIGNATURE OFFERS
+    showSignature();
+
+    //REMOVES INSTANCES OF SINGLE LINE AND DISPLAYS MULTILINE
+    showMultiLine();
 });
 
 // QUERY VALUES ****************************/
@@ -40,12 +46,43 @@ function disableDeviceInfoCollapse(){
 }
 
 
-// QUERY VALUES
 // scr = Collapse Device Info Panel
 // USED IN DRAWER PLANS PAGE
 function scrollableNL(){
     let param = getQuery()['scr'];
     if(param === 'true'){
         $('#plans-cards').find('.accordion').find('.wrapper').addClass('scrollable scrollbar thin');
+    }
+}
+
+
+//sig = Signature
+function showSignature(){
+    let param = getQuery()['sig'];
+    if(param != 'true'){
+        $('.signature').remove();
+    } else {
+        $('.card.plan').find('.price-point.plan').each(function(){
+            let price = parseInt($(this).html());
+            price = price - 10;
+            $(this).html(price);
+        });
+
+        $('.tooltip').find('.total').each(function(){
+            let price = $(this).children().last().html();
+            price = parseInt(price.slice(1));
+            price = price - 10;
+            $(this).children().last().html('$' + price + '.00');
+        });
+    }
+}
+
+//multi = Multiline in NL
+function showMultiLine(){
+    let param = getQuery()['multi'];
+    if(param != 'true'){
+        $('.nutrition-label').find('.multi').remove();
+    } else {
+        $('.nutrition-label').find('.single').remove();
     }
 }

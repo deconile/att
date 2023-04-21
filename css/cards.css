@@ -592,7 +592,7 @@
 }
 
 .card.plan .head .teaser {
-    padding-top:24px;
+    margin-top:24px;
     font-size:var(--heading-xxs);
     font-weight:700;
 }
@@ -697,6 +697,14 @@
     height:48px;
 }
 
+.plan.horizontal .signature {
+    margin-top:24px;
+}
+.plan.horizontal .signature .badge {
+    margin-bottom:0;
+}
+
+
 .plan.horizontal .tooltip {
     display:none;
 }
@@ -721,9 +729,6 @@
     display:block;
 }
 
-/*.plan.horizontal #acc-nl .content {
-    transition: 1000ms;
-}*/
 
 /* CAROUSEL */
 #plans-cards {
