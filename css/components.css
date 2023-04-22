@@ -246,7 +246,6 @@
 
 #progress-indicator #progress-indicator-block {
     width:100%;
-    transition:500ms;
 }
 
 #progress-indicator.sticky #progress-indicator-block {
@@ -262,9 +261,13 @@
 
 
 #progress-indicator #progress-indicator-container {
-    padding:16px 32px 0;
+    padding:0 32px;
     max-width:var(--main-area-max);
-    margin:auto;
+    margin:16px auto 0;
+}
+
+#progress-indicator.sticky #progress-indicator-container {
+    margin:0 auto;
 }
 
 
@@ -295,7 +298,16 @@
 }
 
 #progress-indicator .title .step-count {
-    font-size: var(--type-xxs);
+    font-size: var(--type-sm);
+    display:none;
+    align-items: center;
+    gap:4px;
+    color:var(--cobalt-600);
+}
+
+#progress-indicator .title .step-count svg {
+    width:16px;
+    fill:var(--cobalt-600);
 }
 
 /* INDICATOR */
@@ -387,6 +399,68 @@
 }
 
 
+
+
+/* MICROBANNER */
+#promobanner.signature {
+    padding:16px 24px;
+    background-color:var(--gray-700);
+}
+
+#promobanner.signature .accordion {
+    border:none;
+}
+#promobanner.signature .accordion .control {
+    display:flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding:0;
+    color:#fff;
+}
+
+#promobanner.signature .accordion .control .label {
+    display:flex;
+    gap:8px;
+}
+
+#promobanner.signature .accordion .control .label svg {
+    width:32px;
+    height:32px;
+    fill:#fff;
+    padding-top:4px;
+}
+
+#promobanner.signature .accordion .control .text > div {
+    font-weight:400;
+    font-size:var(--type-xs);
+}
+#promobanner.signature .accordion .control .carat {padding-top:4px;}
+#promobanner.signature .accordion .control .carat svg {fill:#fff;}
+
+#promobanner.signature .accordion .content .container {
+    display:flex;
+    justify-content: center;
+    padding-top:24px;
+}
+
+#promobanner.signature .accordion .content .frame {
+    display:grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    gap:24px;
+    max-width:800px;
+    padding:24px;
+    background-color:#fff;
+    border-radius: 16px;
+    margin-bottom:0;
+}
+
+#promobanner.signature .accordion .content .frame > div:last-child {
+    display:grid;
+    gap:16px;
+    border-left:1px solid var(--gray-300);
+    padding-left:24px;
+}
 
 /* QUANTITY INCREMENTOR *********************/
 
@@ -887,7 +961,12 @@
     /* PROGRESS INDICATOR */
 
     #progress-indicator #progress-indicator-container {
-        padding:16px 24px;
+        padding:0;
+        margin:0;
+    }
+
+    #progress-indicator #progress-indicator-container .container {
+        border-radius: 0px;
     }
     
     #progress-indicator .indicator.dt {
@@ -897,6 +976,21 @@
         display:block;
     }
 
-    /* */
+    #progress-indicator .title .step-count {
+        display:flex;
+    }
 
+    /* SIGNATURE/FIRSTNET BANNERS */
+    #promobanner.signature .accordion .content .frame {
+        grid-template-columns: 1fr;
+    }
+    
+    #promobanner.signature .accordion .content .frame > div:last-child {
+        border-left:none;
+        padding-left:0;
+    }
+
+
+    /* EXPAND LINK */
+    .link-expand {display:none;}
 }

@@ -657,7 +657,7 @@
 .plan.horizontal {
     min-width:46%;
     padding:16px;
-    overflow:visible;
+    overflow:hidden;
 }
 
 .cards.expanded .plan.horizontal {
@@ -670,7 +670,7 @@
 }
 
 .plan.horizontal .accordions {
-    padding-top:24px;
+    
 }
 
 .plan.horizontal .head {

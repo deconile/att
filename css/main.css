@@ -331,9 +331,12 @@ sup {
 ul {
     padding-left:16px;
     font-size:var(--type-sm);
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 16px;
+}
+
+ul.tight {
+    gap: 8px;
 }
 /*
 li + li {
@@ -1197,7 +1200,7 @@ footer .soc {
     display:flex;
     flex-direction: column;
     justify-content: space-between;
-    width:200px;
+    width:250px;
 }
 
 footer .link-farm .lists {
@@ -1221,7 +1224,7 @@ footer ul {
 /* SOCIAL ICONS*/
 
 footer .social ul {
-    flex-direction: row;
+    display:flex;
     gap:16px;
 }
 
@@ -1245,7 +1248,7 @@ footer .myatt img {
 
 /* HELP LINKS*/
 footer .link-help ul {
-    flex-direction: row;
+    display:flex;
     flex-wrap: wrap;
 }
 

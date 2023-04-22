@@ -63,9 +63,11 @@ function disableLinks(){
 
 //PROGRESS INDICATOR ////////////////////////////////////////
 function stickProgressIndicator(){
-    let pih = $('#progress-indicator').outerHeight();
+    let mar = parseInt($('#progress-indicator-container').css('margin-top'));
+    console.log(mar);
+    let pih = $('#progress-indicator').outerHeight() + mar;
 
-    $('.device-info').css('top',pih + 24 + 'px');
+    $('.device-info').css('top',pih + 'px');
 
     if($(window).scrollTop() >= $('#progress-indicator').offset().top){
         $('#progress-indicator').addClass('sticky');
@@ -331,11 +333,6 @@ function tooltip(){
             $(this).find('.block').fadeOut();
         }
     });
-
-    // $('.tooltip').find('.close').on('click', function(e){
-    //     e.stopPropagation();    
-    //     $(this).parent('.block').fadeOut();
-    // });
 
     $(document).on('click', function(){
         $(this).find('.block').fadeOut();
