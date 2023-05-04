@@ -315,9 +315,9 @@ function expandDetails(){
 
     setTimeout(function(){
         ex.parent().removeClass('expanded');
-        // $(window).on('scroll',function(){
-        //     ex.parent().removeClass('expanded');
-        // }); 
+        $(window).on('scroll',function(){
+            ex.parent().removeClass('expanded');
+        }); 
     },3000);
 
     ex.on('click',function(){
