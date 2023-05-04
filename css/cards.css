@@ -1170,7 +1170,8 @@
 
     /* HORIZONTAL PLAN CARDS */
 
-    .plan.horizontal {
+    .plan.horizontal,
+    .cards.expanded .plan.horizontal {
         min-width:94%;
     }
 

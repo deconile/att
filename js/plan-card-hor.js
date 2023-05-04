@@ -15,6 +15,8 @@ $(window).load(function(){
         setPagination();
         setPages();
     },100);
+
+    expandDetails();
 });
 
 function setHeaderHeights(){
@@ -307,3 +309,22 @@ function resizeAccordions(){
     
 }
 
+
+function expandDetails(){
+    var ex = $('.expand-icon');
+
+    setTimeout(function(){
+        ex.parent().removeClass('expanded');
+        // $(window).on('scroll',function(){
+        //     ex.parent().removeClass('expanded');
+        // }); 
+    },3000);
+
+    ex.on('click',function(){
+        if($(this).parent().hasClass('expanded')){
+            $(this).parent().removeClass('expanded');
+        } else {
+            $(this).parent().addClass('expanded');
+        }
+    });
+}

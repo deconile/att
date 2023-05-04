@@ -13,6 +13,9 @@ $(document).ready(function(){
 
     //REMOVES INSTANCES OF SINGLE LINE AND DISPLAYS MULTILINE
     showMultiLine();
+
+    //FULL PAGE PLANS
+    fullPagePlans();
 });
 
 // QUERY VALUES ****************************/
@@ -84,5 +87,35 @@ function showMultiLine(){
         $('.nutrition-label').find('.multi').remove();
     } else {
         $('.nutrition-label').find('.single').remove();
+    }
+}
+
+
+
+//fullpage = Plans column full page, no left column details panel
+function fullPagePlans(){
+    let param = getQuery()['fullpage'];
+    if(param === 'true'){
+        //REMOVE LEFT PANEL
+        $('#details-panel').parent().removeClass('auto-left');
+        $('#details-panel').remove();
+        //SET CARDS
+        $('#plans-carousel').find('.cards').addClass('expanded');
+        let cardAmt = $('.card.plan').length;
+        let nav = $('#pagination');
+        if(cardAmt <= 3 && $(window).width() > 600){
+            $('#plans-carousel').addClass('false');
+            nav.hide();
+        }
+        $('.link-expand').remove();
+    } else {
+        $('#details-footer').remove();
+    }
+
+    param = getQuery()['top'];
+    if(param === 'true'){
+        $('#details-footer').remove();
+    } else {
+        $('#details-header').remove();
     }
 }

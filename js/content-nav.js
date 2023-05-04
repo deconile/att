@@ -64,23 +64,27 @@ function disableLinks(){
 //PROGRESS INDICATOR ////////////////////////////////////////
 function stickProgressIndicator(){
     let mar = parseInt($('#progress-indicator-container').css('margin-top'));
-    console.log(mar);
     let pih = $('#progress-indicator').outerHeight() + mar;
+    let top = $('#progress-indicator').offset().top;
 
     $('.device-info').css('top',pih + 'px');
 
-    if($(window).scrollTop() >= $('#progress-indicator').offset().top){
+    if($(window).scrollTop() >= top){
         $('#progress-indicator').addClass('sticky');
         $('#progress-indicator').css('height',pih + 'px');
+        $('#details-header').css('top',pih+'px');
     }
 
     $(window).on('scroll',function(){
-        if($(this).scrollTop() >= $('#progress-indicator').offset().top){
+        console.log($('#progress-indicator').offset().top);
+        if($(this).scrollTop() >= top){
             $('#progress-indicator').addClass('sticky');
             $('#progress-indicator').css('height',pih + 'px');
+            $('#details-header').css('top',pih+'px');
         } else {
             $('#progress-indicator').removeClass('sticky');
             $('#progress-indicator').css('height','');
+            $('#details-header').css('top','');
         }
 
         if($(this).scrollTop() >= $('#sticky-footer').offset().top - pih){
