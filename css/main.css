@@ -1439,7 +1439,8 @@ footer .copy a:hover {
 }
 
 .details-bar.top {
-    z-index:3;
+    z-index:2;
+    top:0;
 }
 
 
@@ -1448,11 +1449,11 @@ footer .copy a:hover {
 }
 
 .details-bar.top {
-    transform: translateY(calc(0% - 30px));
+    transform: translateY(-100%);
 }
 
 .details-bar.top.expanded {
-    transform: translateY(calc(100% - 30px));
+    transform: translateY(0%);
 }
 
 .details-bar > .container > div {
@@ -1562,6 +1563,83 @@ footer .copy a:hover {
     max-width: 300px;
 }
 
+
+
+/* DETAILS HEADER | ALEXIS DESIGN */
+#details-header > .container > div {
+    display:grid;
+    grid-template-columns: 1fr auto;
+    gap:16px;
+}
+#details-header > .container > div > div {
+    background-color:var(--blue-000);
+    padding:8px;
+    border-radius: 16px;
+}
+
+#details-header > .container > div > .device > .phone,
+#details-header > .container > div > .options {
+    display:grid;
+    grid-template-columns: auto 1fr;
+    justify-content: center;
+    align-items: center;
+    gap:4px;
+}
+
+#details-header > .container > div > .device {
+    gap:8px;
+    border:1px solid var(--cobalt-600);
+}
+
+#details-header > .container > div > .device > .options {
+    display:grid;
+    gap:4px;
+}
+
+#details-header > .container > div > .device > .phone,
+#details-header > .container > div > .device > .options > h6 {
+    background-color: #fff;
+    border-radius: 16px;
+    padding:8px;
+}
+
+#details-header > .container > div > .device > .options > h6 {
+    display:flex;
+    align-items: center;
+    padding:4px 8px;
+}
+
+
+#details-header .offer {
+    display:flex;
+    align-items: center;
+}
+
+#details-header .offer-container {
+    display:grid;
+    justify-content: center;
+}
+
+.offer-container .icon {
+    display:inline-flex;
+    justify-content: center;
+    position: relative;
+}
+
+.offer-container .icon .alert {
+    position:absolute;
+    left:50%;
+    top:-8px;
+}
+
+#details-header .offer-container .cta {
+    gap:0px;
+    font-size:var(--heading-xxxs);
+}
+
+#details-header .offer-container .cta svg {
+    width:12px
+}
 
 
 
@@ -1723,5 +1801,13 @@ footer .copy a:hover {
     footer .link-help ul {
         display:grid;
         grid-template-columns: 1fr 1fr;
+    }
+
+    /* DETAILS BAR */
+    #details-header > .container > div > .device > .phone {
+        grid-template-columns: 1fr;
+    }
+    #details-header > .container > div > .device > .phone h4 {
+        font-size:var(--heading-xxs);
     }
 }
