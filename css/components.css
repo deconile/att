@@ -238,6 +238,68 @@
 }
 
 
+/* SHAPED CONTAINER *********************************/
+.shaped-container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius:16px;
+}
+
+.shaped-container .md {
+    border-radius:8px;
+}
+
+.shaped-container.circle {
+    border-radius:100%;
+}
+
+/* SIZES */
+
+.shaped-container.xl {width:128px;height:128px;}
+.shaped-container.xl svg {width:64px;height:64px;}
+
+.shaped-container.lg {width:96px;height:96px;}
+.shaped-container.lg svg {width:48px;height:48px;}
+
+.shaped-container.md {width:64px;height:64px;}
+.shaped-container.md svg {width:32px;height:32px;}
+
+.shaped-container.sm {width:48px;height:48px;}
+.shaped-container.sm svg {width:24px;height:24px;}
+
+.shaped-container.sm {width:32px;height:32px;}
+.shaped-container.sm svg {width:16px;height:16px;}
+
+
+/* FILLS */
+.shaped-container.blue {
+    background-color:var(--blue-200);
+}
+
+.shaped-container.white {
+    background-color:var(--gray-000);
+    border:1px solid var(--gray-300);
+}
+
+.shaped-container.gray {
+    background-color:var(--gray-200);
+}
+
+
+/* PICTOGRAM */
+.pictogram, .pictogram svg {
+    width:96px;
+    height:96px;
+}
+
+.pictogram.sm, .pictogram.sm svg {
+    width:48px;
+    height:48px;
+}
+
+
+
 /* PROGRESS INDICATOR *********************************/
 #progress-indicator {
     position: relative;
@@ -275,7 +337,7 @@
 }
 
 #progress-indicator.sticky #progress-indicator-container {
-    padding:16px 32px 0;
+    padding:0px 32px 0;
     margin:0 auto 0;
     background-color:#fff;
 }
@@ -683,6 +745,10 @@
     padding-bottom:24px;
 }
 
+.accordion.small.expanded {
+    padding-bottom:16px;
+}
+
 .accordion .control {
     padding:24px 0;
     position: relative;
@@ -693,6 +759,11 @@
     cursor:pointer;
     transition: 500ms;
 }
+
+.accordion.small .control {
+    padding:16px 0;
+}
+
 .accordion .control .user {
     position:absolute;
     top:32px;
@@ -705,6 +776,9 @@
 }
 
 .accordion .control .label {
+    display:flex;
+    align-items: center;
+    gap:8px;
     font-size:var(--heading-xs);
     font-weight:700;
     transition:500ms;
@@ -978,7 +1052,8 @@
 
     /* PROGRESS INDICATOR */
 
-    #progress-indicator #progress-indicator-container {
+    #progress-indicator #progress-indicator-container,
+    #progress-indicator.sticky #progress-indicator-container {
         padding:0;
         margin:0;
     }
@@ -1011,4 +1086,10 @@
 
     /* EXPAND LINK */
     .link-expand {display:none;}
+
+
+    /* BUTTON GROUP */
+    .button-group .button {
+        padding:8px 16px;
+    }    
 }

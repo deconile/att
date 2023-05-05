@@ -16,6 +16,9 @@ $(document).ready(function(){
 
     //FULL PAGE PLANS
     fullPagePlans();
+
+    //NEW HEADER
+    newHeader();
 });
 
 // QUERY VALUES ****************************/
@@ -117,5 +120,16 @@ function fullPagePlans(){
         $('#details-footer').remove();
     } else {
         $('#details-header').remove();
+    }
+}
+
+
+//newheader = Apply new header format
+function newHeader() {
+    param = getQuery()['newheader'];
+    if(param === 'true'){
+        $('#plans-header').remove();
+    } else {
+        $('#plans-header-advanced').remove();
     }
 }

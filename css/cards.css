@@ -1156,7 +1156,7 @@
     .card.unselectable {
         border-left:none;
         border-right:none;
-        border-radius:0;
+        /* border-radius:0; */
     }
 
     /* COLLAPSIBLE CARD */
@@ -1173,6 +1173,9 @@
     .plan.horizontal,
     .cards.expanded .plan.horizontal {
         min-width:94%;
+    }
+    .plan.horizontal {
+        padding:16px;
     }
 
     .plan.horizontal .head h3 {
