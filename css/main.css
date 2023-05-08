@@ -509,10 +509,27 @@ li span {
 /* TOOLTIP *******************************/
 
 .tooltip {
+    position:relative;
+}
+
+.tooltip .icon {}
+
+.tooltip .icon svg {
     width:16px;
     height:16px;
-    padding-bottom:24px;
 }
+
+.tooltip .link {
+    display:flex;
+    align-items: center;
+    gap:4px;
+    font-size:var(--type-xxs);
+    font-weight:600;
+    color:var(--cobalt-600);
+    text-decoration: underline;
+}
+
+.tooltip .link svg {fill:var(--cobalt-600);}
 
 
 .tooltip .block {
