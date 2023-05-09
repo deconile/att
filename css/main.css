@@ -1530,7 +1530,7 @@ footer .copy a:hover {
 .details-bar > .container .device,
 .details-bar > .container .header {
     display:grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
     gap:32px;
 }
@@ -1544,7 +1544,7 @@ footer .copy a:hover {
 .details-bar > .container .header {
     padding-right:32px;
     border-right:1px solid var(--gray-300);
-    width:28%;
+    width:30%;
 }
 
 .details-bar > .container .device {
@@ -1564,6 +1564,12 @@ footer .copy a:hover {
 
 .details-bar > .container .device .device-details p {
     font-size: var(--type-xs);
+}
+
+.details-bar > .container .device svg {
+    width:24px;
+    height:24px;
+    fill:var(--cobalt-600);
 }
 
 .details-bar .expand-icon {

@@ -16,6 +16,9 @@ $(window).load(function(){
 
     //ACTIVATE INDIVIDUAL CONFIGURE OPTIONS
     optionPricingAdjustments();
+
+    //ADD PLAN PRICE
+    addPlanPrice();
     
 });
 
@@ -143,7 +146,7 @@ function optionPricingAdjustments(){
 
             //SET CAPACITY INDEX FOR OPTION ARRAYS
             if($(this).parents().is('#configure-capacity')){
-                c = $(this).index()
+                c = $(this).index();
             }
 
             //CAPACITY CONFIG OPTIONS
@@ -269,6 +272,8 @@ function optionPricingAdjustments(){
             }
 
 
+
+
             //ADJUST MAIN PRICES & CONVERT CONFIG PRICES
             if(!$(this).hasClass('swatch')){
                 adjustPrice();
@@ -314,6 +319,25 @@ function convertToPrices(){
         let t = parseFloat($(this).text().replace(',',''));
         t = t.toLocaleString('en', {minimumFractionDigits: 2});
         $(this).text(t);
+    });
+}
+
+function addPlanPrice(){
+    //PLAN PRICING
+    let plan = $('#plans-cards').find('.card');
+            
+    plan.find('.header').on('click',function(){
+        let add;
+        if(!$(this).parent().hasClass('active')){
+            add = parseInt($(this).find('.price-point').text());
+        } else {
+            add = 0;
+        }
+
+        updatePriceTo = planPrice[0] + add;
+
+        adjustPrice();
+        convertToPrices();
     });
 }
 
