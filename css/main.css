@@ -1189,7 +1189,17 @@ nav#sub-nav .nav-left, nav#sub-nav .nav-right {
     height:36px;
 }
 
-.pull-tab.label {}
+.pull-tab.label {
+    border-radius: 16px 16px 0 0;
+    padding:0 24px;
+    color:#FFF;
+    gap:4px;
+}
+
+.pull-tab.label > div:first-child {
+    transform: rotateX(0deg);
+    transition:1000ms;
+}
 
 /* PULL TAB - LABELS */
 .pull-tab-label {
@@ -1591,6 +1601,10 @@ footer .copy a:hover {
 .details-bar.expanded .pull-tab {
     background-color:var(--gray-800);
     transform: translate(-50%, -100%) rotateX(180deg);
+}
+
+.details-bar.expanded .pull-tab.label > div:first-child {
+    transform:rotateX(180deg);
 }
 
 .details-bar.top.expanded .expand-icon {
