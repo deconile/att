@@ -1176,7 +1176,7 @@ nav#sub-nav .nav-left, nav#sub-nav .nav-right {
 
 .pull-tab.bottom {
     border-radius: 100px 100px 0 0;
-    width: 48px;
+    min-width: 48px;
     height: 24px;
     transform-origin: bottom;
 }
@@ -1188,6 +1188,8 @@ nav#sub-nav .nav-left, nav#sub-nav .nav-right {
 .pull-tab.bottom:hover {
     height:36px;
 }
+
+.pull-tab.label {}
 
 /* PULL TAB - LABELS */
 .pull-tab-label {
@@ -1235,6 +1237,7 @@ footer {
     font-size:var(--type-xs);
     color:var(--gray-800);
     z-index: 101;
+    margin-top:-1px;
 }
 
 footer > div {

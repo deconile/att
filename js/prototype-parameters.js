@@ -68,7 +68,7 @@ function showSignature(){
     if(param != 'true'){
         $('.signature').remove();
     } else {
-        $('.card.plan').find('.price-point.plan').each(function(){
+        $('.card.plan.sig').find('.price-point.plan').each(function(){
             let price = parseInt($(this).html());
             price = price - 10;
             $(this).html(price);

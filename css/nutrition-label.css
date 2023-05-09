@@ -36,15 +36,12 @@
     grid-template-columns: 1fr auto;
 }
 
-.nutrition-label .multi {
-    font-size:var(--heading-xs);
-    font-weight:700;
-}
-
 .nutrition-label .multi > .breakdown {
     display:flex;
     justify-content: space-between;
     text-align: center;
+    font-size:var(--heading-xs);
+    font-weight:700;
 }
 
 .nutrition-label .multi > div,

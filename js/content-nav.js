@@ -2,9 +2,6 @@ $(window).load(function(){
     //DISABLE LINK w/o LOCATION
     disableLinks();
 
-    //PROGRESS INDICATOR
-    stickProgressIndicator();
-
     //TABS
     tabs();
 
@@ -45,7 +42,9 @@ $(window).load(function(){
         sizeMatchingAccordions()
         accordion();
         collapseAllAccordions();
-
+        
+        //PROGRESS INDICATOR
+        stickProgressIndicator();
     },100);
 
 });
