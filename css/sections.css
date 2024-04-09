@@ -1,0 +1,201 @@
+
+
+
+
+/* BANNER SECTIONS */
+.hero {
+    position:relative;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    overflow: hidden;
+    padding:0;
+    background-color: var(--blue-000);
+    min-height:50rem;
+}
+
+.hero.short {min-height:30rem;}
+
+.hero.dark {background-color: var(--access-blue);}
+
+.hero .content {
+    padding:4.8rem;
+    width:100%;
+    max-width: 66.2rem;
+    justify-self: right;
+}
+
+.hero .image {
+    position:relative;
+    height:100%;
+    width:100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero .image::before {
+    content:'';
+    position:absolute;
+    left:-1px;
+    bottom:0;
+    background-size: contain;
+    background-position: left top;
+    background-repeat: no-repeat;
+    height:100%;
+    width:100%;
+}
+
+.hero .image::before {background-image: url(../images/lifestyle/hero_image_embrace.png);}
+
+.hero.dark .image::before {background-image: url(../images/lifestyle/hero_image_flat_blue.png);}
+
+
+/* RTB SECTION */
+.rtbs {grid-template-columns: repeat(4,1fr);}
+.rtb {
+    width:100%;
+    text-align: center;
+}
+
+
+
+
+/* OLD STYLE */
+.header-img img {
+    width:20rem;
+    height:9rem;
+    object-fit: cover;
+    border-radius: 1.6rem;
+}
+
+/* TABLET  */
+@media only screen and (max-width: 1024px) {
+    .hero .content {padding:3.2rem;}
+
+    .rtbs {grid-template-columns: repeat(2,1fr);}
+}
+
+/* MOBILE */
+@media only screen and (max-width: 480px) {
+    .hero {
+        grid-template-columns: auto;
+        grid-template-rows: 230px auto;
+    }
+
+    .hero .content {
+        padding:2.4rem;
+        order:1;
+    }
+
+    .hero .content.grad-brand,
+    .hero .content.grad-brand-dark {
+        background-image: none;
+        color:var(--gray-800);
+    }
+
+    .hero .image::before {
+        left:0;
+        bottom:-1px;
+        background-image: url(../images/lifestyle/hero_image_embrace_mobile.png);
+        background-position: center bottom;
+    }
+
+    #header .flex.middle {justify-content: center;}
+
+    .rtbs {flex-direction: column;}
+}
+
+
+/* SIDE PANEL *********************************/
+aside {
+    position:fixed;
+    width:max-content;
+    height:100%;
+    top:0;
+    /* overflow-y: scroll;
+    overscroll-behavior: contain; */
+    background-color:var(--gray-000);
+    box-shadow: 0 0 5px #0003;
+    transition: 500ms;
+    z-index:1000;
+}
+
+/* SIDE */
+aside.left {left:0;}
+aside.right {right:0;}
+
+aside.left::before, aside.right::before {
+    content: '';
+    position:absolute;
+    top:0;
+    width:30px;
+    height:100%;
+    background-color:transparent;
+}
+
+aside.left::before {right:-30px;}
+aside.right::before {left:-30px;}
+
+/* WIDTHS */
+aside.full {width:100vw;}
+aside.half {width:50vw;}
+aside.quarter {width:25vw;}
+aside.cards {width:750px;}
+
+/* HIDDEN */
+aside.out.right {transform:translateX(100%);box-shadow: none;}
+aside.out.left {transform:translateX(-100%);box-shadow: none;}
+
+aside.out.can-hover.right:hover {transform:translateX(0%);box-shadow: 0 0 5px #0003;}
+aside.out.can-hover.left:hover {transform:translateX(0%);box-shadow: 0 0 5px #0003;}
+
+/* LAYOUT */
+aside > .overflow {
+    width:100%;
+    height:100%;
+    overflow-y: scroll;
+    overscroll-behavior: contain;
+}
+
+aside section {
+    padding:4.8rem;
+}
+
+aside .header {
+    position:sticky;
+    top:0;
+    z-index:10;
+    border-bottom: 1px solid var(--gray-300);
+    background-color:#fff;
+}
+
+aside .header h2 {margin-bottom:0.8rem;}
+
+aside .close {
+    position:absolute;
+    right:8px;
+    top:8px;
+    padding:0;
+    cursor: pointer;
+}
+
+
+/* MEDIA QUERIES *******************************/
+/* DESKTOP WIDE */
+@media only screen and (min-width: 1601px) {
+    
+}
+
+/* TABLET  */
+@media only screen and (max-width: 1024px) {
+    aside > section {
+        padding:3.2rem;
+    }
+}
+
+/* MOBILE */
+@media only screen and (max-width: 480px) {
+    aside > section {
+        padding:2.4rem;
+    }
+}

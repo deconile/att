@@ -178,15 +178,15 @@
 
 
 /* CONFIGURE | COLOR */
-.options-block#color-options {
+/* .options-block#color-options {
     display:flex;
     flex-direction: row;
     gap:16px;
-}
+} */
 
-#color-options .swatch {
-    width:42px;
-    height:42px;
+.swatch {
+    width:48px;
+    height:48px;
     border-radius: 100%;
     cursor:pointer;
     display:flex;
@@ -196,23 +196,23 @@
     transition: all 500ms;
 }
 
-#color-options .swatch > div {
-    width:36px;
-    height:36px;
+.swatch > div {
+    width:40px;
+    height:40px;
     border-radius: 100%;
     transition: all 500ms;
     border: 1px solid var(--gray-500);
 }
 
-#color-options .swatch:hover {
+.swatch:hover {
     border: 1px solid var(--gray-500);
 }
 
-#color-options .swatch.active {
+.swatch.active {
     border: 2px solid var(--cobalt-600);
 }
 
-#color-options .swatch.active > div {
+.swatch.active > div {
     width:34px;
     height:34px;
     border: 1px solid transparent;
@@ -221,6 +221,8 @@
 .swatch span {
     display:none;
 }
+
+.swatch.purple > div {background-color:#594F63;}
 
 
 /* SHIPPING DETAILS ************************/

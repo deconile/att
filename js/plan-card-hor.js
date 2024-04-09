@@ -19,16 +19,6 @@ $(window).load(function(){
     expandDetails();
 });
 
-function setHeaderHeights(){
-    let ih = []
-    $('#plans-cards').find('.card').each(function(){
-        ih.push($(this).find('.header').outerHeight())
-    });
-    initHeight = Math.max(...ih);
-    if(!$('#plans-cards').find('.card').hasClass('active')){
-        $('#plans-cards').find('.card').css('height',initHeight + 'px'); 
-    }
-}
 
 function getCollapsedAccordionHeights(){
     let amt = $('#plans-cards').find('.card').first().find('.accordion').length;

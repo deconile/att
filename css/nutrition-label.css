@@ -113,13 +113,19 @@
     color:var(--gray-800);
 }
 
+.nutrition-label .price-point {line-height:normal;}
+
+.nutrition-label .price-point::before {
+    font-size:1em;
+    vertical-align: baseline;
+}
+
 .nutrition-label h3, .nutrition-label h5 {
     margin-bottom:0px;
 }
 
 .nutrition-label h5 {
-    font-size: 0.7rem;
-    margin-bottom:2px;
+    font-size: 1.2rem;
 }
 
 .nutrition-label p {

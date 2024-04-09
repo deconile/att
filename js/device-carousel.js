@@ -1,10 +1,6 @@
 $(document).on('ready', function(){
     adjustSize();
     deviceCarousel();
-    // $(window).resize(function(){
-    //     DCYOffset = Math.ceil(($(window).innerHeight() * 0.3) + 50);
-    // });
-
 });
 
 var DCYOffset;
@@ -12,16 +8,9 @@ var DCYOffset;
 function adjustSize(){
 
     let deviceCarousel = $('#device-carousel');
-    //let DCYPos = deviceCarousel.offset().top;
-    //DCYOffset = Math.ceil(($(window).innerHeight() * 0.3) + 50);
-    let headerHeight = $('header').outerHeight();
+    let headerHeight = $('#progress-indicator').outerHeight() + 32;
+    deviceCarousel.css('top',headerHeight + 24 + 'px');
     $(window).scroll(function() {
-
-        // if(!deviceCarousel.hasClass('full')){
-        //     DCYOffset = Math.ceil(($(window).innerHeight() * 0.3) + 50);
-        // } else {
-        //     DCYOffset = 0;
-        // }
 
         if(Math.ceil($('html, body').scrollTop()) > headerHeight) {
             deviceCarousel.addClass('full');
@@ -39,8 +28,8 @@ function adjustSize(){
 
 function deviceCarousel(){
     let scrollDis = 0;
-    let imageWidth = $('#device-images').outerWidth();
-    let carousel = $('#device-carousel').find('#device-images');
+    let imageWidth = $('.device-images').outerWidth();
+    let carousel = $('#device-carousel').find('.device-images');
     let bubbles = $('#device-carousel').find('.pagination');
 
     //ADD PAGE BUBBLES
@@ -54,8 +43,8 @@ function deviceCarousel(){
     bubbles.children().first().addClass('active');
 
     //CONTROLS
-    let prev = $('#device-carousel').find('.prev').find('svg');
-    let next = $('#device-carousel').find('.next').find('svg');
+    let prev = $('#device-carousel').find('.c-left').find('svg');
+    let next = $('#device-carousel').find('.c-right').find('svg');
 
     prev.on('click',function(){
         scrollDis = scrollDis - imageWidth;
@@ -80,7 +69,7 @@ function deviceCarousel(){
     });
 
     //PAGINATION
-    let pageAmt = $('#device-images').children().length;
+    let pageAmt = $('.device-images').children().length;
     let page = $('#device-carousel').find('.pagination').children();
     page.on('click',function(){
         let pageNum = $(this).index();

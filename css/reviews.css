@@ -6,7 +6,6 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-bottom:8px;
     color:var(--gray-800);
 }
 
