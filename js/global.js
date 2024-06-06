@@ -1,6 +1,5 @@
 $(document).ready(function(){
     loadElements();
-    //windowEvents();
 });
 
 $(window).on('load', function(){

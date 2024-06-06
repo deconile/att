@@ -235,15 +235,15 @@
     position:absolute;
     bottom:2.4rem;
     right:2.4rem;
-    transform: translateY(2.4rem);
-    opacity: 0;
+    transform: translateY(0);
+    opacity: 1;
     pointer-events: none;
     transition:1000ms;
 }
 
 .card.plan.active .icon-button {
-    transform: translateY(0px);
-    opacity: 1;
+    transform: translateY(2.4rem);
+    opacity: 0;
     pointer-events: auto;
 }
 
@@ -478,8 +478,13 @@
     position: relative;
 }
 
-.card-carousel > .overflow-container {overflow-x:scroll;}
-.card-carousel > .overflow-container.overflowing {padding:0 48px;}
+.card-carousel > .overflow-container {overflow-x:scroll;padding:0 3.2rem;}
+.card-carousel > .overflow-container.overflowing {
+    padding-top:0.8rem;
+    padding-bottom:0.8rem;
+    padding-left:3.2rem;
+    padding-right:3.2rem;
+}
 
 
 .card-carousel > .overflow-container > * {
@@ -499,15 +504,16 @@
 /* MEDIA QUERIES *******************************/
 /* DESKTOP WIDE */
 @media only screen and (min-width: 1601px) {
-    .card-carousel > .overflow-container.overflowing {padding:0;}
-    .max-width-background .card-carousel > .overflow-container.overflowing {padding:0 48px;}
+    .card-carousel > .overflow-container.overflowing {padding-left:0;padding-right:0;
+}
+    .max-width-background .card-carousel > .overflow-container.overflowing {padding-left:3.2rem;padding-right:3.2rem;}
     .card-carousel > .overflow-container.overflowing > * {min-width: calc(33% - 3.2rem);}
     .card-carousel.dual > .overflow-container.overflowing > * {min-width: calc(50% - 3.2rem);}
 }
 
 /* TABLET  */
 @media only screen and (max-width: 1024px) {
-    .card-carousel > .overflow-container.overflowing {padding:0 3.2rem;}
+    .card-carousel > .overflow-container.overflowing {padding-left:3.2rem;padding-right:3.2rem;}
     .card-carousel > .overflow-container > * {min-width: calc(50% - 2.4rem);}
 }
 
@@ -535,7 +541,7 @@
         right:1.6rem;
     }
 
-    .card-carousel > .overflow-container.overflowing {padding:0 2.4rem;}
+    .card-carousel > .overflow-container.overflowing {padding-left:2.4rem;padding-right:2.4rem;}
 
     .card-carousel > .overflow-container > *,
     .card-carousel.dual > .overflow-container > * {min-width: calc(100% - 0px);}

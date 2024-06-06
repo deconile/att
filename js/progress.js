@@ -27,7 +27,7 @@ var indTop;
 
 function loadProgressIndicator(){
     $('main').prepend(progressTemplate);
-    if(pageKey != 'plp'){
+    if(pageKey != 'plp' || pageKey != 'cart'){
         $('main').append(stickyTemplate);
     }
 }

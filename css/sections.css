@@ -15,11 +15,12 @@
 }
 
 .hero.short {min-height:30rem;}
+.hero.flush {min-height:auto;}
 
 .hero.dark {background-color: var(--access-blue);}
 
 .hero .content {
-    padding:4.8rem;
+    padding:6.4rem 1.6rem 6.4rem 3.2rem;
     width:100%;
     max-width: 66.2rem;
     justify-self: right;
@@ -80,11 +81,13 @@
     .hero {
         grid-template-columns: auto;
         grid-template-rows: 230px auto;
+        background-color: transparent;
     }
 
     .hero .content {
         padding:2.4rem;
         order:1;
+        text-align: center;
     }
 
     .hero .content.grad-brand,
@@ -112,8 +115,8 @@ aside {
     width:max-content;
     height:100%;
     top:0;
-    /* overflow-y: scroll;
-    overscroll-behavior: contain; */
+    /* overflow-y: scroll; */
+    overscroll-behavior: contain;
     background-color:var(--gray-000);
     box-shadow: 0 0 5px #0003;
     transition: 500ms;
@@ -149,8 +152,32 @@ aside.out.left {transform:translateX(-100%);box-shadow: none;}
 aside.out.can-hover.right:hover {transform:translateX(0%);box-shadow: 0 0 5px #0003;}
 aside.out.can-hover.left:hover {transform:translateX(0%);box-shadow: 0 0 5px #0003;}
 
+/* OVERLAY */
+aside.cover ~ .overlay {
+    content:'';
+    width:100%;
+    height:100%;
+    position:fixed;
+    top:0;
+    right:0;
+    background-color:#000c;
+    z-index:999;
+    transition: 500ms;
+}
+
+aside.cover.out ~ .overlay {
+    width:0;
+    background-color:transparent;
+}
+
+aside.cover.can-hover:hover ~ .overlay {
+    width:100%;
+    background-color:#000c;
+}
+
+
 /* LAYOUT */
-aside > .overflow {
+aside > .content {
     width:100%;
     height:100%;
     overflow-y: scroll;
@@ -158,8 +185,19 @@ aside > .overflow {
 }
 
 aside section {
-    padding:4.8rem;
+    padding:3.2rem;
 }
+
+aside section.bleed {
+    padding-left:0;
+    padding-right:0;
+}
+
+aside section.flush {
+    padding-top:0;
+    padding-bottom:0;
+}
+
 
 aside .header {
     position:sticky;

@@ -346,9 +346,10 @@
     justify-content: center;
     align-items: center;
     border-radius:16px;
+    transition: 500ms;
 }
 
-.shaped-container .md {
+.shaped-container {
     border-radius:8px;
 }
 
@@ -370,11 +371,16 @@
 .shaped-container.sm {width:48px;height:48px;}
 .shaped-container.sm svg {width:24px;height:24px;}
 
-.shaped-container.sm {width:32px;height:32px;}
-.shaped-container.sm svg {width:16px;height:16px;}
+.shaped-container.xs {width:32px;height:32px;}
+.shaped-container.xs svg {width:16px;height:16px;}
+
 
 
 /* FILLS */
+.shaped-container.primary {
+    background-color:var(--primary-blue);
+}
+
 .shaped-container.blue {
     background-color:var(--blue-200);
 }
@@ -387,6 +393,11 @@
 .shaped-container.gray {
     background-color:var(--gray-200);
 }
+
+.shaped-container.blank {
+    background-color:var(--gray-200);
+}
+
 
 
 /* PICTOGRAM */
@@ -508,6 +519,7 @@
     font-size:var(--type-sm);
     user-select: none;
     white-space: nowrap;
+    pointer-events: none;
 }
 
 #progress-indicator .tab-container > div > div.completed {
@@ -560,6 +572,7 @@
 #sticky-footer {
     position:sticky;
     padding:8px 24px;
+    margin-top:32px;
     background-color:#fff;
     border-top: 1px solid var(--cobalt-600);
     z-index:100;
@@ -982,8 +995,6 @@
 
 .accordion.framed {
     border:none;
-    padding:0 16px;
-    background-color:var(--gray-200);
     border-radius:16px;
 }
 
@@ -1014,12 +1025,17 @@
     padding:16px 0;
 }
 
-.accordion.noborder .control {
+.accordion.flush .control {
     padding-top:0;
     padding-bottom:0;
 }
 
-.accordion.tight .control {
+.accordion.bleed .control {
+    padding-left:2.4rem;
+    padding-right:2.4rem;
+}
+
+.accordion .control.center {
     justify-content: center;
 }
 
@@ -1046,18 +1062,28 @@
     transition: 500ms;
 }
 
+.accordion .control .carat svg + svg {margin-left:16px;}
+
+.dark .accordion .control .carat svg,
+.accordion.dark .control .carat svg {fill:var(--gray-400);}
+
 .accordion.xxl .control .carat svg {
     max-width:32px;
     max-height:32px;
 }
 
-.accordion.expanded .control .carat svg {
+.accordion.expanded .control .carat svg:first-child {
     transform: rotateZ(180deg);
 }
 
 .accordion .content {
     overflow: clip;
     transition: 500ms;
+}
+
+.accordion.bleed .content {
+    padding-left:2.4rem;
+    padding-right:2.4rem;
 }
 
 
@@ -1173,7 +1199,6 @@
 /* TABS */
 .tabs-container {
     width:100%;
-    margin-top:24px;
     overflow:hidden;
     transition:1000ms;
 }
@@ -1203,6 +1228,55 @@
 
 
 /* PAGINATION *************************/
+
+
+/* CARD CAROUSEL SIDE BUTTONS */
+.pag-button {
+    position:absolute;
+    top:0;
+    height:100%;
+    padding:8px;
+    padding-bottom:32px;
+    transition:500ms;
+    cursor: pointer;
+    z-index:1;
+}
+
+.pag-button.inactive {
+    pointer-events: none;
+    opacity: 0;
+}
+
+.pag-button svg {
+    fill: var(--cobalt-600);
+}
+
+.pag-button.inactive svg {
+    fill: var(--gray-300);
+}
+
+.pag-button.prev {
+    left:0;
+    border-right:1px solid var(--gray-300);
+    box-shadow: 2px 0px 6px #3333;
+}
+
+.pag-button.next {
+    right:0;
+    border-left:1px solid var(--gray-300);
+    box-shadow: -2px 0px 6px #3333;
+}
+
+.pag-button .icon {
+    position:relative;
+    top:0%;
+    transition:500ms;
+}
+
+.pag-button.prev:hover .icon {transform: translateX(-8px);}
+.pag-button.next:hover .icon {transform: translateX(8px);}
+
+/* BOTTOM PAGINATION */
 
 .pagination {
     position:relative;
@@ -1240,6 +1314,7 @@
 .pagination.extended .pag-bar {
     /*box-shadow: 2px 2px 6px #3333;*/
 }
+
 
 .pagination .pag-button {
     width:24px;
@@ -1345,6 +1420,13 @@
     fill: var(--orange-600);
 }
 
+.context.success svg {
+    fill: var(--green-600);
+}
+
+.context.alert svg {
+    fill: var(--red-600);
+}
 
 
 /* FAVORITE ICON **********************************************/
