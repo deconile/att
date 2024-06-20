@@ -8,10 +8,10 @@ $(window).on('resize',function(){
 });
 
 $(window).on('scroll',function(){
-    clearTimeout(scrollControls);
-    scrollControls = setTimeout(function(){
+    // clearTimeout(scrollControls);
+    // scrollControls = setTimeout(function(){
         centerControls()
-    },200);
+    // },200);
     
 });
 
@@ -25,7 +25,7 @@ function setPages(){
 
         //CALCULATE PAGINATION
         cardWidth = $(this).find('.overflow-container').find('.plan-card').first().outerWidth();
-        $(this).attr('data-dis',(cardWidth - 32));
+        $(this).attr('data-dis',(cardWidth - 28));
         let cardAmt = $(this).find('.overflow-container').children().length;
         let carouselWidth = cardWidth * cardAmt;
         let ex = carouselWidth - $(this).innerWidth();
@@ -43,6 +43,7 @@ function setPages(){
 
         let addAmt = Math.ceil(ex / cardWidth) + 1;
         $(this).attr('data-pages',addAmt)
+
 
         for(c = 0; c < addAmt; c++){
             $(this).siblings().find('.pag-bubbles').append(bubbleElem);
@@ -93,9 +94,6 @@ function cardCarousel(){
             let dis = parseInt($(this).parents('.card-set').children('.card-carousel').attr('data-dis'));
             let gap = parseInt($(this).parents('.card-set').children('.card-carousel').children('.overflow-container').css('gap'));
             $(this).parents('.card-set').children('.card-carousel').children('.overflow-container').scrollLeft((dis + gap) * page);
-
-            console.log(dis);
-            console.log(gap);
         });
 
     });
@@ -107,19 +105,23 @@ function centerControls(){
     let scrPos = $(document).scrollTop();
 
     $('.card-carousel').children('.overflowing').each(function(){
-        let control = $(this).parent().children('.pag-control').children('.icon');
+        let control = $(this).parent().children('.pag-control').children('svg');
         let yPos = Math.ceil($(this).parent().offset().top);
         let pos = Math.ceil(((yPos) - (scrPos + middle)));
         let carH = $(this).parent().outerHeight();
         let fPos = Math.ceil(((pos / carH) * 100) * -1);
 
-        if(fPos <= 0){
-            fPos = 0;
-        } else if(fPos >= 100){
-            fPos = 100;
+        if($('.card-carousel').outerHeight() > $(window).innerHeight()){
+            if(fPos <= 5){
+                fPos = 5;
+            } else if(fPos >= 100){
+                fPos = 100;
+            }
+            
+            control.css('top',fPos+'%')
+        } else {
+            control.css('top','50%')
         }
-        
-        control.css('top',fPos+'%')
     });
 }
 
@@ -136,16 +138,12 @@ const pagTemplate = `
 
 const prevTemplate = `
 <div class="prev pag-control pag-button base inactive">
-    <div class="icon px32">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path class="svg-base" d="M38.13 43.29l-1.41 1.42L24 32l12.72-12.71 1.41 1.42L26.84 32zM32 62a30 30 0 1130-30 30 30 0 01-30 30zm0-2A28 28 0 104 32a28 28 0 0028 28z"/></svg>
-    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M19.73 26.71L9 16 19.73 5.29l1.41 1.42L11.85 16l9.29 9.29z"/></svg>
 </div>
 `
 
 const nextTemplate = `
 <div class="next pag-control pag-button base">
-    <div class="icon px32">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path class="svg-base" d="M25.87 20.71l1.41-1.42L40 32 27.28 44.71l-1.41-1.42L37.16 32zM32 2A30 30 0 112 32 30 30 0 0132 2zm0 2a28 28 0 1028 28A28 28 0 0032 4z"/></svg>
-    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M12.27 26.71l-1.41-1.42L20.15 16l-9.29-9.29 1.41-1.42L23 16z"/></svg>
 </div>
 `

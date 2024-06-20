@@ -22,6 +22,8 @@ $(window).load(function(){
 
         //TOOLTIP
         tooltip();
+        //REVEALS
+        reveal();
         
         //ACCORDION
         setAccordionHeights();
@@ -29,9 +31,6 @@ $(window).load(function(){
         sizeMatchingAccordions();
         accordion();
         collapseAllAccordions();
-
-        //REVEALS
-        reveal();
 
         //NAVIGATION COMPONENTS
         tabs(); //TABS
@@ -284,20 +283,10 @@ function iconCard(){
 
 // CHECKBOX //////////////////////////////////////////////////
 function checkBox(){
-    let checkbox = $('.checkbox');
+    let checkbox = $('.check');
 
     checkbox.on('click', function(){
-        if(!$(this).hasClass('active')){
-            $(this).addClass('active');
-        } else {
-            $(this).removeClass('active');
-        }
-
-        if(!$(this).parents('.card').hasClass('active')){
-            $(this).parents('.card').addClass('active');
-        } else {
-            $(this).parents('.card').removeClass('active');
-        }
+        $(this).toggleClass('active');
     });
 }
 
@@ -493,7 +482,6 @@ function accordion(){
     //GET HEIGHT OF CONTENT
     accordion.each(function(){
         //APPLY CONTENT HEIGHT
-        let ah = $(this).find('.content').attr('data');
 
         $(this).find('.control').on('click', function(e){
             e.stopPropagation();
@@ -512,7 +500,7 @@ function accordion(){
             } else {
                 if(!$(this).parent().hasClass('expanded')){
                     $(this).parent().addClass('expanded');
-                    $(this).siblings('.content').css('height',ah+'px');
+                    $(this).siblings('.content').css('height',$(this).siblings('.content').attr('data')+'px');
                 } else {
                     $(this).parent().removeClass('expanded');
                     $(this).siblings('.content').css('height','0px');
@@ -537,7 +525,7 @@ function accordion(){
 function reveal(){
     $('.reveal').each(function(){
         $(this).attr('data',$(this).outerHeight());
-        $(this).css('height','0px')
+        $(this).css('height','0px');
     });
 }
 

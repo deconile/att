@@ -29,7 +29,6 @@ html, body, #page-grid {
 }
 
 body {
-    overflow-x:hidden;
     color:var(--gray-800);
     transition: 1000ms;
     scroll-behavior: smooth;
@@ -550,7 +549,11 @@ a.line:hover {text-decoration:none;}
     font-size:var(--type-sm)!important;
     color: var(--gray-600);
     text-decoration: line-through;
-    font-weight:400;
+    font-weight:700;
+}
+
+.price .description, .price .disclosure {
+    font-size:var(--type-legal)!important;
 }
 
 
@@ -615,6 +618,8 @@ svg {
     width:100%;
     fill:var(--gray-800);
 }
+
+.icon {flex-shrink: 0;}
 .icon.px16 {
     max-width:16px;
     max-height:16px;
@@ -935,30 +940,30 @@ footer .copy a:hover {
 
     :root {
 
-        --heading-xxxs: 1.0rem;
-        --heading-xxs: 1.1rem;
-        --heading-xs: 1.2rem;
-        --heading-sm: 1.6rem;
-        --heading-md: 2.0rem;
-        --heading-lg: 2.4rem;
-        --heading-xl: 2.8rem;
-        --heading-xxl: 3.2rem;
-        --heading-xxxl: 3.6rem;
+        --heading-xxxs: 1.1rem;
+        --heading-xxs: 1.2rem;
+        --heading-xs: 1.4rem;
+        --heading-sm: 1.8rem;
+        --heading-md: 2.2rem;
+        --heading-lg: 2.8rem;
+        --heading-xl: 3.4rem;
+        --heading-xxl: 3.8rem;
+        --heading-xxxl: 4.2rem;
 
         --type-xxs: 1.0rem;
-        --type-xs: 1.1rem;
-        --type-sm: 1.4rem;
-        --type-base: 1.6rem;
-        --type-lg: 1.8rem;
+        --type-xs: 1.2rem;
+        --type-sm: 1.5rem;
+        --type-base: 1.7rem;
+        --type-lg: 2.0rem;
 
-        --eyebrow-sm: 1.2rem;
-        --eyebrow-md: 1.4rem;
-        --eyebrow-lg: 1.6rem; 
-        --eyebrow-xl: 2.0rem;
-        --eyebrow-xxl: 2.2rem;
-        --eyebrow-xxxl: 2.4rem;
+        --eyebrow-sm: 1.4rem;
+        --eyebrow-md: 1.6rem;
+        --eyebrow-lg: 1.8rem; 
+        --eyebrow-xl: 2.2rem;
+        --eyebrow-xxl: 2.4rem;
+        --eyebrow-xxxl: 2.6rem;
 
-        --type-legal: 1.1rem;
+        --type-legal: 1.2rem;
 
     }
 
@@ -1065,14 +1070,15 @@ footer .copy a:hover {
     .flex.xl, .grid.xl {gap:48px;}
     .flex.lg, .grid.lg {gap:24px;}
     .flex.md, .grid.md {gap:16px;}
-    .flex.sm, .grid.sm {gap:8px;}
-    .flex.xs, .grid.xs {gap:4px;}
+
+    .flex.center-m {justify-content: center;}
 
     /* HIDE COMPONENTS */
     .mb-hide {display:none!important;}
     
     /* MAIN */
     .max-width-background .container {padding-left:24px;padding-right:24px;}
+    .max-width-background .container.bleed {padding-left:0;padding-right:0;}
 
     /* FOOTER */
     footer .social ul {

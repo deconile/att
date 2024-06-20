@@ -85,7 +85,7 @@ function displayProgress(){
 const progressTemplate = `
 <div id="progress-indicator">
     <div id="progress-indicator-block" class="max-width-background base">
-        <div id="progress-indicator-container">
+        <div id="progress-indicator-container" class="container">
             <div class="header">
                 <div class="title">
                     <div class="eyebrow sm"></div>
@@ -99,7 +99,7 @@ const progressTemplate = `
             <div class="breadcrumbs">
                 <div class="content">
                     <div class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path class="svg-base" d="M37 10H27V8h10zm13 47V7a5 5 0 00-5-5H19.13A5.13 5.13 0 0014 7.13v49.74A5.13 5.13 0 0019.13 62H45a5 5 0 005-5zM45 4a3 3 0 013 3v50a3 3 0 01-3 3H19.13A3.13 3.13 0 0116 56.87V7.13A3.13 3.13 0 0119.13 4z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M22 31H10a3 3 0 01-3-3V4a3 3 0 013-3h12a3 3 0 013 3v24a3 3 0 01-3 3zM10 3a1 1 0 00-1 1v24a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1zm9 2h-6v2h6z"/></svg>
                     </div>
                     <div class="tab-container">
                         

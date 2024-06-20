@@ -232,9 +232,6 @@
 
 /* PLAN CARD *************************/
 .card.plan .icon-button {
-    position:absolute;
-    bottom:2.4rem;
-    right:2.4rem;
     transform: translateY(0);
     opacity: 1;
     pointer-events: none;
@@ -489,7 +486,7 @@
 
 .card-carousel > .overflow-container > * {
     width:100%;
-    min-width: calc(33% - 3.2rem);
+    min-width: calc(33% - 1.6rem);
 }
 
 .card-carousel.dual > .overflow-container > * {min-width: calc(50% - 3.2rem);}
@@ -507,7 +504,7 @@
     .card-carousel > .overflow-container.overflowing {padding-left:0;padding-right:0;
 }
     .max-width-background .card-carousel > .overflow-container.overflowing {padding-left:3.2rem;padding-right:3.2rem;}
-    .card-carousel > .overflow-container.overflowing > * {min-width: calc(33% - 3.2rem);}
+    .card-carousel > .overflow-container.overflowing > * {min-width: calc(33% - 1.6rem);}
     .card-carousel.dual > .overflow-container.overflowing > * {min-width: calc(50% - 3.2rem);}
 }
 
@@ -536,13 +533,8 @@
         left:-1.6rem;
     }
 
-    .card.plan .icon-button {
-        bottom:1.6rem;
-        right:1.6rem;
-    }
-
     .card-carousel > .overflow-container.overflowing {padding-left:2.4rem;padding-right:2.4rem;}
 
     .card-carousel > .overflow-container > *,
-    .card-carousel.dual > .overflow-container > * {min-width: calc(100% - 0px);}
+    .card-carousel.dual > .overflow-container > * {min-width: calc(100% - 16px);}
 }

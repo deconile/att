@@ -107,9 +107,9 @@ const footerTemplate = `
                 <div class="myatt">
                     <div><img src="images/logo/myatt_logo_rgb_blu_pos_R.png" /></div>
                     <div>Manage Your AT&T<sup>®</sup> Account Whenever & Wherever You Want.</div>
-                    <a href="" class="link">
+                    <a href="" class="link xs">
                         <div>Learn about the myAT&T app</div>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path class="svg-base" d="M6.64 13.35l-.71-.7L10.58 8 5.93 3.35l.71-.7L12 8z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M6.18535 12.4935L5.02612 11.3012L8.20922 7.9935L5.02612 4.68585L6.18535 3.4935L10.5217 7.9935L6.18535 12.4935Z" /></svg>
                     </a>
                 </div>
             </div>

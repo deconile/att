@@ -1,5 +1,7 @@
 
 
+/* STRUCTURE */
+main section:first-of-type {margin-top:0!important;}
 
 
 /* BANNER SECTIONS */
@@ -69,45 +71,6 @@
     border-radius: 1.6rem;
 }
 
-/* TABLET  */
-@media only screen and (max-width: 1024px) {
-    .hero .content {padding:3.2rem;}
-
-    .rtbs {grid-template-columns: repeat(2,1fr);}
-}
-
-/* MOBILE */
-@media only screen and (max-width: 480px) {
-    .hero {
-        grid-template-columns: auto;
-        grid-template-rows: 230px auto;
-        background-color: transparent;
-    }
-
-    .hero .content {
-        padding:2.4rem;
-        order:1;
-        text-align: center;
-    }
-
-    .hero .content.grad-brand,
-    .hero .content.grad-brand-dark {
-        background-image: none;
-        color:var(--gray-800);
-    }
-
-    .hero .image::before {
-        left:0;
-        bottom:-1px;
-        background-image: url(../images/lifestyle/hero_image_embrace_mobile.png);
-        background-position: center bottom;
-    }
-
-    #header .flex.middle {justify-content: center;}
-
-    .rtbs {flex-direction: column;}
-}
-
 
 /* SIDE PANEL *********************************/
 aside {
@@ -127,7 +90,7 @@ aside {
 aside.left {left:0;}
 aside.right {right:0;}
 
-aside.left::before, aside.right::before {
+aside.can-hover.left::before, aside.can-hover.right::before {
     content: '';
     position:absolute;
     top:0;
@@ -136,12 +99,13 @@ aside.left::before, aside.right::before {
     background-color:transparent;
 }
 
-aside.left::before {right:-30px;}
-aside.right::before {left:-30px;}
+aside.can-hover.left::before {right:-30px;}
+aside.can-hover.right::before {left:-30px;}
 
 /* WIDTHS */
 aside.full {width:100vw;}
 aside.half {width:50vw;}
+aside.third {width:33vw;}
 aside.quarter {width:25vw;}
 aside.cards {width:750px;}
 
@@ -215,6 +179,65 @@ aside .close {
     top:8px;
     padding:0;
     cursor: pointer;
+}
+
+
+/* MEDIA QUERIES *******************************/
+@media only screen and (min-width: 1601px) {
+
+}
+
+@media only screen and (max-width: 1325px) {
+    aside.quarter {width:33vw;}
+}
+
+
+/* TABLET  */
+@media only screen and (max-width: 1024px) {
+    .hero .content {padding:3.2rem;}
+
+    .rtbs {grid-template-columns: repeat(2,1fr);}
+
+    aside > section {padding:3.2rem;}
+    aside.third {width:50vw;}
+    aside.quarter {width:50vw;}
+}
+
+/* MOBILE */
+@media only screen and (max-width: 480px) {
+    .hero {
+        grid-template-columns: auto;
+        grid-template-rows: 230px auto;
+        background-color: transparent;
+    }
+
+    .hero .content {
+        padding:2.4rem;
+        order:1;
+        text-align: center;
+    }
+
+    .hero .content.grad-brand,
+    .hero .content.grad-brand-dark {
+        background-image: none;
+        color:var(--gray-800);
+    }
+
+    .hero .image::before {
+        left:0;
+        bottom:-1px;
+        background-image: url(../images/lifestyle/hero_image_embrace_mobile.png);
+        background-position: center bottom;
+    }
+
+    #header .flex.middle {justify-content: center;}
+
+    aside > section {padding:2.4rem;}
+    aside.half {width:100vw;}
+    aside.third {width:100vw;}
+    aside.quarter {width:100vw;}
+
+    .rtbs {flex-direction: column;}
 }
 
 

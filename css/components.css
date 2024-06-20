@@ -149,7 +149,8 @@
     border-radius: 128px;
     cursor:pointer;
     transition: 500ms;
-    padding:1.2rem
+    padding:1.2rem;
+    max-width:fit-content;
 }
 
 .icon-button svg {
@@ -184,24 +185,25 @@
     align-items: center;
     gap:4px;
     color:var(--cobalt-600);
-    font-size:var(--type-sm);
+    font-size:var(--type-base);
     font-weight:700;
     transition:500ms;
+    width:max-content;
+    cursor: pointer;
 }
 
 .link svg {
-    width:16px;
-    height:16px;
+    width:18px;
+    height:18px;
     fill:var(--cobalt-600);
 }
 
-.link.sm {
-    font-size:var(--type-xs);
-}
+.link.sm {font-size:var(--type-sm);}
+.link.xs {font-size:var(--type-xs);}
 
-.link.sm svg {
-    width:12px;
-    height:12px;
+.link.sm svg, .link.xs svg {
+    width:16px;
+    height:16px;
 }
 
 .link:hover {
@@ -247,10 +249,18 @@
 
 
 /* CHECKBOX **********************************************/
+.check {
+    display:flex;
+    gap:8px;
+    align-items: center;
+    cursor:pointer;
+}
+
 .checkbox {
     display:flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
     width:24px;
     height:24px;
     background-color:#fff;
@@ -260,22 +270,23 @@
     cursor:pointer;
 }
 
-.checkbox svg {
-    max-width: 16px;
-    max-height: 16px;
-    opacity: 0;
-    transition: 300ms;
+.checkbox::after {
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath class='svg-base' d='M5.67 13.37l-5-5 .7-.7L5.67 12l9-9 .7.71z' style='fill:white;' /%3E%3C/svg%3E ");
+    width:16px;
+    height:16px;
+    opacity:0;
+    transition: 500ms;
 }
 
-.checkbox.active {
+.check.active .checkbox {
     background-color:var(--cobalt-600);
     border:1px solid transparent;
 }
 
-.checkbox.active svg {
-    fill: #fff;
-    opacity: 1;
+.check.active .checkbox::after {
+    opacity:1;
 }
+
 
 
 
@@ -436,7 +447,7 @@
 
 #progress-indicator #progress-indicator-block {
     width:100%;
-    padding:2.4rem;
+    padding:2.4rem 0;
     position: relative;
     overflow: visible;
 }
@@ -484,6 +495,7 @@
     display:grid;
     grid-template-columns: auto 1fr auto;
     gap:8px;
+    max-width:inherit;
 }
 
 #progress-indicator .breadcrumbs .icon {
@@ -571,7 +583,7 @@
 
 #sticky-footer {
     position:sticky;
-    padding:8px 24px;
+    padding:8px 32px;
     margin-top:32px;
     background-color:#fff;
     border-top: 1px solid var(--cobalt-600);
@@ -580,7 +592,7 @@
 }
 
 #sticky-footer-container {
-    max-width:160rem;
+    max-width:132.4rem;
     margin:auto;
     position: relative;
 }
@@ -970,7 +982,7 @@
 /* REVEAL HIDDEN ELEMENTS *********************************/
 .reveal {
     overflow:hidden;
-    transition: 1000ms;
+    transition: 500ms;
 }
 
 
@@ -982,6 +994,7 @@
 .accordion {
     border-top:1px solid var(--gray-300);
     border-bottom:1px solid var(--gray-300);
+    transition: 500ms;
 }
 
 .accordion.noborder {
@@ -1002,7 +1015,7 @@
     padding-bottom:24px;
 }
 
-.accordion.small.expanded {
+.accordion.sm.expanded {
     padding-bottom:16px;
 }
 
@@ -1018,10 +1031,10 @@
     align-items: center;
     gap:16px;
     cursor:pointer;
-    transition: 500ms;
+    user-select: none;
 }
 
-.accordion.small .control {
+.accordion.sm .control {
     padding:16px 0;
 }
 
@@ -1043,11 +1056,14 @@
     display:flex;
     align-items: center;
     gap:8px;
-    font-size:var(--heading-xs);
+    font-size:var(--heading-sm);
     font-weight:700;
-    transition:500ms;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    transition: 500ms;
 }
 
+.accordion.sm .control .label {font-size:var(--heading-xs);}
 .accordion.xxl .control .label {font-size:var(--heading-xxl);}
 
 .accordion .control .carat {
@@ -1105,6 +1121,20 @@
     padding:32px;
     background-color:var(--gray-100);
     border-radius: 16px;
+}
+
+/* INACTIVE */
+.accordion.inactive {
+    pointer-events: none;
+    background-color:var(--gray-200);
+}
+
+.accordion.inactive .control .label {color:var(--gray-400);}
+.accordion.inactive .carat svg {fill:var(--gray-400);}
+
+.accordion.inactive svg.eye {
+    pointer-events: all;
+    /* fill:var(--gray-600); */
 }
 
 
@@ -1209,6 +1239,22 @@
 }
 
 
+
+
+/* HEADBAND **********************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* OVERFLOW CONTAINER **********************************************/
 
 .overflow-container {
@@ -1232,14 +1278,12 @@
 
 /* CARD CAROUSEL SIDE BUTTONS */
 .pag-button {
-    position:absolute;
-    top:0;
-    height:100%;
-    padding:8px;
-    padding-bottom:32px;
+    position:relative;
     transition:500ms;
     cursor: pointer;
     z-index:1;
+    padding-top:32px;
+    padding-bottom:32px;
 }
 
 .pag-button.inactive {
@@ -1248,7 +1292,9 @@
 }
 
 .pag-button svg {
-    fill: var(--cobalt-600);
+    width:32px;
+    height:32px;
+    fill: var(--gray-500);
 }
 
 .pag-button.inactive svg {
@@ -1267,14 +1313,13 @@
     box-shadow: -2px 0px 6px #3333;
 }
 
-.pag-button .icon {
+.pag-button svg {
     position:relative;
-    top:0%;
-    transition:500ms;
+    transition:500ms, top 200ms ease-out;
 }
 
-.pag-button.prev:hover .icon {transform: translateX(-8px);}
-.pag-button.next:hover .icon {transform: translateX(8px);}
+.pag-button.prev:hover svg {transform: translateX(-8px);}
+.pag-button.next:hover svg {transform: translateX(8px);}
 
 /* BOTTOM PAGINATION */
 
@@ -1399,18 +1444,22 @@
     gap:8px;
 }
 
-.context p {
-    font-size:var(--type-sm);
-}
+.context p {font-size:var(--type-sm);}
 
 .context > div {
+    width:24px;
     height:24px;
-    margin-top:-2px;
+    flex:1;
 }
 
-.context svg {
-    height:24px;
+.context.sm, .context.xs {gap:4px;}
+.context.sm p {font-size:var(--type-xs);}
+.context.sm > div, .context.xs > div {
+    width:16px;
+    height:16px;
 }
+
+.context.xs p {font-size:var(--type-xxs);}
 
 .context.info svg {
     fill: var(--cobalt-600);
@@ -1587,7 +1636,6 @@
 
 
     /* PROGRESS INDICATOR */
-    #progress-indicator #progress-indicator-block {padding:2.4rem;}
 
     #progress-indicator .progress-bar {display:block;}
     #progress-indicator .step-count {display:flex;}
@@ -1647,7 +1695,7 @@
         width:100%;
     }
 
-    #progress-indicator #progress-indicator-block {padding:1.6rem;}
+    #progress-indicator #progress-indicator-block {padding:1.6rem 0;}
 
     /* STICKY FOOTER */
     #footer-cta {grid-row: auto;}
@@ -1676,6 +1724,8 @@
     .tabs > .list > div {padding:4px 24px;}
     .tabs > .list > div.active {padding:4px 16px;}
 
-    /* TOOLTIP */
+    /* CAROUSEL */
+
+    .pag-button.prev, .pag-button.next {display:none;}
     
 }

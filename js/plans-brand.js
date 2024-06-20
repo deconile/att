@@ -11,6 +11,7 @@ $(window).on('resize',function(){
 var planKey;
 var lines = 1;
 var sigDiscount = 0;
+var abp = 0;
 
 function disableContinue(){
     $('#continue').addClass('inactive');
@@ -29,8 +30,8 @@ function loadPlans(){
 
             const plancard = `
             <div class="plan-card flex col md">
-                <div class="card plan base border md radio">
-                    <div class="content flex col sm">
+                <div class="card plan base border shadow md radio">
+                    <div class="content flex col md">
                         <div class="plan-name">
                             <h3>${plans[planKey][p].plan}</h3>
                             <div class="legal bold speed">${plans[planKey][p].speed}</div>
@@ -39,23 +40,26 @@ function loadPlans(){
                         <div class="desc"><h6>${plans[planKey][p].desc}</h6></div>
                         <div class="hr"></div>
                         <div class="plan-price flex sm spaced bottom">
-                            <div class="flex col">
+                            <div class="flex col xs">
                                 <div class="price detailed">
                                     <div class="price lg">
-                                        <div class="strikethrough plan">${Math.ceil(plans[planKey][p].price[lines - 1]).toFixed(2)}</div>
-                                        <div class="price-point plan">${Math.ceil(plans[planKey][p].price[lines - 1] - 10 - sigDiscount).toFixed(2)}</div>
+                                        <div class="price-point plan">${Math.abs(plans[planKey][p].price[lines - 1] - abp - sigDiscount).toFixed(2)}</div>
+                                        <div class="disclosure">Taxes & fees extra</div>
                                     </div>
                                 </div>
-                                
+                            </div>
+                            <div class="icon-button lg" onClick="">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M17 15h6v2h-6v6h-2v-6H9v-2h6V9h2z"/></svg>
                             </div>
                         </div>
-                        <div class="icon-button lg" onClick="">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M17 15h6v2h-6v6h-2v-6H9v-2h6V9h2z"/></svg>
-                        </div>
+
                     </div>
                     
                 </div>
-                <div class="legal"><a href="">Read the legal stuff</a></div>
+
+                <div>
+                    <p class="legal"><a href="">Read the legal stuff</a></p>
+                </div>
                 
             </div>
             `
@@ -210,7 +214,7 @@ function nutritionLabels(){
             card.find('#nl').attr('id',planKey+'-nl');
             
             //ADD LABEL CONTENT
-            card.find('#'+planKey+'-nl').find('.price-point').html(Math.ceil(plans[planKey][p].price[lines - 1]).toFixed(2) + '*');
+            card.find('#'+planKey+'-nl').find('.price-point').html(Math.abs(plans[planKey][p].price[lines - 1]).toFixed(2) + '*');
             card.find('#'+planKey+'-nl').find('.plan-title').html(plans[planKey][p].plan);
             
         }
@@ -257,21 +261,6 @@ function applyCardClick(){
         setTimeout(function(){
             card.parents('.tab-content').attr('data-height',card.parents('.tab-content').children().outerHeight());
         },1000);
-        
-        //REVEAL BOLTONS
-        // if(!$(this).hasClass('has-bolton')){
-        //     $('#boltons').css('height',parseInt($('#boltons').attr('data'))+'px');
-        // } else {
-        //     $('#boltons').css('height','0px');
-        // }
-
-        //CLOSE BOLT-ONS PANEL
-        // if(!$(this).hasClass('has-bolton')){
-        //     $('#boltons').addClass('out').removeClass('can-hover');
-        //     $('#boltons').find('.card').removeClass('active');
-        // } else {
-        //     $('#boltons').addClass('can-hover');
-        // }
 
         //ACTIVATE CONTINUE
         $('#continue').removeClass('inactive');
@@ -296,7 +285,7 @@ const boltOn = `
 const featuresTemplate = `
 <div id="features" class="accordion matching">
     <div class="control tab-adjust">
-        <h5>Compare features</h5>
+        <div class="label">Compare features</div>
         <div class="carat">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path class="svg-base" d="M8 11.05L2.65 5.7l.7-.7L8 9.63 12.65 5l.7.71z"/></svg>
         </div>
@@ -360,7 +349,7 @@ const plans = {
             promo : '',
             promoIcon : '',
             plan : 'AT&T Unlimited <span class="nowrap">Premium<sup>®</sup> PL</span>',
-            price : [95.00,85.00,70.00,60.00,55.00],
+            price : [95.99,85.99,70.99,60.99,55.99],
             speed : "Can't slow down based on how much you use.",
             icons : [car, gaming, stream],
             desc : "Ideal for people on the go, gaming, and video streaming.",
@@ -397,7 +386,7 @@ const plans = {
             promo : '',
             promoIcon : '',
             plan : 'AT&T Unlimited <span class="nowrap">Extra<sup>®</sup> EL</span>',
-            price : [85.00,75.00,60.00,50.00,45.00],
+            price : [85.99,75.99,60.99,50.99,45.99],
             speed : "After 75GB, AT&T may temporarily slow data speeds if the network is busy.",
             icons : [share, message, personstar],
             desc : "Perfect for staying connected with friends and family.",
@@ -428,7 +417,7 @@ const plans = {
             promo : '',
             promoIcon : '',
             plan : 'AT&T Unlimited <span class="nowrap">Starter<sup>®</sup> SL</span>',
-            price : [75.00,70.00,55.00,45.00,40.00],
+            price : [75.99,70.99,55.99,45.99,40.99],
             speed : "AT&T may temporarily slow data speeds if the network is busy.",
             icons : [persongroup, smartphone, piggy],
             desc : "Great for the whole family or your first mobile device.",
@@ -454,68 +443,68 @@ const plans = {
                 },
             ]
         },
-        {
-            lifestyle : 'images/lifestyle/plan-4.jpg',
-            promo : '',
-            promoIcon : '',
-            plan : 'AT&T Unlimited Sampler SL',
-            price : [65.00,60.00,45.00,35.00,20.00],
-            speed : "AT&T may temporarily slow data speeds if the network is busy.",
-            icons : [car, gaming, fourk],
-            desc : "Budget friendly if you don't need all the bells & whistles",
-            bolton : false,
-            features : [
-                {
-                    icon : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" fill-rule="evenodd" clip-rule="evenodd" d="M7.05 11.05c-.56.42-1.08.88-1.56 1.36A19.84 19.84 0 0 0 1.27 19 15.09 15.09 0 0 1 17.69 1.1c.29.2.59.43.88.72a18.25 18.25 0 0 1 4.37 6.9c.14.38.25.78.35 1.18a14.92 14.92 0 0 0-16.24 1.16Zm17.42-2.7a14.76 14.76 0 0 1 .77 4.61c.02 2.22-.43 4.53-1.46 6.71-1.15 2.42-3 4.69-5.64 6.28l.09.03.09.03a16.85 16.85 0 0 0 7.84.44c.4-.07.75-.18 1.07-.3A15.07 15.07 0 0 0 31 16.13C31 9.4 26.65 3.72 20.69 1.86a19.6 19.6 0 0 1 3.78 6.48Zm-1.58 19.72c-1.84 0-3.75-.25-5.48-.77a14.52 14.52 0 0 1-3.2-1.4A15 15 0 0 1 6.76 13l-.41.4a17.9 17.9 0 0 0-4.23 6.86c-.14.42-.22.8-.27 1.18A15.04 15.04 0 0 0 15.89 31c3.43 0 6.58-1.14 9.11-3.05-.68.08-1.4.12-2.11.12Z"/></svg>',
-                    bullet : 'Basic security',
-                    tooltip : 'Download the free AT&T ActiveArmor mobile security app with a compatible smartphone to get advanced features like Public Wi-Fi Protection and Identity Monitoring. You\'ll automatically get 24/7 proactive network security.',
-                    legal : 'Free app with Spam Call Blocking and more.',
-                },
-                {
-                    icon : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M3 16a12.92 12.92 0 003.81 9.19l-1.42 1.42a15 15 0 010-21.22l1.42 1.42A12.92 12.92 0 003 16zm5.92-7.1a10 10 0 000 14.2l1.42-1.41a8 8 0 010-11.38zm17.65-3.53l-1.41 1.41a13 13 0 010 18.39l1.41 1.41a15 15 0 000-21.21zM23 8.87l-1.41 1.42a8 8 0 010 11.38L23 23.08a10 10 0 000-14.21zM21 16a5 5 0 11-5-5 5 5 0 015 5zm-2 0a3 3 0 10-3 3 3 3 0 003-3z"/></svg>',
-                    bullet : '1GB mobile hotspot per line',
-                    tooltip : 'After 1GB, mobile hotspot speed slowed to a maximum of 128Kbps.',
-                    legal : false,
-                },
-                {
-                    icon : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M14.83 16.5a2.26 2.26 0 01.23 1.07 2.29 2.29 0 01-.84 1.88 3.54 3.54 0 01-2.31.69 5.94 5.94 0 01-1.53-.14 4.5 4.5 0 01-1.28-.51L9.58 18a5 5 0 002.23.53q1.41 0 1.41-.81a.57.57 0 00-.12-.37 1 1 0 00-.4-.28 6.43 6.43 0 00-.86-.29l-.49-.14a3.16 3.16 0 01-1.54-.84 2.11 2.11 0 01-.49-1.46A2.43 2.43 0 019.68 13a2.31 2.31 0 011-.85 4 4 0 011.57-.29 5.42 5.42 0 011.32.16 4.47 4.47 0 011.16.47l-.43 1.41a3.68 3.68 0 00-.92-.31 4.27 4.27 0 00-1-.12c-.84 0-1.25.26-1.25.77a.61.61 0 00.26.52 2.62 2.62 0 00.87.36l.49.14a5.58 5.58 0 011.33.52 1.88 1.88 0 01.75.72zm7.58-2.61a4.4 4.4 0 01.48 2.1 4.43 4.43 0 01-.5 2.15A3.32 3.32 0 0121 19.52a4.56 4.56 0 01-2.14.48h-2.92v-8h2.89a4.53 4.53 0 012.18.49 3.4 3.4 0 011.4 1.4zM21.05 16a2.59 2.59 0 00-.59-1.81 2.1 2.1 0 00-1.63-.64h-1.09v4.9h1.09a2.07 2.07 0 001.63-.64 2.59 2.59 0 00.59-1.81zM31 9v14a3 3 0 01-3 3H4a3 3 0 01-3-3V9a3 3 0 013-3h24a3 3 0 013 3zm-2 0a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1h24a1 1 0 001-1z"/></svg>',
-                    bullet : 'Standard definition streaming',
-                    tooltip : false,
-                    legal : false,
-                },
-            ]
-        },
-        {
-            lifestyle : 'images/lifestyle/plan-5.jpg',
-            promo : '',
-            promoIcon : '',
-            plan : 'AT&T Unlimited Appetizer AL',
-            price : [55.00,50.00,35.00,25.00,10.00],
-            speed : "AT&T may temporarily slow data speeds if the network is busy.",
-            icons : [car, gaming, fourk],
-            desc : "The least amount of unlimited for lowest price",
-            bolton : false,
-            features : [
-                {
-                    icon : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" fill-rule="evenodd" clip-rule="evenodd" d="M7.05 11.05c-.56.42-1.08.88-1.56 1.36A19.84 19.84 0 0 0 1.27 19 15.09 15.09 0 0 1 17.69 1.1c.29.2.59.43.88.72a18.25 18.25 0 0 1 4.37 6.9c.14.38.25.78.35 1.18a14.92 14.92 0 0 0-16.24 1.16Zm17.42-2.7a14.76 14.76 0 0 1 .77 4.61c.02 2.22-.43 4.53-1.46 6.71-1.15 2.42-3 4.69-5.64 6.28l.09.03.09.03a16.85 16.85 0 0 0 7.84.44c.4-.07.75-.18 1.07-.3A15.07 15.07 0 0 0 31 16.13C31 9.4 26.65 3.72 20.69 1.86a19.6 19.6 0 0 1 3.78 6.48Zm-1.58 19.72c-1.84 0-3.75-.25-5.48-.77a14.52 14.52 0 0 1-3.2-1.4A15 15 0 0 1 6.76 13l-.41.4a17.9 17.9 0 0 0-4.23 6.86c-.14.42-.22.8-.27 1.18A15.04 15.04 0 0 0 15.89 31c3.43 0 6.58-1.14 9.11-3.05-.68.08-1.4.12-2.11.12Z"/></svg>',
-                    bullet : 'Basic security',
-                    tooltip : 'Download the free AT&T ActiveArmor mobile security app with a compatible smartphone to get advanced features like Public Wi-Fi Protection and Identity Monitoring. You\'ll automatically get 24/7 proactive network security.',
-                    legal : 'Free app with Spam Call Blocking and more.',
-                },
-                {
-                    icon : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M3 16a12.92 12.92 0 003.81 9.19l-1.42 1.42a15 15 0 010-21.22l1.42 1.42A12.92 12.92 0 003 16zm5.92-7.1a10 10 0 000 14.2l1.42-1.41a8 8 0 010-11.38zm17.65-3.53l-1.41 1.41a13 13 0 010 18.39l1.41 1.41a15 15 0 000-21.21zM23 8.87l-1.41 1.42a8 8 0 010 11.38L23 23.08a10 10 0 000-14.21zM21 16a5 5 0 11-5-5 5 5 0 015 5zm-2 0a3 3 0 10-3 3 3 3 0 003-3z"/></svg>',
-                    bullet : '500MB mobile hotspot per line',
-                    tooltip : 'After 500MB, mobile hotspot speed slowed to a maximum of 128Kbps.',
-                    legal : false,
-                },
-                {
-                    icon : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M14.83 16.5a2.26 2.26 0 01.23 1.07 2.29 2.29 0 01-.84 1.88 3.54 3.54 0 01-2.31.69 5.94 5.94 0 01-1.53-.14 4.5 4.5 0 01-1.28-.51L9.58 18a5 5 0 002.23.53q1.41 0 1.41-.81a.57.57 0 00-.12-.37 1 1 0 00-.4-.28 6.43 6.43 0 00-.86-.29l-.49-.14a3.16 3.16 0 01-1.54-.84 2.11 2.11 0 01-.49-1.46A2.43 2.43 0 019.68 13a2.31 2.31 0 011-.85 4 4 0 011.57-.29 5.42 5.42 0 011.32.16 4.47 4.47 0 011.16.47l-.43 1.41a3.68 3.68 0 00-.92-.31 4.27 4.27 0 00-1-.12c-.84 0-1.25.26-1.25.77a.61.61 0 00.26.52 2.62 2.62 0 00.87.36l.49.14a5.58 5.58 0 011.33.52 1.88 1.88 0 01.75.72zm7.58-2.61a4.4 4.4 0 01.48 2.1 4.43 4.43 0 01-.5 2.15A3.32 3.32 0 0121 19.52a4.56 4.56 0 01-2.14.48h-2.92v-8h2.89a4.53 4.53 0 012.18.49 3.4 3.4 0 011.4 1.4zM21.05 16a2.59 2.59 0 00-.59-1.81 2.1 2.1 0 00-1.63-.64h-1.09v4.9h1.09a2.07 2.07 0 001.63-.64 2.59 2.59 0 00.59-1.81zM31 9v14a3 3 0 01-3 3H4a3 3 0 01-3-3V9a3 3 0 013-3h24a3 3 0 013 3zm-2 0a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1h24a1 1 0 001-1z"/></svg>',
-                    bullet : 'Standard definition streaming',
-                    tooltip : false,
-                    legal : false,
-                },
-            ]
-        },
+        // {
+        //     lifestyle : 'images/lifestyle/plan-4.jpg',
+        //     promo : '',
+        //     promoIcon : '',
+        //     plan : 'AT&T Unlimited Sampler SL',
+        //     price : [65.99,60.99,45.99,35.99,20.99],
+        //     speed : "AT&T may temporarily slow data speeds if the network is busy.",
+        //     icons : [car, gaming, fourk],
+        //     desc : "Budget friendly if you don't need all the bells & whistles",
+        //     bolton : false,
+        //     features : [
+        //         {
+        //             icon : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" fill-rule="evenodd" clip-rule="evenodd" d="M7.05 11.05c-.56.42-1.08.88-1.56 1.36A19.84 19.84 0 0 0 1.27 19 15.09 15.09 0 0 1 17.69 1.1c.29.2.59.43.88.72a18.25 18.25 0 0 1 4.37 6.9c.14.38.25.78.35 1.18a14.92 14.92 0 0 0-16.24 1.16Zm17.42-2.7a14.76 14.76 0 0 1 .77 4.61c.02 2.22-.43 4.53-1.46 6.71-1.15 2.42-3 4.69-5.64 6.28l.09.03.09.03a16.85 16.85 0 0 0 7.84.44c.4-.07.75-.18 1.07-.3A15.07 15.07 0 0 0 31 16.13C31 9.4 26.65 3.72 20.69 1.86a19.6 19.6 0 0 1 3.78 6.48Zm-1.58 19.72c-1.84 0-3.75-.25-5.48-.77a14.52 14.52 0 0 1-3.2-1.4A15 15 0 0 1 6.76 13l-.41.4a17.9 17.9 0 0 0-4.23 6.86c-.14.42-.22.8-.27 1.18A15.04 15.04 0 0 0 15.89 31c3.43 0 6.58-1.14 9.11-3.05-.68.08-1.4.12-2.11.12Z"/></svg>',
+        //             bullet : 'Basic security',
+        //             tooltip : 'Download the free AT&T ActiveArmor mobile security app with a compatible smartphone to get advanced features like Public Wi-Fi Protection and Identity Monitoring. You\'ll automatically get 24/7 proactive network security.',
+        //             legal : 'Free app with Spam Call Blocking and more.',
+        //         },
+        //         {
+        //             icon : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M3 16a12.92 12.92 0 003.81 9.19l-1.42 1.42a15 15 0 010-21.22l1.42 1.42A12.92 12.92 0 003 16zm5.92-7.1a10 10 0 000 14.2l1.42-1.41a8 8 0 010-11.38zm17.65-3.53l-1.41 1.41a13 13 0 010 18.39l1.41 1.41a15 15 0 000-21.21zM23 8.87l-1.41 1.42a8 8 0 010 11.38L23 23.08a10 10 0 000-14.21zM21 16a5 5 0 11-5-5 5 5 0 015 5zm-2 0a3 3 0 10-3 3 3 3 0 003-3z"/></svg>',
+        //             bullet : '1GB mobile hotspot per line',
+        //             tooltip : 'After 1GB, mobile hotspot speed slowed to a maximum of 128Kbps.',
+        //             legal : false,
+        //         },
+        //         {
+        //             icon : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M14.83 16.5a2.26 2.26 0 01.23 1.07 2.29 2.29 0 01-.84 1.88 3.54 3.54 0 01-2.31.69 5.94 5.94 0 01-1.53-.14 4.5 4.5 0 01-1.28-.51L9.58 18a5 5 0 002.23.53q1.41 0 1.41-.81a.57.57 0 00-.12-.37 1 1 0 00-.4-.28 6.43 6.43 0 00-.86-.29l-.49-.14a3.16 3.16 0 01-1.54-.84 2.11 2.11 0 01-.49-1.46A2.43 2.43 0 019.68 13a2.31 2.31 0 011-.85 4 4 0 011.57-.29 5.42 5.42 0 011.32.16 4.47 4.47 0 011.16.47l-.43 1.41a3.68 3.68 0 00-.92-.31 4.27 4.27 0 00-1-.12c-.84 0-1.25.26-1.25.77a.61.61 0 00.26.52 2.62 2.62 0 00.87.36l.49.14a5.58 5.58 0 011.33.52 1.88 1.88 0 01.75.72zm7.58-2.61a4.4 4.4 0 01.48 2.1 4.43 4.43 0 01-.5 2.15A3.32 3.32 0 0121 19.52a4.56 4.56 0 01-2.14.48h-2.92v-8h2.89a4.53 4.53 0 012.18.49 3.4 3.4 0 011.4 1.4zM21.05 16a2.59 2.59 0 00-.59-1.81 2.1 2.1 0 00-1.63-.64h-1.09v4.9h1.09a2.07 2.07 0 001.63-.64 2.59 2.59 0 00.59-1.81zM31 9v14a3 3 0 01-3 3H4a3 3 0 01-3-3V9a3 3 0 013-3h24a3 3 0 013 3zm-2 0a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1h24a1 1 0 001-1z"/></svg>',
+        //             bullet : 'Standard definition streaming',
+        //             tooltip : false,
+        //             legal : false,
+        //         },
+        //     ]
+        // },
+        // {
+        //     lifestyle : 'images/lifestyle/plan-5.jpg',
+        //     promo : '',
+        //     promoIcon : '',
+        //     plan : 'AT&T Unlimited Appetizer AL',
+        //     price : [55.99,50.99,35.99,25.99,10.99],
+        //     speed : "AT&T may temporarily slow data speeds if the network is busy.",
+        //     icons : [car, gaming, fourk],
+        //     desc : "The least amount of unlimited for lowest price",
+        //     bolton : false,
+        //     features : [
+        //         {
+        //             icon : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" fill-rule="evenodd" clip-rule="evenodd" d="M7.05 11.05c-.56.42-1.08.88-1.56 1.36A19.84 19.84 0 0 0 1.27 19 15.09 15.09 0 0 1 17.69 1.1c.29.2.59.43.88.72a18.25 18.25 0 0 1 4.37 6.9c.14.38.25.78.35 1.18a14.92 14.92 0 0 0-16.24 1.16Zm17.42-2.7a14.76 14.76 0 0 1 .77 4.61c.02 2.22-.43 4.53-1.46 6.71-1.15 2.42-3 4.69-5.64 6.28l.09.03.09.03a16.85 16.85 0 0 0 7.84.44c.4-.07.75-.18 1.07-.3A15.07 15.07 0 0 0 31 16.13C31 9.4 26.65 3.72 20.69 1.86a19.6 19.6 0 0 1 3.78 6.48Zm-1.58 19.72c-1.84 0-3.75-.25-5.48-.77a14.52 14.52 0 0 1-3.2-1.4A15 15 0 0 1 6.76 13l-.41.4a17.9 17.9 0 0 0-4.23 6.86c-.14.42-.22.8-.27 1.18A15.04 15.04 0 0 0 15.89 31c3.43 0 6.58-1.14 9.11-3.05-.68.08-1.4.12-2.11.12Z"/></svg>',
+        //             bullet : 'Basic security',
+        //             tooltip : 'Download the free AT&T ActiveArmor mobile security app with a compatible smartphone to get advanced features like Public Wi-Fi Protection and Identity Monitoring. You\'ll automatically get 24/7 proactive network security.',
+        //             legal : 'Free app with Spam Call Blocking and more.',
+        //         },
+        //         {
+        //             icon : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M3 16a12.92 12.92 0 003.81 9.19l-1.42 1.42a15 15 0 010-21.22l1.42 1.42A12.92 12.92 0 003 16zm5.92-7.1a10 10 0 000 14.2l1.42-1.41a8 8 0 010-11.38zm17.65-3.53l-1.41 1.41a13 13 0 010 18.39l1.41 1.41a15 15 0 000-21.21zM23 8.87l-1.41 1.42a8 8 0 010 11.38L23 23.08a10 10 0 000-14.21zM21 16a5 5 0 11-5-5 5 5 0 015 5zm-2 0a3 3 0 10-3 3 3 3 0 003-3z"/></svg>',
+        //             bullet : '500MB mobile hotspot per line',
+        //             tooltip : 'After 500MB, mobile hotspot speed slowed to a maximum of 128Kbps.',
+        //             legal : false,
+        //         },
+        //         {
+        //             icon : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M14.83 16.5a2.26 2.26 0 01.23 1.07 2.29 2.29 0 01-.84 1.88 3.54 3.54 0 01-2.31.69 5.94 5.94 0 01-1.53-.14 4.5 4.5 0 01-1.28-.51L9.58 18a5 5 0 002.23.53q1.41 0 1.41-.81a.57.57 0 00-.12-.37 1 1 0 00-.4-.28 6.43 6.43 0 00-.86-.29l-.49-.14a3.16 3.16 0 01-1.54-.84 2.11 2.11 0 01-.49-1.46A2.43 2.43 0 019.68 13a2.31 2.31 0 011-.85 4 4 0 011.57-.29 5.42 5.42 0 011.32.16 4.47 4.47 0 011.16.47l-.43 1.41a3.68 3.68 0 00-.92-.31 4.27 4.27 0 00-1-.12c-.84 0-1.25.26-1.25.77a.61.61 0 00.26.52 2.62 2.62 0 00.87.36l.49.14a5.58 5.58 0 011.33.52 1.88 1.88 0 01.75.72zm7.58-2.61a4.4 4.4 0 01.48 2.1 4.43 4.43 0 01-.5 2.15A3.32 3.32 0 0121 19.52a4.56 4.56 0 01-2.14.48h-2.92v-8h2.89a4.53 4.53 0 012.18.49 3.4 3.4 0 011.4 1.4zM21.05 16a2.59 2.59 0 00-.59-1.81 2.1 2.1 0 00-1.63-.64h-1.09v4.9h1.09a2.07 2.07 0 001.63-.64 2.59 2.59 0 00.59-1.81zM31 9v14a3 3 0 01-3 3H4a3 3 0 01-3-3V9a3 3 0 013-3h24a3 3 0 013 3zm-2 0a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1h24a1 1 0 001-1z"/></svg>',
+        //             bullet : 'Standard definition streaming',
+        //             tooltip : false,
+        //             legal : false,
+        //         },
+        //     ]
+        // },
     ],
     other : [
         {
@@ -620,7 +609,7 @@ const sigBadge = `
 const nutrition = `
 <div id="nl" class="accordion matching open">
     <div class="control tab-adjust">
-        <h5>Broadband facts</h5>
+        <div class="label">Broadband facts</div>
         <div class="carat">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path class="svg-base" d="M8 11.05L2.65 5.7l.7-.7L8 9.63 12.65 5l.7.71z"/></svg>
         </div>
