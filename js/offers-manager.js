@@ -14,6 +14,7 @@ $(window).on('load', function(){
         completeOffer();
         checkOfferOverflow();
         offerCarousel();
+        trackAutopay();
     },500);
 });
 
@@ -174,18 +175,65 @@ function completeOffer(){
 }
 
 
+function trackAutopay(){
+    let auto = $('#offer-id-autopay');
+
+    auto.find('.check').on('click', function(){
+        updateAutopay();
+    });
+}
+
+
+function updateAutopay(){
+    
+    let auto = $('#offer-id-autopay');
+    let card = $('.plan-card').children('.card');
+    let legal = $('.autopay-legal');
+
+    if(auto.find('.check').hasClass('active')){
+        card.find('.strikethrough').show();
+        card.each(function(){
+            let price = parseFloat($(this).find('.price-point').html());
+            console.log(price);
+            $(this).find('.price-point').html(price - 10);
+        });
+        legal.show();
+        $('.underlegal').show();
+    } else {
+        card.find('.strikethrough').hide();
+        card.each(function(){
+            let price = parseFloat($(this).find('.price-point').html());
+            $(this).find('.price-point').html(price + 10);
+        });
+        legal.hide();
+    }
+
+}
+
+
 //REMOVE NEW TAGS
 function removeNEW(){
     $('#offers-manager-nav').find('.offer').on('mouseenter',function(){
-        let offer = $(this)
+        let offer = $(this);
         if($(this).children('.new').length >= 1){
-            console.log('NEW triggered')
+            $(this).children('.new').addClass('out');
             setTimeout(function(){
                 offer.children('.new').remove();
-                console.log('timeout')
             },500);
         }
-    })
+    });
+
+    $('#offers-manager-panel').find('.accordion').on('mouseenter', function(){
+        let offer = $(this);
+        let id = $(this).attr('id');
+        if($('#offers-manager-nav').find('#'+id).children('.new').length >= 1){
+            $('#offers-manager-nav').find('#'+id).children('.new').addClass('out');
+            setTimeout(function(){
+                offer.children('.new').remove();
+            },500);
+        }
+
+    });
 }
 
 
@@ -195,13 +243,7 @@ function removeNEW(){
 var offerPage;
 var offerPages;
 
-function setOffersParams(){
-    
-}
-
 function checkOfferOverflow(){
-
-    console.log('check overflow');
 
     let offers = $('.offer-carousel');
     let offerW = offers.find('.offer').first().outerWidth();

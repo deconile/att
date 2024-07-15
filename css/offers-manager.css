@@ -34,7 +34,7 @@
 /* OFFER - CONDENSED */
 #offers-manager-nav .offer {
     display: flex;
-    gap:4px;
+    /* gap:4px; */
     align-items: center;
     min-width:max-content;
     padding:5px 10px;
@@ -43,21 +43,26 @@
     cursor:pointer;
 }
 
+#offers-manager-nav .offer .copy {padding-left:4px;}
+
 
 /* NEW LABEL ************REVIEW****************** */
 #offers-manager-nav .offer .new {
     font-size:12px;
     font-weight:700;
-    color: var(--gray-600);
-    width:38px;
+    color: var(--green-600);
+    width:36px;
     overflow: hidden;
-    transition: 500ms;
-    margin-right:-4px;
-    padding-right:4px;
+    flex-shrink:0;
 }
 
-#offers-manager-nav .offer:hover .new {
+#offers-manager-nav .offer .new.out {
     width:0px;
+}
+
+#offers-manager-nav:not(.expanded) .offer.interest .new,
+#offers-manager-nav:not(.expanded) .offer.complete .new {
+    color: var(--gray-000);
 }
 /* NEW LABEL ************REVIEW****************** */
 
@@ -123,10 +128,12 @@
 
 /* OFFER - EXPANDED */
 #offers-manager-nav.expanded .offer {
-    gap:16px;
+    /* gap:16px; */
     align-items: flex-start;
     padding:16px;
 }
+
+#offers-manager-nav.expanded .offer .copy {padding-left:16px;}
 
 #offers-manager-nav.expanded .offer:hover {
     box-shadow: 0px 2px 8px rgba(37, 48, 58, 0.2), 0px 2px 4px -1px rgba(37, 48, 58, 0.12), 0px 2px 12px rgba(37, 48, 58, 0.1);
@@ -171,10 +178,12 @@
 #offers-manager-nav.expanded .offer .label {color:var(--gray-800);}
 
 #offers-manager-nav.expanded .offer.complete .shaped-container {background-color:var(--green-600);}
-#offers-manager-nav.expanded .offer .shaped-container{background-color:var(--blue-200);}
+#offers-manager-nav.expanded .offer.interest .shaped-container {background-color:var(--primary-blue);}
+#offers-manager-nav.expanded .offer .shaped-container{background-color:var(--blue-100);}
 
 #offers-manager-nav.expanded .offer svg {fill:var(--gray-800);}
 #offers-manager-nav .offer.complete svg {fill:var(--gray-000);}
+#offers-manager-nav .offer.interest svg {fill:var(--gray-000);}
 
 #offers-manager-nav.expanded .settings .shaped-container {background-color:var(--cobalt-600);}
 #offers-manager-nav.expanded .settings svg {fill:var(--gray-000);}

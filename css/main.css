@@ -257,6 +257,10 @@ main {
 .dark p, .dark a {color:var(--gray-100);}
 .dark p.legal, .dark p.legal a {color:var(--gray-200);}
 
+.base {color:var(--gray-800);}
+.base p, .dark a {color:var(--gray-700);}
+.base p.legal, .dark p.legal a {color:var(--gray-600);}
+
 .green {color:var(--green-600)}
 svg.green {fill:var(--green-600)}
 
@@ -291,7 +295,7 @@ p.xxs {font-size: var(--type-xxs);}
 
 /* COLORS */
 .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {color:var(--gray-000);}
-
+.base h1, .base h2, .base h3, .base h4, .base h5, .base h6 {color:var(--gray-800);}
 /*OTHER*/
 
 .txt-right {
@@ -300,16 +304,16 @@ p.xxs {font-size: var(--type-xxs);}
 
 .eyebrow {
     font-size: var(--eyebrow-md);
-    color: var(--gray-800);
+    color: var(--gray-700);
 }
 
-.eyebrow.sm {
-    font-size: var(--eyebrow-sm);
-}
+.eyebrow.xxxl {font-size: var(--eyebrow-xxxl);}
+.eyebrow.xxl {font-size: var(--eyebrow-xxl);}
+.eyebrow.xl {font-size: var(--eyebrow-xl);}
+.eyebrow.lg {font-size: var(--eyebrow-lg);}
+.eyebrow.sm {font-size: var(--eyebrow-sm);}
+.eyebrow.xs {font-size: var(--eyebrow-xs);}
 
-.eyebrow.xs {
-    font-size: var(--eyebrow-xs);
-}
 
 .bold {
     font-weight:700;
@@ -364,6 +368,48 @@ sup {
 
 .legal sup {
     font-weight:700;
+}
+
+
+/* INPUTS ***************************************/
+input {
+    background-color:var(--gray-000);
+    border:1px solid var(--gray-400);
+    border-radius:8px;
+    padding:12px 16px;
+    outline-color: var(--cobalt-400);
+}
+
+input + svg {
+    position:absolute;
+    width:24px;
+    height:24px;
+    right:0;
+    margin:8px;
+    fill:var(--gray-600);
+}
+
+.input.icon {}
+
+
+
+/* SPECIAL CASES ***************************************/
+.input {
+    position:relative;
+}
+
+input[type=text].lg {
+    width:100%;
+    font-size:var(--type-lg);
+    padding:16px;
+}
+
+.input.icon input[type=text].lg {padding-right:52px;}
+
+input.lg + svg {
+    width:32px;
+    height:32px;
+    margin:16px;
 }
 
 

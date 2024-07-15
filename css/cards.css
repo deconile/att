@@ -4,10 +4,8 @@
 .card {
     position:relative;
     padding:3.2rem;
-    background-color:var(--gray-000);
     margin:2px;
     outline: 2px solid transparent;
-    /* border:2px solid transparent; */
     border-radius: 1.6rem;
     transition: 500ms;
     cursor:pointer;
@@ -28,6 +26,7 @@
 
 .card.unselectable {
     pointer-events: none;
+    outline: none;
 }
 
 .card.shadow:hover {
@@ -475,7 +474,7 @@
     position: relative;
 }
 
-.card-carousel > .overflow-container {overflow-x:scroll;padding:0 3.2rem;}
+.card-carousel > .overflow-container {overflow-x:scroll;padding:0.8rem 3.2rem;}
 .card-carousel > .overflow-container.overflowing {
     padding-top:0.8rem;
     padding-bottom:0.8rem;
