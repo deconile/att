@@ -10,7 +10,7 @@ $(window).on('resize',function(){
 $(window).on('scroll',function(){
     // clearTimeout(scrollControls);
     // scrollControls = setTimeout(function(){
-        centerControls()
+        centerControls();
     // },200);
     
 });
@@ -114,8 +114,8 @@ function centerControls(){
         if($('.card-carousel').outerHeight() > $(window).innerHeight()){
             if(fPos <= 5){
                 fPos = 5;
-            } else if(fPos >= 100){
-                fPos = 100;
+            } else if(fPos >= 95){
+                fPos = 95;
             }
             
             control.css('top',fPos+'%')

@@ -474,10 +474,10 @@
     position: relative;
 }
 
-.card-carousel > .overflow-container {overflow-x:scroll;padding:0.8rem 3.2rem;}
+.card-carousel > .overflow-container {padding:0.8rem 3.2rem;}
 .card-carousel > .overflow-container.overflowing {
-    padding-top:0.8rem;
-    padding-bottom:0.8rem;
+    padding-top:1.6rem;
+    padding-bottom:1.6rem;
     padding-left:3.2rem;
     padding-right:3.2rem;
 }
@@ -509,7 +509,7 @@
 
 /* TABLET  */
 @media only screen and (max-width: 1024px) {
-    .card-carousel > .overflow-container.overflowing {padding-left:3.2rem;padding-right:3.2rem;}
+    .card-carousel > .overflow-container.overflowing {padding-left:3.2rem;padding-right:3.2rem;overflow-x:scroll;}
     .card-carousel > .overflow-container > * {min-width: calc(50% - 2.4rem);}
 }
 
@@ -532,7 +532,7 @@
         left:-1.6rem;
     }
 
-    .card-carousel > .overflow-container.overflowing {padding-left:2.4rem;padding-right:2.4rem;}
+    .card-carousel > .overflow-container.overflowing {padding-left:2.4rem;padding-right:2.4rem;overflow-x:scroll;}
 
     .card-carousel > .overflow-container > *,
     .card-carousel.dual > .overflow-container > * {min-width: calc(100% - 16px);}

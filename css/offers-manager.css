@@ -208,11 +208,6 @@
     width:100%;
 }
 
-
-#offers-manager-nav .overflow-container.overflowing {
-    overflow-x: scroll;
-}
-
 #offers-manager-nav.expanded .overflow-container > * {
     min-width: calc(33% - 1.2rem);
 }
@@ -244,12 +239,18 @@
     left:0;
     border-right:1px solid var(--gray-300);
     box-shadow: 2px 0px 6px #3333;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    background-image: linear-gradient(to left, var(--blue-100), var(--blue-000));
 }
 
 #offers-manager-nav .offer-carousel .control.next {
     right:0;
     border-left:1px solid var(--gray-300);
     box-shadow: -2px 0px 6px #3333;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+    background-image: linear-gradient(to right, var(--blue-100), var(--blue-000))
 }
 
 #offers-manager-nav .offer-carousel .control svg {
@@ -264,6 +265,9 @@
 }
 
 #offers-manager-nav .offer-carousel .control:hover {}
+
+#offers-manager-nav .offer-carousel .control.prev:hover {transform: translateX(-4px);}
+#offers-manager-nav .offer-carousel .control.next:hover {transform: translateX(4px);}
 
 #offers-manager-nav .offer-carousel .control.prev:hover svg {transform: translateX(-4px);}
 #offers-manager-nav .offer-carousel .control.next:hover svg {transform: translateX(4px);}
@@ -309,7 +313,10 @@
 #offers-manager-panel h5 {font-size:var(--heading-xs);}
 #offers-manager-panel .action .details h5 {color:var(--cobalt-600);}
 #offers-manager-panel .action.complete .details h5,
-#offers-manager-panel .action.inactive .details h5 {color:var(--gray-800);}
+#offers-manager-panel .action.inactive .details h5 {
+    color:var(--gray-800);
+    pointer-events: none;
+}
 
 #offers-manager-panel .action.complete svg {fill:var(--green-600)}
 
@@ -353,6 +360,9 @@
 /* TABLET  */
 @media only screen and (max-width: 1024px) {
 
+    #offers-manager-nav .overflow-container.overflowing {
+        overflow-x: scroll;
+    }
 }
 
 
@@ -362,10 +372,14 @@
     #offers-manager-nav .container .offer-carousel .overflow-container {
         padding:8px 24px;
     }
-    
+    #offers-manager-nav .overflow-container.overflowing {
+        overflow-x: scroll;
+    }    
     #offers-manager-nav .offer-carousel .control {
         width:24px;
     }
+
+    
 
     #offers-manager-nav .settings,
     #offers-manager-nav .carat,

@@ -32,6 +32,11 @@ function loadPlans(){
             <div class="plan-card flex col md">
                 <div class="card plan base border shadow md radio">
                     <div class="content flex col md">
+                        <div class="badge-container promo">
+                            <div class="badge">
+                                ${plans[planKey][p].promoIcon}${plans[planKey][p].promo}
+                            </div>
+                        </div>
                         <div class="plan-name">
                             <div class="eyebrow">${plans[planKey][p].eyebrow}</div>
                             <h3>${plans[planKey][p].plan}</h3>
@@ -76,6 +81,13 @@ function loadPlans(){
                 }
             }
 
+            // CHECK BADGES
+            if(!plans[planKey][p].promo){
+                $(this).find('.card').eq(p).find('.promo').children('.badge').remove();
+            } else {
+                promo = true;
+            }
+
             // CHECK FOR SPEED LEGAL
             if(!plans[planKey][p].speed){
                 $(this).find('.card').eq(p).find('.content').children('.speed').remove();
@@ -86,15 +98,19 @@ function loadPlans(){
                 $(this).find('.card').eq(p).find('.content').find('.shortlegal').remove();
             }
 
-            //CHECK FOR SHORT LEGAL
+            //CHECK FOR LONG LEGAL
             if(plans[planKey][p].longlegal){
                 $(this).find('.plan-card').eq(p).children('.underlegal').show();
+            } else {
+                $(this).find('.plan-card').eq(p).children('.underlegal').remove();  
             }
         }
 
         // MAKE ADJUSTMENTS
         //REMOVE ALL PROMO BADGES IF NON EXIST
-        if(!promo){$(this).find('.promo').remove();}
+        if(!promo){
+            $(this).find('.promo').remove();
+        }
 
     });
 
@@ -104,12 +120,9 @@ function loadPlans(){
     //PLACE FEATURES
     $('.plan-cards').find('.plan-card').append('<div class="accordions"></div>');
     
-    if($('.plan-cards').is('#unlimited')){
-        placeFeatures();
-    } else {
-        placeFiberKit();
-        placeSpecialOffers();
-    }
+    placeFeatures();
+    placeFiberKit();
+    placeSpecialOffers();
 
     //PLACE NUTRITION LABELS
     nutritionLabels();
@@ -347,6 +360,7 @@ const contextualMessage = `
 
 const star = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path class="svg-base" d="M11.88 10.21l.85 4.95-4.46-2.34a.57.57 0 00-.54 0l-4.46 2.34.85-4.95A.58.58 0 004 9.69L.35 6.18l5-.73a.59.59 0 00.44-.32L8 .62l2.23 4.51a.59.59 0 00.44.32l5 .73L12 9.69a.58.58 0 00-.12.52z"/></svg>',
     star2 = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M16 6.76l2.52 5.1a3.1 3.1 0 002.32 1.69l5.63.82-4.07 4a3.07 3.07 0 00-.89 2.73l1 5.6-5-2.64a3.06 3.06 0 00-2.88 0l-5 2.64 1-5.6a3.1 3.1 0 00-.89-2.74l-4.07-4 5.63-.82a3.1 3.1 0 002.32-1.69L16 6.76m0-4.52L11.69 11a1.09 1.09 0 01-.82.6L1.23 13l7 6.8a1.1 1.1 0 01.31 1l-1.65 9.6 8.62-4.53a1.07 1.07 0 011 0l8.62 4.53-1.65-9.6a1.1 1.1 0 01.31-1l7-6.8-9.64-1.4a1.09 1.09 0 01-.82-.6L16 2.24z"/></svg>',
+    activeArmor = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" fill-rule="evenodd" clip-rule="evenodd" d="M7.05 11.05c-.56.42-1.08.88-1.56 1.36A19.84 19.84 0 0 0 1.27 19 15.09 15.09 0 0 1 17.69 1.1c.29.2.59.43.88.72a18.25 18.25 0 0 1 4.37 6.9c.14.38.25.78.35 1.18a14.92 14.92 0 0 0-16.24 1.16Zm17.42-2.7a14.76 14.76 0 0 1 .77 4.61c.02 2.22-.43 4.53-1.46 6.71-1.15 2.42-3 4.69-5.64 6.28l.09.03.09.03a16.85 16.85 0 0 0 7.84.44c.4-.07.75-.18 1.07-.3A15.07 15.07 0 0 0 31 16.13C31 9.4 26.65 3.72 20.69 1.86a19.6 19.6 0 0 1 3.78 6.48Zm-1.58 19.72c-1.84 0-3.75-.25-5.48-.77a14.52 14.52 0 0 1-3.2-1.4A15 15 0 0 1 6.76 13l-.41.4a17.9 17.9 0 0 0-4.23 6.86c-.14.42-.22.8-.27 1.18A15.04 15.04 0 0 0 15.89 31c3.43 0 6.58-1.14 9.11-3.05-.68.08-1.4.12-2.11.12Z"/></svg>',
     car = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M28.982 14.87l-4.818-1.604-3.294-2.786a10.223 10.223 0 00-6.589-2.417H8.17a2.828 2.828 0 00-2.649 1.91q-.127.374-.246.756l1.771.547c.074-.238.152-.475.227-.697a.956.956 0 01.897-.662h6.111a8.366 8.366 0 015.391 1.978l3.43 2.902a.929.929 0 00.307.172l4.98 1.657a.94.94 0 01.644.885v1.678a.931.931 0 01-.275.667.946.946 0 01-.652.26h-.132a3.69 3.69 0 00-7.152-.008l-6.706-.068a3.688 3.688 0 00-7.13.076h-.124a.93.93 0 01-.936-.908v-1.206H4.072v1.206a2.791 2.791 0 002.782 2.763h.131a3.694 3.694 0 007.178-.075l6.654.067a3.691 3.691 0 007.157.008h.149a2.736 2.736 0 001.94-.799 2.77 2.77 0 00.824-1.983v-1.678a2.797 2.797 0 00-1.905-2.642zm-18.42 8.027a1.854 1.854 0 111.854-1.854 1.856 1.856 0 01-1.854 1.854zm13.835 0a1.854 1.854 0 111.854-1.854 1.856 1.856 0 01-1.854 1.854zM9.175 14.002H2v-2h7.176zm-3 3H1v-2h5.176z"/></svg>',
     gameController = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M11 12h2v2h-2v2H9v-2H7v-2h2v-2h2zm9 0h2v-2h-2zm3 4h2v-2h-2zm5.22 11.55a3.64 3.64 0 01-3.7-1.22L20.11 21h-8.22l-4.41 5.33a3.62 3.62 0 01-2.81 1.33 3.34 3.34 0 01-.89-.11 3.75 3.75 0 01-2.76-4L2.61 9.44A5 5 0 017.57 5h16.86a5 5 0 015 4.44L31 23.5a3.76 3.76 0 01-2.78 4.05zM29 23.7l-1.58-14a3 3 0 00-3-2.66H7.57a3 3 0 00-3 2.66L3 23.72a1.78 1.78 0 001.27 1.9 1.63 1.63 0 001.66-.56l5-6.06h10.13l5 6.06a1.63 1.63 0 001.66.56A1.79 1.79 0 0029 23.7z"/></svg>',
     fourk = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M14.21 12.1h-1.5L8.85 17v1.36h3.77V20h1.59v-1.63h.94v-1.32h-.94zm-1.59 5h-2.19l2.19-2.77zM20 15.26L22.82 20h-2.11l-2-3.48-.9 1.1V20H16v-8h1.8v3.34L20.5 12h2.14zM28 6H4a3 3 0 00-3 3v14a3 3 0 003 3h24a3 3 0 003-3V9a3 3 0 00-3-3zm1 17a1 1 0 01-1 1H4a1 1 0 01-1-1V9a1 1 0 011-1h24a1 1 0 011 1z"/></svg>',
@@ -367,13 +381,20 @@ const star = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path 
     save = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M23.41 3H3v23a3 3 0 003 3h20a3 3 0 003-3V8.54zM11 5h10v3a1 1 0 01-1 1h-8a1 1 0 01-1-1zm0 22v-9h10v9zm16-1a1 1 0 01-1 1h-3V16H9v11H6a1 1 0 01-1-1V5h4v3a3 3 0 003 3h8a3 3 0 003-3V5.36l4 4z"/></svg>',
     home = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M30.73 16.32L18.19 2.88a3.1 3.1 0 00-4.38 0L1.27 16.32l1.46 1.36L5 15.25V27a3 3 0 003 3h6v-8h4v8h6a3 3 0 003-3V15.25l2.27 2.43zM25 27a1 1 0 01-1 1h-4v-8h-8v8H8a1 1 0 01-1-1V13.11l8.27-8.86a1 1 0 011.46 0L25 13.11z"/></svg>',
     meterHigh = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M15.998 2.669a13.335 13.335 0 1013.335 13.335A13.35 13.35 0 0015.998 2.669zm0 24.67a11.335 11.335 0 1111.335-11.335 11.348 11.348 0 01-11.335 11.335zm6.92-16.841l-1.415-1.414-4.327 4.327a2.825 2.825 0 00-1.178-.262 2.855 2.855 0 102.854 2.855 2.827 2.827 0 00-.262-1.179zm-6.92 6.648a1.142 1.142 0 111.141-1.142 1.143 1.143 0 01-1.141 1.142zm0-8.25a7.117 7.117 0 00-7.109 7.108H7.113a8.888 8.888 0 0112.983-7.885l-.82 1.576a7.03 7.03 0 00-3.278-.8zm8.884 7.108h-1.776a7.035 7.035 0 00-.802-3.283l1.575-.822a8.91 8.91 0 011.003 4.105z"/></svg>',
+    meterMid = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="cls-1" d="M16 2.66c-7.35 0-13.33 5.98-13.33 13.33S8.65 29.32 16 29.32s13.33-5.98 13.33-13.33S23.35 2.66 16 2.66zm0 24.67C9.75 27.33 4.67 22.25 4.67 16S9.75 4.66 16 4.66s11.33 5.08 11.33 11.33S22.25 27.32 16 27.32zm.99-14.25V7.72h-2v5.38a3 3 0 00-1.17.7c-.59.58-.92 1.35-.92 2.18 0 .83.31 1.6.89 2.19.6.61 1.4.92 2.2.92s1.57-.3 2.17-.89c.59-.58.92-1.35.92-2.18 0-.83-.31-1.6-.89-2.19-.34-.35-.75-.59-1.2-.74zm-.23 3.69a1.09 1.09 0 01-1.53-1.55c.21-.2.48-.31.76-.31.29 0 .56.12.77.32.2.21.32.48.31.77 0 .29-.12.56-.32.77zm-3.17-7.12c-2.78.68-4.58 3.19-4.58 6.38h-2c0-4.08 2.45-7.43 6.11-8.32l.48 1.94zm11.43 6.38h-2c0-3.19-1.8-5.7-4.58-6.38l.48-1.94c3.65.9 6.11 4.24 6.11 8.32z"/></svg>',
     ai = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M14 5.98h-1.01c-.92 10.52-1.48 11.09-12 12v1.01c10.52.92 11.09 1.48 12 12H14c.92-10.52 1.48-11.09 12-12v-1.01c-10.52-.92-11.09-1.48-12-12zm10.96-4.95H24c-.46 5.32-.69 5.54-6.01 6.01V8c5.32.46 5.54.69 6.01 6.01h.96c.46-5.32.69-5.54 6.01-6.01v-.96c-5.32-.46-5.54-.69-6.01-6.01z"/><path class="svg-base" d="M24.96 1.03H24c-.46 5.32-.69 5.54-6.01 6.01V8c5.32.46 5.54.69 6.01 6.01h.96c.46-5.32.69-5.54 6.01-6.01v-.96c-5.32-.46-5.54-.69-6.01-6.01z"/></svg>',
     wifi = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M15 26h2v2h-2zm-3.86-4.71l1.42 1.42a4.84 4.84 0 016.87 0l1.42-1.42a6.87 6.87 0 00-9.71 0zM1 11.29l1.41 1.42a19.21 19.21 0 0127.15 0L31 11.29a21.22 21.22 0 00-30 0zm5.05 5l1.41 1.42a12.08 12.08 0 0117.06 0l1.41-1.42a14.07 14.07 0 00-19.87 0z"/></svg>',
+    router = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M28 16H12v-5h-2v5H4a3 3 0 00-3 3v8a3 3 0 003 3h24a3 3 0 003-3v-8a3 3 0 00-3-3zm1 11a1 1 0 01-1 1H4a1 1 0 01-1-1v-8a1 1 0 011-1h24a1 1 0 011 1zM6 22h2v2H6zm4 0h2v2h-2zm4 0h2v2h-2zM4.64 7.64L3.22 6.22a11 11 0 0115.56 0l-1.42 1.42a9 9 0 00-12.72 0zM11 7a6.89 6.89 0 015 2.06l-1.42 1.4a5 5 0 00-7.06 0l-1.47-1.4A6.89 6.89 0 0111 7z"/></svg>',
     max2 = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M6.41 5l6.3 6.29-1.42 1.42L5 6.41V11H3V3h8v2zM21 3v2h4.59l-6.3 6.29 1.42 1.42L27 6.41V11h2V3zm6 22.59l-6.29-6.3-1.42 1.42 6.3 6.29H21v2h8v-8h-2zm-15.71-6.3L5 25.59V21H3v8h8v-2H6.41l6.3-6.29z"/></svg>',
     trendUp = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M30 9v8h-2v-4.59l-9 9-7-7-9.29 9.3-1.42-1.42L12 11.59l7 7L26.59 11H22V9z"/></svg>',
     gameBundle = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M30.646 26.55l-.813-7.714a3.733 3.733 0 00-3.712-3.316h-9.242a3.735 3.735 0 00-3.713 3.324l-.813 7.716a2.504 2.504 0 001.847 2.69 2.425 2.425 0 002.446-.768l2.336-2.48h5.04l2.287 2.432a2.443 2.443 0 002.49.816 2.506 2.506 0 001.846-2.7zm-2.349.765a.477.477 0 01-.488-.202l-2.92-3.11H18.12l-2.972 3.158a.436.436 0 01-.445.154.518.518 0 01-.36-.555l.812-7.699a1.735 1.735 0 011.724-1.541h9.242a1.733 1.733 0 011.723 1.534l.812 7.697a.52.52 0 01-.359.564zm-22.81-7.313h6.078v2H3.346v1.001a1.001 1.001 0 001 1h6.903v2H4.346a3.003 3.003 0 01-3-3v-3h2.14V9.001a3.003 3.003 0 013-3H23a3.004 3.004 0 013 3l-.001 5.001-2-.001.001-5a1.001 1.001 0 00-1-1H6.487a1.001 1.001 0 00-1 1zm11.528-.032h2v2h-2zm6.985 0h2v2h-2z"/></svg>',
     tv = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M8 26h16v2H8zM31 7v14a3 3 0 01-3 3H4a3 3 0 01-3-3V7a3 3 0 013-3h24a3 3 0 013 3zm-2 0a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1h24a1 1 0 001-1z"/></svg>',
-    phoneCase = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M22 31H10a3 3 0 01-3-3V4a3 3 0 013-3h12a3 3 0 013 3v24a3 3 0 01-3 3zM10 3a1 1 0 00-1 1v24a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1zm3 3h-2v5h2z"/></svg>'
+    phoneCase = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M22 31H10a3 3 0 01-3-3V4a3 3 0 013-3h12a3 3 0 013 3v24a3 3 0 01-3 3zM10 3a1 1 0 00-1 1v24a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1zm3 3h-2v5h2z"/></svg>',
+    gateway = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M23.89 29.54a8.08 8.08 0 01-.89-3.67V4a3 3 0 00-3-3h-8a3 3 0 00-3 3v21.87a8 8 0 01-.85 3.59L7.38 31h17.26zM11 4a1 1 0 011-1h8a1 1 0 011 1v20H11zm-.5 25a10.18 10.18 0 00.5-3h10a10.18 10.18 0 00.49 3zM15 14h2v2h-2zm0 5h2v2h-2zm0-14h2v2h-2z"/></svg>',
+    laptop = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M29 20V8a3 3 0 00-3-3H6a3 3 0 00-3 3v12H1v4a3 3 0 003 3h24a3 3 0 003-3v-4zM5 8a1 1 0 011-1h20a1 1 0 011 1v12H5zm24 16a1 1 0 01-1 1H4a1 1 0 01-1-1v-2h11v1h4v-1h11z"/></svg>',
+    tvSatellite = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M31 7v14a3 3 0 01-3 3H4a3 3 0 01-3-3V7a3 3 0 013-3h3v2H4a1 1 0 00-1 1v14a1 1 0 001 1h24a1 1 0 001-1V7a1 1 0 00-1-1h-3V4h3a3 3 0 013 3zm-15 5.39a12.8 12.8 0 009.07-3.75l-1.41-1.41a10.85 10.85 0 01-15.32 0L6.93 8.64A12.8 12.8 0 0016 12.39zm5.85-7L20.44 4a6.28 6.28 0 01-8.88 0l-1.41 1.43A8.25 8.25 0 0016 7.85a8.25 8.25 0 005.85-2.42zM8 28h16v-2H8z"/></svg>',
+    moreWays = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M28 23h-9v-2h9a1 1 0 001-1V9H9V5a3 3 0 013-3h16a3 3 0 013 3v15a3 3 0 01-3 3zM11 7h18V5a1 1 0 00-1-1H12a1 1 0 00-1 1zm8 5v6l5-3zm-5 18H4a3 3 0 01-3-3V14a3 3 0 013-3h10a3 3 0 013 3v13a3 3 0 01-3 3zM4 13a1 1 0 00-1 1v13a1 1 0 001 1h10a1 1 0 001-1V14a1 1 0 00-1-1zm6 11H8v2h2z"/></svg>',
+    totalHome = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M8.165 11.312H1.879V5.026h2v2.217a14.959 14.959 0 0124.311.007V5.026h2v6.286h-6.285v-2h3.248a12.959 12.959 0 00-22.24 0h3.252zm22.477 1.514l-1.956.42a12.972 12.972 0 11-25.654 2.73 13.035 13.035 0 01.292-2.748l-1.955-.422a14.97 14.97 0 1029.273.02zM16.498 24.013v-3.987h-.99v3.987h-3.492a1.999 1.999 0 01-1.997-1.996v-4.583l-.262.28-1.462-1.364 6.248-6.695a2.064 2.064 0 012.92.001l6.249 6.694-1.462 1.365-.263-.281v4.583a2 2 0 01-1.997 1.996zm2-5.987v3.987h1.492l-.003-6.722-3.986-4.27-3.981 4.268v6.728l1.488-.002v-3.989z"/></svg>'
 
 
 
@@ -385,7 +406,7 @@ const plans = {
             promo : '',
             promoIcon : '',
             eyebrow : '',
-            plan : 'AT&T Unlimited <span class="nowrap">Premium<sup>®</sup> PL</span>',
+            plan : 'Unlimited Premium<sup>®</sup>',
             price : [95.99,85.99,70.99,60.99,55.99],
             priceDisc : '',
             shortlegal : '',
@@ -426,7 +447,7 @@ const plans = {
             promo : '',
             promoIcon : '',
             eyebrow : '',
-            plan : 'AT&T Unlimited <span class="nowrap">Extra<sup>®</sup> EL</span>',
+            plan : 'Unlimited Extra<sup>®</sup>',
             price : [85.99,75.99,60.99,50.99,45.99],
             priceDisc : '',
             shortlegal : '',
@@ -461,7 +482,7 @@ const plans = {
             promo : '',
             promoIcon : '',
             eyebrow : '',
-            plan : 'AT&T Unlimited <span class="nowrap">Starter<sup>®</sup> SL</span>',
+            plan : 'Unlimited Starter<sup>®</sup>',
             price : [75.99,70.99,55.99,45.99,40.99],
             priceDisc : '',
             shortlegal : '',
@@ -573,32 +594,180 @@ const plans = {
             promo : '',
             promoIcon : '',
             eyebrow : '300Mbps speeds',
-            plan : 'AT&T Fiber - Internet 300',
+            plan : 'Fiber - Internet 300',
             price : [60],
             priceDisc : 'Price excludes taxes & fees.',
             shortlegal : '',
             longlegal : '',
             speed : '',
             icons : [gameController, hd, video],
-            desc : 'Fast online speeds for the whole home.',
+            desc : 'Fast online speeds for the whole home',
             features : [
                 {
-                    icon : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" fill-rule="evenodd" clip-rule="evenodd" d="M7.05 11.05c-.56.42-1.08.88-1.56 1.36A19.84 19.84 0 0 0 1.27 19 15.09 15.09 0 0 1 17.69 1.1c.29.2.59.43.88.72a18.25 18.25 0 0 1 4.37 6.9c.14.38.25.78.35 1.18a14.92 14.92 0 0 0-16.24 1.16Zm17.42-2.7a14.76 14.76 0 0 1 .77 4.61c.02 2.22-.43 4.53-1.46 6.71-1.15 2.42-3 4.69-5.64 6.28l.09.03.09.03a16.85 16.85 0 0 0 7.84.44c.4-.07.75-.18 1.07-.3A15.07 15.07 0 0 0 31 16.13C31 9.4 26.65 3.72 20.69 1.86a19.6 19.6 0 0 1 3.78 6.48Zm-1.58 19.72c-1.84 0-3.75-.25-5.48-.77a14.52 14.52 0 0 1-3.2-1.4A15 15 0 0 1 6.76 13l-.41.4a17.9 17.9 0 0 0-4.23 6.86c-.14.42-.22.8-.27 1.18A15.04 15.04 0 0 0 15.89 31c3.43 0 6.58-1.14 9.11-3.05-.68.08-1.4.12-2.11.12Z"/></svg>',
+                    icon : meterMid,
+                    bullet : '300 MB lorem ipsum dolor sit amet',
+                    tooltip : '',
+                    legal : '',
+                },
+                {
+                    icon : gateway,
+                    bullet : 'Standard Gateway 6',
+                    tooltip : '',
+                    legal : '',
+                },
+                {
+                    icon : activeArmor,
                     bullet : 'Basic security',
-                    tooltip : 'Download the free AT&T ActiveArmor mobile security app with a compatible smartphone to get advanced features like Public Wi-Fi Protection and Identity Monitoring. You\'ll automatically get 24/7 proactive network security.',
-                    legal : 'Free app with Spam Call Blocking and more.',
+                    tooltip : '',
+                    legal : '',
+                },
+            ]
+        },
+        {
+            lifestyle : 'images/lifestyle/plan-3.jpg',
+            promo : '',
+            promoIcon : '',
+            eyebrow : '500Mbps speeds',
+            plan : 'Fiber - Internet 500',
+            price : [70],
+            priceDisc : 'Price excludes taxes & fees.',
+            shortlegal : '',
+            longlegal : '',
+            speed : '',
+            icons : [gameBundle, tv, phoneCase],
+            desc : 'Power even more devices at once with more bandwidth',
+            features : [
+                {
+                    icon : meterMid,
+                    bullet : '500 MB lorem ipsum dolor sit amet',
+                    tooltip : '',
+                    legal : '',
                 },
                 {
-                    icon : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M3 16a12.92 12.92 0 003.81 9.19l-1.42 1.42a15 15 0 010-21.22l1.42 1.42A12.92 12.92 0 003 16zm5.92-7.1a10 10 0 000 14.2l1.42-1.41a8 8 0 010-11.38zm17.65-3.53l-1.41 1.41a13 13 0 010 18.39l1.41 1.41a15 15 0 000-21.21zM23 8.87l-1.41 1.42a8 8 0 010 11.38L23 23.08a10 10 0 000-14.21zM21 16a5 5 0 11-5-5 5 5 0 015 5zm-2 0a3 3 0 10-3 3 3 3 0 003-3z"/></svg>',
-                    bullet : '5GB mobile hotspot',
-                    tooltip : 'After 5GB, mobile hotspot speed slowed to a maximum of 128Kbps.',
-                    legal : 'Per line per month',
+                    icon : gateway,
+                    bullet : 'Standard Gateway 6',
+                    tooltip : '',
+                    legal : '',
                 },
                 {
-                    icon : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M14.83 16.5a2.26 2.26 0 01.23 1.07 2.29 2.29 0 01-.84 1.88 3.54 3.54 0 01-2.31.69 5.94 5.94 0 01-1.53-.14 4.5 4.5 0 01-1.28-.51L9.58 18a5 5 0 002.23.53q1.41 0 1.41-.81a.57.57 0 00-.12-.37 1 1 0 00-.4-.28 6.43 6.43 0 00-.86-.29l-.49-.14a3.16 3.16 0 01-1.54-.84 2.11 2.11 0 01-.49-1.46A2.43 2.43 0 019.68 13a2.31 2.31 0 011-.85 4 4 0 011.57-.29 5.42 5.42 0 011.32.16 4.47 4.47 0 011.16.47l-.43 1.41a3.68 3.68 0 00-.92-.31 4.27 4.27 0 00-1-.12c-.84 0-1.25.26-1.25.77a.61.61 0 00.26.52 2.62 2.62 0 00.87.36l.49.14a5.58 5.58 0 011.33.52 1.88 1.88 0 01.75.72zm7.58-2.61a4.4 4.4 0 01.48 2.1 4.43 4.43 0 01-.5 2.15A3.32 3.32 0 0121 19.52a4.56 4.56 0 01-2.14.48h-2.92v-8h2.89a4.53 4.53 0 012.18.49 3.4 3.4 0 011.4 1.4zM21.05 16a2.59 2.59 0 00-.59-1.81 2.1 2.1 0 00-1.63-.64h-1.09v4.9h1.09a2.07 2.07 0 001.63-.64 2.59 2.59 0 00.59-1.81zM31 9v14a3 3 0 01-3 3H4a3 3 0 01-3-3V9a3 3 0 013-3h24a3 3 0 013 3zm-2 0a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1h24a1 1 0 001-1z"/></svg>',
-                    bullet : 'Standard definition streaming',
-                    tooltip : false,
-                    legal : false,
+                    icon : activeArmor,
+                    bullet : 'Basic security',
+                    tooltip : '',
+                    legal : '',
+                },
+            ]
+        },
+        {
+            lifestyle : 'images/lifestyle/plan-3.jpg',
+            promo : '',
+            promoIcon : '',
+            eyebrow : '1000Mbps speeds',
+            plan : 'Fiber - Internet 1000',
+            price : [85],
+            priceDisc : 'Price excludes taxes & fees.',
+            shortlegal : '',
+            longlegal : '',
+            speed : '',
+            icons : [home, laptop, fourk],
+            desc : 'Superfast gigabit speeds for the connected home',
+            features : [
+                {
+                    icon : meterMid,
+                    bullet : 'Up to 1 GB lorem ipsum dolor sit amet',
+                    tooltip : '',
+                    legal : '',
+                },
+                {
+                    icon : gateway,
+                    bullet : 'Standard Gateway 6',
+                    tooltip : '',
+                    legal : '',
+                },
+                {
+                    icon : activeArmor,
+                    bullet : 'Basic security',
+                    tooltip : '',
+                    legal : '',
+                },
+            ]
+        },
+        {
+            lifestyle : 'images/lifestyle/plan-3.jpg',
+            promo : 'All-Fi Pro included',
+            promoIcon : star,
+            eyebrow : '2000Mbps speeds',
+            plan : 'Fiber - Internet 2000',
+            price : [155],
+            priceDisc : 'Price excludes taxes & fees.',
+            shortlegal : '',
+            longlegal : '',
+            speed : '',
+            icons : [router, tvSatellite, persongroup],
+            desc : 'For the powerfully interconnected home, work, family, and life',
+            features : [
+                {
+                    icon : meterHigh,
+                    bullet : 'Up to 2 GB lorem ipsum dolor sit amet',
+                    tooltip : '',
+                    legal : '',
+                },
+                {
+                    icon : gateway,
+                    bullet : '<span class="badge mar-xs-r">PRO</span><span style="color:var(--green-600);">NEW!</span> AT&T Gateway 7',
+                    tooltip : '',
+                    legal : '',
+                },
+                {
+                    icon : activeArmor,
+                    bullet : '<span class="badge mar-xs-r">PRO</span>Advanced security',
+                    tooltip : '',
+                    legal : '',
+                },
+                {
+                    icon : wifi,
+                    bullet : '<span class="badge mar-xs-r">PRO</span>Extended Wi-Fi Coverage Service',
+                    tooltip : '',
+                    legal : '',
+                },
+            ]
+        },
+        {
+            lifestyle : 'images/lifestyle/plan-3.jpg',
+            promo : 'All-Fi Pro included',
+            promoIcon : star,
+            eyebrow : '5000Mbps speeds',
+            plan : 'Fiber - Internet 5000',
+            price : [255],
+            priceDisc : 'Price excludes taxes & fees.',
+            shortlegal : '',
+            longlegal : '',
+            speed : '',
+            icons : [totalHome, devices2, moreWays],
+            desc : 'Ultimate power to control your connected life with confidence',
+            features : [
+                {
+                    icon : meterHigh,
+                    bullet : 'Up to 5 GB lorem ipsum dolor sit amet',
+                    tooltip : '',
+                    legal : '',
+                },
+                {
+                    icon : gateway,
+                    bullet : '<span class="badge mar-xs-r">PRO</span><span style="color:var(--green-600);">NEW!</span> AT&T Gateway 7',
+                    tooltip : '',
+                    legal : '',
+                },
+                {
+                    icon : activeArmor,
+                    bullet : '<span class="badge mar-xs-r">PRO</span>Advanced security',
+                    tooltip : '',
+                    legal : '',
+                },
+                {
+                    icon : wifi,
+                    bullet : '<span class="badge mar-xs-r">PRO</span>Extended Wi-Fi Coverage Service',
+                    tooltip : '',
+                    legal : '',
                 },
             ]
         },

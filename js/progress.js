@@ -8,6 +8,7 @@ $(window).load(function(){
     setProgressIndicator();
     stickProgressIndicator();
     displayProgress();
+    fillLabel();
 });
 
 $(window).on('resize',function(){
@@ -21,7 +22,8 @@ $(window).on('scroll',function(){
 
 var flowKey = $('html').attr('data-flow');
 var pageKey = $('html').attr('data-page');
-var flowPages = ['plp','pdp','plans','add-ons','cart'];
+var pageID;
+//var flowPages = ['plp','pdp','plans','add-ons','cart'];
 
 var indTop;
 
@@ -34,9 +36,9 @@ function loadProgressIndicator(){
 
 function fillTabs(){
 
-    for(t = 0; t < labels.length; t++){
+    for(t = 0; t < labels[flowKey].length; t++){
         const tabTemplate = `
-        <div><div onClick="window.location.href = '${urls[flowKey][t]}'">${t + 1}. ${labels[t]}</div></div>
+        <div><div onClick="window.location.href = '${urls[flowKey][t]}'">${t + 1}. ${labels[flowKey][t]}</div></div>
         `
         $('#progress-indicator').find('.tab-container').append(tabTemplate);
     }
@@ -46,9 +48,11 @@ function fillTabs(){
 
 function activateTabs(){
     let tab = $('#progress-indicator').find('.tab-container').children();
-    for(p = 0; p < flowPages.length; p++){
-        if(pageKey === flowPages[p]){
+    
+    for(p = 0; p < keys[flowKey].length; p++){
+        if(pageKey === keys[flowKey][p]){
             tab.eq(p).children().addClass('active');
+            pageID = p;
             break;
         } else {
             tab.eq(p).children().addClass('completed');
@@ -81,6 +85,11 @@ function displayProgress(){
     });
 }
 
+function fillLabel(){
+    // $('#progress-indicator').find('tab-container').find('.active')
+    $('#progress-indicator').find('.title').find('h4').html(labels[flowKey][pageID]);
+}
+
 
 const progressTemplate = `
 <div id="progress-indicator">
@@ -89,7 +98,7 @@ const progressTemplate = `
             <div class="header">
                 <div class="title">
                     <div class="eyebrow sm"></div>
-                    <h4>Choose your plan</h4>
+                    <h4></h4>
                 </div>
                 <div class="step-count">
                     <span>Step 3 of 5</span>
@@ -113,10 +122,17 @@ const progressTemplate = `
 </div>
 `
 
-const labels = ['Pick your device','Customize your device','Choose your plan','Get add-ons','Review your cart']
+const keys = {
+    wls : ['plp','pdp','plans','add-ons','cart'],
+    wln : ['plans','config','add-ons','cart']
+}
+const labels = {
+    wls : ['Pick your device','Customize your device','Choose your plan','Get add-ons','Review your cart'],
+    wln : ['Pick your plan','Review equipment','Get add-ons']
+}
 const urls = {
-    v1 : ['plp.html','pdp.html','plans.html','add-ons.html','cart.html'],
-    v2 : [],
+    wls : ['plp.html','pdp.html','plans-wls.html','add-ons-wls.html','cart.html'],
+    wln : ['plans-wln.html','config-wln.html','add-ons-wln.html','cart.html'],
 }
 
 const stickyTemplate = `
@@ -138,7 +154,7 @@ const stickyTemplate = `
             <div id="footer-cta">
                 <div id="continue" class="button"><span>Continue</span></div>
             </div>
-            <div id="footer-legal" class="legal">Prices are estimated. Fees and taxes are not included.</div>
+            <div id="footer-legal" class="legal">Plus taxes and fees.</div>
         </div>
     </div>
 </div>

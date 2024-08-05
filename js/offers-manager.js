@@ -15,6 +15,7 @@ $(window).on('load', function(){
         checkOfferOverflow();
         offerCarousel();
         trackAutopay();
+        scrollToPlans();
     },500);
 });
 
@@ -155,6 +156,7 @@ function completeOffer(){
 
         let card = $(this)
 
+        //WIRELESS COMPLETE
         //SET ACTION ITEM TO COMPLETE
         $('#offers-manager-panel').find('.action-plan').each(function(){
             $(this).addClass('complete');
@@ -162,14 +164,28 @@ function completeOffer(){
             $(this).find('.details').children('p').html(card.find('.plan-name').children('h3').html());
         });
         
-        //SET PHONE CATEGORY TO COMPLETE
+        //SET PANEL TO COMPLETE
         $('#offers-manager-panel').find('#offer-id-aphone').addClass('complete');
         $('#offers-manager-panel').find('#offer-id-aphone').find('.carat').children().last().remove();
         $('#offers-manager-panel').find('#offer-id-aphone').find('.carat').append('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M16 1a15 15 0 1015 15A15 15 0 0016 1zm-2.33 21.08l-5.38-5.37 1.42-1.42 4 4 8.62-8.62L23.71 12z"/></svg>');
 
-        //SET PHONE CATEGORY TO COMPLETE
+        //SET PILL TO COMPLETE
         $('#offers-manager-nav').find('#offer-id-aphone').addClass('complete');
         $('#offers-manager-nav').find('#offer-id-aphone').children('.shaped-container').html('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M11.33 26.75l-10-10 1.42-1.42 8.62 8.63 18-18 1.42 1.41z"/></svg>');
+
+        
+        
+        //WIRELINE COMPLETE
+        //SET PANEL TO COMPLETE
+        $('#offers-manager-panel').find('#offer-id-card').addClass('complete');
+        $('#offers-manager-panel').find('#offer-id-card').find('.carat').children().last().remove();
+        $('#offers-manager-panel').find('#offer-id-card').find('.carat').append('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M16 1a15 15 0 1015 15A15 15 0 0016 1zm-2.33 21.08l-5.38-5.37 1.42-1.42 4 4 8.62-8.62L23.71 12z"/></svg>');
+        $('#offers-manager-panel').find('#offer-id-card').find('.details').find('h5').html('$100 rewards applied')
+
+        //SET PILL TO COMPLETE
+        $('#offers-manager-nav').find('#offer-id-card').addClass('complete');
+        $('#offers-manager-nav').find('#offer-id-card').children('.shaped-container').html('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M11.33 26.75l-10-10 1.42-1.42 8.62 8.63 18-18 1.42 1.41z"/></svg>');
+
 
     });
 }
@@ -194,7 +210,6 @@ function updateAutopay(){
         card.find('.strikethrough').show();
         card.each(function(){
             let price = parseFloat($(this).find('.price-point').html());
-            console.log(price);
             $(this).find('.price-point').html(price - 10);
         });
         legal.show();
@@ -234,6 +249,18 @@ function removeNEW(){
         }
 
     });
+}
+
+
+function scrollToPlans(){
+
+    $('.scroll-to-plans').on('click', function(){
+        $('html, body').animate({
+            scrollTop: Math.ceil($('.plan-cards').offset().top - $('#progress-indicator').innerHeight() - 32)
+        }, 1000);
+
+        $('aside').addClass('out');
+    })
 }
 
 

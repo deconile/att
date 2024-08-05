@@ -360,11 +360,12 @@ p.xxs {font-size: var(--type-xxs);}
 
 sup {
     position:relative;
-    top:0.3em;
     font-size:0.5em;
     font-weight:400;
     color:var(--gray-800);
 }
+
+sup .r {top:0.3em;}
 
 .legal sup {
     font-weight:700;
