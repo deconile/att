@@ -1,6 +1,9 @@
 $(window).on('load', function(){
-    setPages()
-    //setTimeout(function(){setPages()},500);
+    setPages();
+    
+    setTimeout(function(){
+        centerControls();
+    },250);
 });
 
 $(window).on('resize',function(){
@@ -8,10 +11,8 @@ $(window).on('resize',function(){
 });
 
 $(window).on('scroll',function(){
-    // clearTimeout(scrollControls);
-    // scrollControls = setTimeout(function(){
-        centerControls();
-    // },200);
+
+    centerControls();
     
 });
 

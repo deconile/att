@@ -32,6 +32,11 @@
     <link rel="stylesheet" href="css/signature.css">
     <script src="js/signature.js"></script>
 
+    <style type="text/css">
+        #hero {display:none;}
+        #progress-indicator {display:none;}
+    </style>
+
 </head>
 <body>
 
@@ -149,7 +154,7 @@
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M19.01 9H13V7h6.01v2zM12 21.99h2v-3h-2v3zm3-6v6h2v-6h-2zm3 6h2v-9h-2v9zM24 6v20c0 1.65-1.35 3-3 3H11c-1.65 0-3-1.35-3-3V6c0-1.65 1.35-3 3-3h10c1.65 0 3 1.35 3 3zm-2 0c0-.55-.45-1-1-1H11c-.55 0-1 .45-1 1v20c0 .55.45 1 1 1h10c.55 0 1-.45 1-1V6zm8.54 2.27c-.43-.68-1.1-1.14-1.88-1.32l-3.44-.76-.43 1.95 3.44.76a.993.993 0 01.76 1.19L25.84 24.3c-.09.4-.45.69-.85.69v2c1.34 0 2.52-.95 2.81-2.26l3.15-14.21c.17-.78.03-1.59-.4-2.26zm-26.77.64l3.44-.76-.43-1.95-3.44.76c-.78.17-1.45.64-1.88 1.32s-.57 1.48-.4 2.26l3.15 14.21c.29 1.3 1.47 2.25 2.8 2.26v-2c-.4 0-.76-.29-.85-.69L3.01 10.11a.985.985 0 01.13-.75c.14-.23.37-.38.63-.44z"/></svg>
                                         </div>
                                         <div class="details">
-                                            <h5>Pick an internet plan</h5>
+                                            <h5 class="scroll-to-plans">Pick an internet plan</h5>
                                             <p class="xxs"></p>
                                         </div>
                                     </div>
@@ -230,7 +235,7 @@
                 <!-- SWITCH -->
                 <div id="offer-id-switch" class="accordion">
                     <div class="control">
-                        <div class="label">Save when you bundle</div>
+                        <div class="label">Switch & save</div>
                         <div class="carat">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path class="svg-base" d="M8 11.05L2.65 5.7l.7-.7L8 9.63 12.65 5l.7.71z"/></svg>
                             <svg class="eye" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M24.62 9.58a12.24 12.24 0 00-17.24 0L1 16l6.36 6.43a12.19 12.19 0 0017.3 0L31 16zM23.23 21a10.19 10.19 0 01-14.46 0l-5-5 5-5a10.21 10.21 0 0114.4 0l5 5zM16 10a6 6 0 106 6 6 6 0 00-6-6zm0 10a4 4 0 114-4 4 4 0 01-4 4z"/></svg>
@@ -300,95 +305,94 @@
 
     <div class="overlay"></div>
 
-    
-    <main>
 
-        <section id="offers-manager-nav" class="max-width-background accent flush expanded">
-            <div class="flex middle">
-                <div class="container bleed flex sm stretch right">
-                    <div class="offer-carousel flex">
+    <section id="offers-manager-nav" class=" accent flush expanded mar-no-t">
+        <div class="flex middle">
+            <div class="container flex sm stretch right">
+                <div class="offer-carousel flex">
 
-                        <div class="control prev accent inactive"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M19.73 26.71L9 16 19.73 5.29l1.41 1.42L11.85 16l9.29 9.29z"/></svg></div>
+                    <div class="control prev accent inactive"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M19.73 26.71L9 16 19.73 5.29l1.41 1.42L11.85 16l9.29 9.29z"/></svg></div>
+                    
+                    <div class="overflow-container offers flex sm equal">
                         
-                        <div class="overflow-container offers flex sm equal">
-                            
-                            <div id="offer-id-autopay" class="offer manage">
-                                <div class="shaped-container sm circle">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M15 24v-2h-3v-2h5.34a1.51 1.51 0 100-3h-2.68A3.58 3.58 0 0111 13.51 3.52 3.52 0 0114.52 10H15V8h2v2h3v2h-5.48A1.51 1.51 0 0013 13.49 1.59 1.59 0 0014.66 15h2.68a3.5 3.5 0 110 7H17v2zM10 9H5.05a13 13 0 0124 7h2A15 15 0 004 7V3H2v8h8zm12 14h5a13 13 0 01-24-7H1a15 15 0 0027 9v4h2v-8h-8z"/></svg>
-                                </div>
-                                <div class="copy">
-                                    <div class="label">Save with AutoPay</div>
-                                    <div class="details">
-                                        <div class="wrapper">
-                                            <p class="xs">Short description lorem ipsum dolor sit amet ut labore et dolore magna aliqua.</p>
-                                            <p class="legal">Lorem ipsum dolor. <a href="">See offer details</a></p>
-                                        </div>
+                        <div id="offer-id-autopay" class="offer manage">
+                            <div class="shaped-container sm circle">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M15 24v-2h-3v-2h5.34a1.51 1.51 0 100-3h-2.68A3.58 3.58 0 0111 13.51 3.52 3.52 0 0114.52 10H15V8h2v2h3v2h-5.48A1.51 1.51 0 0013 13.49 1.59 1.59 0 0014.66 15h2.68a3.5 3.5 0 110 7H17v2zM10 9H5.05a13 13 0 0124 7h2A15 15 0 004 7V3H2v8h8zm12 14h5a13 13 0 01-24-7H1a15 15 0 0027 9v4h2v-8h-8z"/></svg>
+                            </div>
+                            <div class="copy">
+                                <div class="label">Save with AutoPay</div>
+                                <div class="details">
+                                    <div class="wrapper">
+                                        <p class="xs">Short description lorem ipsum dolor sit amet ut labore et dolore magna aliqua.</p>
+                                        <p class="legal">Lorem ipsum dolor. <a href="">See offer details</a></p>
                                     </div>
                                 </div>
                             </div>
-
-                            <div id="offer-id-bundle" class="offer manage">
-                                <div class="shaped-container sm circle">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M5 19h13v2H3v1c0 .54.32 1 .71 1H18v2H3.71C2.22 25 1 23.65 1 22v-3h2V6.71C3 5.22 4.22 4 5.71 4h20.57c.72 0 1.41.28 1.92.79s.8 1.19.8 1.92V9h-2V6.71c0-.19-.07-.37-.21-.5a.718.718 0 00-.51-.21H5.71c-.39 0-.71.32-.71.71V19zm26-5.85v12.69c0 1.19-.95 2.15-2.12 2.15h-6.75c-1.17 0-2.12-.97-2.12-2.15V13.15c0-1.19.95-2.15 2.12-2.15h6.75c1.17 0 2.12.97 2.12 2.15zm-2 0c0-.08-.06-.15-.12-.15h-6.75c-.07 0-.12.07-.12.15v12.69c0 .08.06.15.12.15h6.75c.07 0 .12-.07.12-.15V13.15zm-5 3.84h3v-2h-3v2z"/></svg>
-                                </div>
-                                <div class="copy">
-                                    <div class="label">Save when you bundle</div>
-                                    <div class="details">
-                                        <div class="wrapper">
-                                            <p class="xs">Short description lorem ipsum dolor sit amet ut labore et dolore magna aliqua.</p>
-                                            <p class="legal">Lorem ipsum dolor. <a href="">See offer details</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="offer-id-card" class="offer manage action-plan">
-                                <div class="shaped-container sm circle">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M26 18a3 3 0 01-3 3v2h-2v-2h-2v-2h4a1 1 0 000-2h-2a3 3 0 010-6V9h2v2h2v2h-4a1 1 0 000 2h2a3 3 0 013 3zm4-10v16a3 3 0 01-3 3H5a3 3 0 01-3-3V8a3 3 0 013-3h22a3 3 0 013 3zm-2 0a1 1 0 00-1-1H5a1 1 0 00-1 1v16a1 1 0 001 1h22a1 1 0 001-1zM7 22h6v-2H7z"/></svg>
-                                </div>
-                                <div class="copy">
-                                    <div class="label">Get rewards on every plan</div>
-                                    <div class="details">
-                                        <div class="wrapper">
-                                            <p class="xs">Short description lorem ipsum dolor sit amet ut labore et dolore magna aliqua.</p>
-                                            <p class="legal">Lorem ipsum dolor. <a href="">See offer details</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="offer-id-switch" class="offer manage">
-                                <div class="shaped-container sm circle">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M27.24 11.06L24 7.82V28h-2V7.82l-3.24 3.24-1.42-1.41L23 4l5.66 5.66zM10 20.19V8H8v12.19L4.76 17l-1.42 1.36L9 24l5.66-5.66L13.24 17z"/></svg>
-                                </div>
-                                <div class="copy">
-                                    <div class="label">Switch and save</div>
-                                    <div class="details">
-                                        <div class="wrapper">
-                                            <p class="xs">Short description lorem ipsum dolor sit amet ut labore et dolore magna aliqua.</p>
-                                            <p class="legal">Lorem ipsum dolor. <a href="">See offer details</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
 
-                        <div class="control next accent inactive"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M12.27 26.71l-1.41-1.42L20.15 16l-9.29-9.29 1.41-1.42L23 16z"/></svg></div>
+                        <div id="offer-id-bundle" class="offer manage">
+                            <div class="shaped-container sm circle">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M5 19h13v2H3v1c0 .54.32 1 .71 1H18v2H3.71C2.22 25 1 23.65 1 22v-3h2V6.71C3 5.22 4.22 4 5.71 4h20.57c.72 0 1.41.28 1.92.79s.8 1.19.8 1.92V9h-2V6.71c0-.19-.07-.37-.21-.5a.718.718 0 00-.51-.21H5.71c-.39 0-.71.32-.71.71V19zm26-5.85v12.69c0 1.19-.95 2.15-2.12 2.15h-6.75c-1.17 0-2.12-.97-2.12-2.15V13.15c0-1.19.95-2.15 2.12-2.15h6.75c1.17 0 2.12.97 2.12 2.15zm-2 0c0-.08-.06-.15-.12-.15h-6.75c-.07 0-.12.07-.12.15v12.69c0 .08.06.15.12.15h6.75c.07 0 .12-.07.12-.15V13.15zm-5 3.84h3v-2h-3v2z"/></svg>
+                            </div>
+                            <div class="copy">
+                                <div class="label">Save when you bundle</div>
+                                <div class="details">
+                                    <div class="wrapper">
+                                        <p class="xs">Short description lorem ipsum dolor sit amet ut labore et dolore magna aliqua.</p>
+                                        <p class="legal">Lorem ipsum dolor. <a href="">See offer details</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="offer-id-card" class="offer manage action-plan">
+                            <div class="shaped-container sm circle">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M26 18a3 3 0 01-3 3v2h-2v-2h-2v-2h4a1 1 0 000-2h-2a3 3 0 010-6V9h2v2h2v2h-4a1 1 0 000 2h2a3 3 0 013 3zm4-10v16a3 3 0 01-3 3H5a3 3 0 01-3-3V8a3 3 0 013-3h22a3 3 0 013 3zm-2 0a1 1 0 00-1-1H5a1 1 0 00-1 1v16a1 1 0 001 1h22a1 1 0 001-1zM7 22h6v-2H7z"/></svg>
+                            </div>
+                            <div class="copy">
+                                <div class="label">Get rewards on every plan</div>
+                                <div class="details">
+                                    <div class="wrapper">
+                                        <p class="xs">Short description lorem ipsum dolor sit amet ut labore et dolore magna aliqua.</p>
+                                        <p class="legal">Lorem ipsum dolor. <a href="">See offer details</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="offer-id-switch" class="offer manage">
+                            <div class="shaped-container sm circle">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M27.24 11.06L24 7.82V28h-2V7.82l-3.24 3.24-1.42-1.41L23 4l5.66 5.66zM10 20.19V8H8v12.19L4.76 17l-1.42 1.36L9 24l5.66-5.66L13.24 17z"/></svg>
+                            </div>
+                            <div class="copy">
+                                <div class="label">Switch & save</div>
+                                <div class="details">
+                                    <div class="wrapper">
+                                        <p class="xs">Short description lorem ipsum dolor sit amet ut labore et dolore magna aliqua.</p>
+                                        <p class="legal">Lorem ipsum dolor. <a href="">See offer details</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
-                    <div class="settings manage flex middle">
-                        <div class="shaped-container sm circle">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M29.16 12.54A6.39 6.39 0 0128 11a7.08 7.08 0 01-.29-2 5.28 5.28 0 00-1.11-3.66A5.28 5.28 0 0023 4.28 7.08 7.08 0 0121 4a6.39 6.39 0 01-1.52-1.15A5.38 5.38 0 0016 1a5.38 5.38 0 00-3.46 1.84A6.39 6.39 0 0111 4a7.08 7.08 0 01-2 .29 5.28 5.28 0 00-3.61 1.1 5.28 5.28 0 00-1.11 3.66A7.08 7.08 0 014 11a6.39 6.39 0 01-1.15 1.52A5.38 5.38 0 001 16a5.38 5.38 0 001.84 3.46A6.39 6.39 0 014 21a7.08 7.08 0 01.29 2 5.28 5.28 0 001.11 3.66 5.28 5.28 0 003.66 1.11A7.08 7.08 0 0111 28a6.39 6.39 0 011.52 1.15A5.38 5.38 0 0016 31a5.38 5.38 0 003.46-1.84A6.39 6.39 0 0121 28a7.08 7.08 0 012-.29 5.28 5.28 0 003.66-1.11 5.28 5.28 0 001.06-3.6 7.08 7.08 0 01.28-2 6.39 6.39 0 011.15-1.52A5.38 5.38 0 0031 16a5.38 5.38 0 00-1.84-3.46zm-1.48 5.58a7.42 7.42 0 00-1.51 2.09 8 8 0 00-.44 2.63 4 4 0 01-.54 2.35 4 4 0 01-2.35.54 8 8 0 00-2.63.44 7.42 7.42 0 00-2.09 1.51C17.37 28.36 16.66 29 16 29s-1.37-.64-2.12-1.32a7.42 7.42 0 00-2.09-1.51 8 8 0 00-2.63-.44 4 4 0 01-2.35-.54 4 4 0 01-.54-2.35 8 8 0 00-.44-2.63 7.42 7.42 0 00-1.51-2.09C3.64 17.37 3 16.66 3 16s.64-1.37 1.32-2.12a7.42 7.42 0 001.51-2.09 8 8 0 00.44-2.63 4 4 0 01.54-2.35 4 4 0 012.35-.54 8 8 0 002.63-.44 7.42 7.42 0 002.09-1.51C14.63 3.64 15.34 3 16 3s1.37.64 2.12 1.32a7.42 7.42 0 002.09 1.51 8 8 0 002.63.44 4 4 0 012.35.54 4 4 0 01.54 2.35 8 8 0 00.44 2.63 7.42 7.42 0 001.51 2.09c.68.75 1.32 1.46 1.32 2.12s-.64 1.37-1.32 2.12zm-6.68.37A3.59 3.59 0 0117.34 22H17v2h-2v-2h-3v-2h5.34a1.51 1.51 0 100-3h-2.68A3.58 3.58 0 0111 13.51 3.52 3.52 0 0114.52 10H15V8h2v2h3v2h-5.48A1.51 1.51 0 0013 13.49 1.59 1.59 0 0014.66 15h2.68A3.58 3.58 0 0121 18.49z"/></svg>
-                        </div>
-                    </div>
-                    <div class="carat">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path class="svg-base" d="M8 11.05L2.65 5.7l.7-.7L8 9.63 12.65 5l.7.71z"/></svg>
+
+                    <div class="control next accent inactive"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M12.27 26.71l-1.41-1.42L20.15 16l-9.29-9.29 1.41-1.42L23 16z"/></svg></div>
+
+                </div>
+                <div class="settings manage flex middle">
+                    <div class="icon-button lg circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M29.16 12.54A6.39 6.39 0 0128 11a7.08 7.08 0 01-.29-2 5.28 5.28 0 00-1.11-3.66A5.28 5.28 0 0023 4.28 7.08 7.08 0 0121 4a6.39 6.39 0 01-1.52-1.15A5.38 5.38 0 0016 1a5.38 5.38 0 00-3.46 1.84A6.39 6.39 0 0111 4a7.08 7.08 0 01-2 .29 5.28 5.28 0 00-3.61 1.1 5.28 5.28 0 00-1.11 3.66A7.08 7.08 0 014 11a6.39 6.39 0 01-1.15 1.52A5.38 5.38 0 001 16a5.38 5.38 0 001.84 3.46A6.39 6.39 0 014 21a7.08 7.08 0 01.29 2 5.28 5.28 0 001.11 3.66 5.28 5.28 0 003.66 1.11A7.08 7.08 0 0111 28a6.39 6.39 0 011.52 1.15A5.38 5.38 0 0016 31a5.38 5.38 0 003.46-1.84A6.39 6.39 0 0121 28a7.08 7.08 0 012-.29 5.28 5.28 0 003.66-1.11 5.28 5.28 0 001.06-3.6 7.08 7.08 0 01.28-2 6.39 6.39 0 011.15-1.52A5.38 5.38 0 0031 16a5.38 5.38 0 00-1.84-3.46zm-1.48 5.58a7.42 7.42 0 00-1.51 2.09 8 8 0 00-.44 2.63 4 4 0 01-.54 2.35 4 4 0 01-2.35.54 8 8 0 00-2.63.44 7.42 7.42 0 00-2.09 1.51C17.37 28.36 16.66 29 16 29s-1.37-.64-2.12-1.32a7.42 7.42 0 00-2.09-1.51 8 8 0 00-2.63-.44 4 4 0 01-2.35-.54 4 4 0 01-.54-2.35 8 8 0 00-.44-2.63 7.42 7.42 0 00-1.51-2.09C3.64 17.37 3 16.66 3 16s.64-1.37 1.32-2.12a7.42 7.42 0 001.51-2.09 8 8 0 00.44-2.63 4 4 0 01.54-2.35 4 4 0 012.35-.54 8 8 0 002.63-.44 7.42 7.42 0 002.09-1.51C14.63 3.64 15.34 3 16 3s1.37.64 2.12 1.32a7.42 7.42 0 002.09 1.51 8 8 0 002.63.44 4 4 0 012.35.54 4 4 0 01.54 2.35 8 8 0 00.44 2.63 7.42 7.42 0 001.51 2.09c.68.75 1.32 1.46 1.32 2.12s-.64 1.37-1.32 2.12zm-6.68.37A3.59 3.59 0 0117.34 22H17v2h-2v-2h-3v-2h5.34a1.51 1.51 0 100-3h-2.68A3.58 3.58 0 0111 13.51 3.52 3.52 0 0114.52 10H15V8h2v2h3v2h-5.48A1.51 1.51 0 0013 13.49 1.59 1.59 0 0014.66 15h2.68A3.58 3.58 0 0121 18.49z"/></svg>
                     </div>
                 </div>
+                <div class="carat">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path class="svg-base" d="M8 11.05L2.65 5.7l.7-.7L8 9.63 12.65 5l.7.71z"/></svg>
+                </div>
             </div>
-        </section>
-        
+        </div>
+    </section>
+
+    <main> 
         <section id="hero" class="max-width-background hero flush">
 
             <div class="content flex col sm">
@@ -412,10 +416,14 @@
 
         <section class="max-width-background flush bleed flex col md">
             
-            <div class="container bleed">
+            <!--<div class="container bleed">
                 <div class="accordion tight bleed">
                     <div class="control center tab-adjust">
-                        <h5>Every AT&T Fiber plan includes</h5>
+                        <div class="flex middle xs">
+                            <div class="shaped-container xs primary circle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M11.36 6.35a1.36 1.36 0 01-.35.89V15H9V7.24a1.35 1.35 0 112.35-.89zM14 1a1.35 1.35 0 00-1.34 1.35 1.3 1.3 0 00.34.88V15h2V3.23a1.27 1.27 0 00.35-.88A1.35 1.35 0 0014 1zm4 2a1.35 1.35 0 00-1.35 1.35 1.29 1.29 0 00.35.89V15h2V5.22a1.33 1.33 0 00.34-.89A1.35 1.35 0 0018 3zm4 2a1.35 1.35 0 00-1.35 1.35 1.31 1.31 0 00.35.89V15h2V7.24A1.35 1.35 0 0022 5zm1.24 11H8.73A2.75 2.75 0 006 18.75V31h2V18.75a.76.76 0 01.73-.75h14.53a.75.75 0 01.74.75V31h2V18.75A2.75 2.75 0 0023.26 16z"/></svg></div>
+                            <h5>Every AT&T Fiber plan includes</h5>
+                        </div>
+                        
                         <div class="carat">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path class="svg-base" d="M8 11.05L2.65 5.7l.7-.7L8 9.63 12.65 5l.7.71z"/></svg>
                         </div>
@@ -425,7 +433,7 @@
                             <div class="rtbs flex md">
                                
                                 <div class="rtb flex col sm middle">
-                                    <div class="pictogram">
+                                    <div class="pictogram sm">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96"><path class="svg-base" d="M83.84 46L49.62 11.76A5.93 5.93 0 0045.38 10H10v34.28a6 6 0 001.76 4.24l34.76 34.76a6 6 0 008.49 0l28.83-28.82a6 6 0 000-8.46zm-1.42 7L53.59 81.87a4 4 0 01-5.65 0L13.17 47.1A4 4 0 0112 44.28V12h33.38a4 4 0 012.83 1.17l34.21 34.21a4 4 0 010 5.62zM26.5 20a6.5 6.5 0 106.5 6.5 6.51 6.51 0 00-6.5-6.5zm0 11a4.5 4.5 0 114.5-4.5 4.51 4.51 0 01-4.5 4.5z"/><path class="svg-accent" d="M59.92 61.34l-3.53-3.54-5 5L50 61.34l8-8A3.8 3.8 0 0058 48l-.28-.28a3.8 3.8 0 00-5.37 0l-4.67 4.67a5.81 5.81 0 01-8.2 0l-.28-.29a5.79 5.79 0 010-8.2l1.62-1.62-3.52-3.57 1.41-1.41 3.54 3.53 5-4.95 1.41 1.42-8 8a3.8 3.8 0 000 5.37l.28.28a3.81 3.81 0 005.38 0l4.66-4.66a5.8 5.8 0 018.21 0l.28.28a5.81 5.81 0 010 8.2l-1.67 1.62 3.54 3.53z"/></svg>
                                     </div>
                                     <h4>Straightforward pricing</h4>
@@ -433,7 +441,7 @@
                                 </div>
 
                                 <div class="rtb flex col sm middle">
-                                    <div class="pictogram">
+                                    <div class="pictogram sm">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96"><path class="svg-base" d="M48 86a38 38 0 1138-38 38 38 0 01-38 38zm0-74a36 36 0 1036 36 36 36 0 00-36-36zm21.17 16.24l-1.41-1.41L52.9 41.69A7.92 7.92 0 0048 40a8 8 0 108 8 7.92 7.92 0 00-1.69-4.9zM48 54a6 6 0 116-6 6 6 0 01-6 6z"/><path class="svg-accent" d="M22 48h-2a28 28 0 0142.54-23.93l-1 1.7A26 26 0 0022 48zm49.92-14.56l-1.71 1A25.93 25.93 0 0174 48h2a28 28 0 00-4.08-14.56z"/></svg>
                                     </div>
                                     <h4>Fast internet<sup>1</sup></h4>
@@ -441,7 +449,7 @@
                                 </div>
 
                                 <div class="rtb flex col sm middle">
-                                    <div class="pictogram">
+                                    <div class="pictogram sm">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96"><path class="svg-accent" d="M29.22 54.37L27.8 53a28.57 28.57 0 0140.4 0l-1.42 1.42a26.56 26.56 0 00-37.56 0zM48 55.59a17.48 17.48 0 0112.42 5.14l1.41-1.41a19.56 19.56 0 00-27.66 0l1.41 1.41A17.48 17.48 0 0148 55.59zm0 9a8.55 8.55 0 016.08 2.52l1.42-1.41a10.6 10.6 0 00-15 0l1.42 1.41A8.55 8.55 0 0148 64.55z"/><path class="svg-base" d="M89.48 50.87L74 34.28V12H61v8.35l-8-8.58a6.82 6.82 0 00-10 0L6.52 50.87 8 52.23 18 41.5V80a6 6 0 006 6h48a6 6 0 006-6V41.5l10 10.73zM63 14h9v18.14l-9-9.64zm13 66a4 4 0 01-4 4H24a4 4 0 01-4-4V39.36l24.48-26.23a4.81 4.81 0 017 0L76 39.36z"/></svg>
                                     </div>
                                     <h4>Breakthrough Wi-Fi equipment</h4>
@@ -454,7 +462,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
 
             <div class="container grid md autopay-legal" style="display:none;">
                 <div class="legal flex center">Price is only for devices purchased at full price, bring your own, or on installment plan, and after AutoPay & paperless billing discount (starts within 2 bill cycles).</div>

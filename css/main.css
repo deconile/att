@@ -116,6 +116,7 @@ main {
 .max-width-background.tight {padding-top:16px;padding-bottom:16px;}
 .max-width-background.flush {padding-top:0;padding-bottom:0;}
 .max-width-background.bleed {padding-left:0;padding-right:0;}
+
 .container {
     margin:0 auto;
     width:100%;
@@ -1018,7 +1019,9 @@ footer .copy a:hover {
     .tb-hide {display:none!important;}
 
     /* MAIN */
-
+    main {
+        margin-top:0;
+    }
 
     /* NAV BARS */
     nav#main-nav {

@@ -287,6 +287,9 @@ function applyCardClick(){
             },1000);
         });
 
+        //SWAP ICON TO CHANGE
+        // $(this).parent().siblings().find('.icon-button').html(swap);
+
         setTimeout(function(){
             card.parents('.tab-content').attr('data-height',card.parents('.tab-content').children().outerHeight());
         },1000);
@@ -394,7 +397,9 @@ const star = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path 
     laptop = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M29 20V8a3 3 0 00-3-3H6a3 3 0 00-3 3v12H1v4a3 3 0 003 3h24a3 3 0 003-3v-4zM5 8a1 1 0 011-1h20a1 1 0 011 1v12H5zm24 16a1 1 0 01-1 1H4a1 1 0 01-1-1v-2h11v1h4v-1h11z"/></svg>',
     tvSatellite = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M31 7v14a3 3 0 01-3 3H4a3 3 0 01-3-3V7a3 3 0 013-3h3v2H4a1 1 0 00-1 1v14a1 1 0 001 1h24a1 1 0 001-1V7a1 1 0 00-1-1h-3V4h3a3 3 0 013 3zm-15 5.39a12.8 12.8 0 009.07-3.75l-1.41-1.41a10.85 10.85 0 01-15.32 0L6.93 8.64A12.8 12.8 0 0016 12.39zm5.85-7L20.44 4a6.28 6.28 0 01-8.88 0l-1.41 1.43A8.25 8.25 0 0016 7.85a8.25 8.25 0 005.85-2.42zM8 28h16v-2H8z"/></svg>',
     moreWays = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M28 23h-9v-2h9a1 1 0 001-1V9H9V5a3 3 0 013-3h16a3 3 0 013 3v15a3 3 0 01-3 3zM11 7h18V5a1 1 0 00-1-1H12a1 1 0 00-1 1zm8 5v6l5-3zm-5 18H4a3 3 0 01-3-3V14a3 3 0 013-3h10a3 3 0 013 3v13a3 3 0 01-3 3zM4 13a1 1 0 00-1 1v13a1 1 0 001 1h10a1 1 0 001-1V14a1 1 0 00-1-1zm6 11H8v2h2z"/></svg>',
-    totalHome = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M8.165 11.312H1.879V5.026h2v2.217a14.959 14.959 0 0124.311.007V5.026h2v6.286h-6.285v-2h3.248a12.959 12.959 0 00-22.24 0h3.252zm22.477 1.514l-1.956.42a12.972 12.972 0 11-25.654 2.73 13.035 13.035 0 01.292-2.748l-1.955-.422a14.97 14.97 0 1029.273.02zM16.498 24.013v-3.987h-.99v3.987h-3.492a1.999 1.999 0 01-1.997-1.996v-4.583l-.262.28-1.462-1.364 6.248-6.695a2.064 2.064 0 012.92.001l6.249 6.694-1.462 1.365-.263-.281v4.583a2 2 0 01-1.997 1.996zm2-5.987v3.987h1.492l-.003-6.722-3.986-4.27-3.981 4.268v6.728l1.488-.002v-3.989z"/></svg>'
+    totalHome = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M8.165 11.312H1.879V5.026h2v2.217a14.959 14.959 0 0124.311.007V5.026h2v6.286h-6.285v-2h3.248a12.959 12.959 0 00-22.24 0h3.252zm22.477 1.514l-1.956.42a12.972 12.972 0 11-25.654 2.73 13.035 13.035 0 01.292-2.748l-1.955-.422a14.97 14.97 0 1029.273.02zM16.498 24.013v-3.987h-.99v3.987h-3.492a1.999 1.999 0 01-1.997-1.996v-4.583l-.262.28-1.462-1.364 6.248-6.695a2.064 2.064 0 012.92.001l6.249 6.694-1.462 1.365-.263-.281v4.583a2 2 0 01-1.997 1.996zm2-5.987v3.987h1.492l-.003-6.722-3.986-4.27-3.981 4.268v6.728l1.488-.002v-3.989z"/></svg>',
+    sync = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" fill-rule="evenodd" d="M3 16c0 7.17 5.83 13 13 13 4.44 0 8.58-2.31 10.95-6H22v-2h8v8h-2v-4.01A15.08 15.08 0 0116 31C7.73 31 1 24.27 1 16zM16 1c8.27 0 15 6.73 15 15h-2c0-7.17-5.83-13-13-13-4.44 0-8.58 2.31-10.95 6H10v2H2V3h2v4.01A15.08 15.08 0 0116 1z"/></svg>',
+    swap = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path class="svg-base" d="M14.24 20.93l1.42 1.42L10 28l-5.66-5.65 1.42-1.42L9 24.18V4h2v20.18zM27.66 9.65L22 4l-5.66 5.65 1.42 1.42L21 7.82V28h2V7.82l3.24 3.25z"/></svg>'
 
 
 
@@ -594,7 +599,7 @@ const plans = {
             promo : '',
             promoIcon : '',
             eyebrow : '300Mbps speeds',
-            plan : 'Fiber - Internet 300',
+            plan : 'Fiber 300',
             price : [60],
             priceDisc : 'Price excludes taxes & fees.',
             shortlegal : '',
@@ -628,7 +633,7 @@ const plans = {
             promo : '',
             promoIcon : '',
             eyebrow : '500Mbps speeds',
-            plan : 'Fiber - Internet 500',
+            plan : 'Fiber 500',
             price : [70],
             priceDisc : 'Price excludes taxes & fees.',
             shortlegal : '',
@@ -662,7 +667,7 @@ const plans = {
             promo : '',
             promoIcon : '',
             eyebrow : '1000Mbps speeds',
-            plan : 'Fiber - Internet 1000',
+            plan : 'Fiber 1000',
             price : [85],
             priceDisc : 'Price excludes taxes & fees.',
             shortlegal : '',
@@ -696,7 +701,7 @@ const plans = {
             promo : 'All-Fi Pro included',
             promoIcon : star,
             eyebrow : '2000Mbps speeds',
-            plan : 'Fiber - Internet 2000',
+            plan : 'Fiber 2000',
             price : [155],
             priceDisc : 'Price excludes taxes & fees.',
             shortlegal : '',
@@ -736,7 +741,7 @@ const plans = {
             promo : 'All-Fi Pro included',
             promoIcon : star,
             eyebrow : '5000Mbps speeds',
-            plan : 'Fiber - Internet 5000',
+            plan : 'Fiber 5000',
             price : [255],
             priceDisc : 'Price excludes taxes & fees.',
             shortlegal : '',

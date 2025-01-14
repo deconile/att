@@ -358,7 +358,11 @@
     align-items: center;
     border-radius:16px;
     transition: 500ms;
+    width:64px;
+    height:64px;
 }
+
+.shaped-container svg {width:32px;height:32px;}
 
 .shaped-container {
     border-radius:8px;
@@ -376,9 +380,6 @@
 .shaped-container.lg {width:96px;height:96px;}
 .shaped-container.lg svg {width:48px;height:48px;}
 
-.shaped-container.md {width:64px;height:64px;}
-.shaped-container.md svg {width:32px;height:32px;}
-
 .shaped-container.sm {width:48px;height:48px;}
 .shaped-container.sm svg {width:24px;height:24px;}
 
@@ -390,6 +391,9 @@
 /* FILLS */
 .shaped-container.primary {
     background-color:var(--primary-blue);
+}
+.shaped-container.primary svg {
+    fill:var(--gray-000);
 }
 
 .shaped-container.blue {
@@ -406,7 +410,7 @@
 }
 
 .shaped-container.blank {
-    background-color:var(--gray-200);
+    background-color:transparent;
 }
 
 
@@ -418,6 +422,11 @@
 }
 
 .pictogram.sm, .pictogram.sm svg {
+    width:64px;
+    height:64px;
+}
+
+.pictogram.xs, .pictogram.xs svg {
     width:48px;
     height:48px;
 }
@@ -447,9 +456,14 @@
 
 #progress-indicator #progress-indicator-block {
     width:100%;
-    padding:2.4rem 0;
+    padding:4px 0;
     position: relative;
     overflow: visible;
+}
+
+
+#progress-indicator.sticky #progress-indicator-block {
+    /* padding:0; */
 }
 
 
@@ -457,10 +471,7 @@
 /* HEADER */
 #progress-indicator .header {
     padding:0;
-}
-
-#progress-indicator .header {
-    display: flex;
+    display: none;
     justify-content:space-between;
     align-items: center;
 }
@@ -488,12 +499,12 @@
 
 /* INDICATOR */
 #progress-indicator .breadcrumbs {
-    margin-top:8px;
+    
 }
 
 #progress-indicator .breadcrumbs > .content {
-    display:grid;
-    grid-template-columns: auto 1fr auto;
+    display:flex;
+    align-items: center;
     gap:8px;
     max-width:inherit;
 }
@@ -502,15 +513,16 @@
     display:flex;
     justify-content: center;
     align-items: center;
-    background-color:var(--blue-200);
+    background-color:var(--primary-blue);
     width:42px;
     height:42px;
     border-radius:100%;
 }
 
-#progress-indicator .icon svg {
+#progress-indicator .breadcrumbs .icon svg {
     width:24px;
     height:24px;
+    fill: var(--gray-000);
 }
 
 #progress-indicator .tab-container {
@@ -518,35 +530,70 @@
     justify-content: flex-start;
     gap:8px;
     overflow: hidden;
-    padding:8px;
-    border:1px solid var(--gray-300);
-    border-radius: 64px;
+    width:100%;
+}
+
+#progress-indicator.sticky .tab-container {border-color:transparent;}
+
+#progress-indicator .tab-container > div > div {pointer-events: none;}
+#progress-indicator .tab-container > div.completed > div {cursor:pointer;}
+
+#progress-indicator .tab-container > div > div span {
+    display:inline-block;
+    padding:0;
+    color: var(--gray-500);
+    font-weight:700;
+    font-size:var(--type-xs);
+    user-select: none;
+    white-space: nowrap;
+}
+
+#progress-indicator .tab-container > div.completed > div span {color: var(--cobalt-600);}
+#progress-indicator .tab-container > div.active > div span {color: var(--gray-800);}
+
+#progress-indicator .tab-container > div.active {
+    flex-grow: 1;
+    display:flex;
+    gap:8px;
+    justify-content: center;
+    align-items: center;
 }
 
 #progress-indicator .tab-container > div > div {
-    display:inline-block;
-    padding:4px 16px;
-    border-radius: 64px;
-    color: var(--gray-600);
-    font-size:var(--type-sm);
-    user-select: none;
-    white-space: nowrap;
-    pointer-events: none;
+    display:flex;
+    align-items: center;
+    gap: 8px;
 }
 
-#progress-indicator .tab-container > div > div.completed {
-    color: var(--cobalt-600);
-    cursor:pointer;
-}
+#progress-indicator .tab-container > div:last-child span {display:none;}
 
-#progress-indicator .tab-container > div > div.active {
-    color: var(--gray-800);
-    background-color:var(--blue-100);
-    font-weight:700;
+#progress-indicator .tab-container > div.active:not(:first-child)::before,
+#progress-indicator .tab-container > div.active:not(:last-child)::after {
+    content:'';
+    height:2px;
+    width:100%;
+    border-radius:10px;
+    background-color:var(--primary-blue);
+}
+#progress-indicator .tab-container > div.active:not(:last-child)::after {background-color:var(--gray-300);}
+
+
+/* ICON CRUMBS */
+#progress-indicator .tab-container > div:not(.completed) > div .icon-button {background-color:var(--blue-000)}
+#progress-indicator .tab-container > div:not(.completed) > div .icon-button svg {fill:var(--gray-400)}
+
+
+#progress-indicator .tab-container > div.active > div .icon-button,
+#progress-indicator .tab-container > div.completed > div .icon-button {
+    background-color:var(--primary-blue)
+}
+#progress-indicator .tab-container > div.active > div .icon-button svg,
+#progress-indicator .tab-container > div.completed > div .icon-button svg {
+    fill:var(--gray-000)
 }
 
 #progress-indicator .checkout {
-    display:flex;
+    display:none;
     align-items: center;
     padding:0 16px;
     font-size:var(--type-sm);
@@ -620,19 +667,16 @@
 
 #footer-pricing .price .price-point {line-height:1em;}
 
-#footer-pricing .price .plan::after {
-    content:"Monthy";
-    margin-left:8px;
-    font-size:0.75em;
+#footer-pricing .price .plan::after,
+#footer-pricing .price .retail::after {
+    content:'';
+    font-size:0.5em;
     font-weight:400;
 }
 
-#footer-pricing .price .retail::after {
-    content:"Due today";
-    margin-left:8px;
-    font-size:0.75em;
-    font-weight:400;
-}
+#footer-pricing .price .plan::after {content:'/mo.';}
+
+#footer-pricing .price .retail::after {content:'';}
 
 
 
@@ -1360,6 +1404,7 @@
 
 .pag-button svg {
     position:relative;
+    top:25%;
     transition:500ms, top 200ms ease-out;
 }
 
@@ -1685,6 +1730,10 @@
 
     /* PROGRESS INDICATOR */
 
+    #progress-indicator #progress-indicator-block {padding:8px 0;}
+
+    #progress-indicator .header {display: flex;}
+
     #progress-indicator .progress-bar {display:block;}
     #progress-indicator .step-count {display:flex;}
     #progress-indicator .breadcrumbs .icon, #progress-indicator .breadcrumbs .checkout {display:none;}
@@ -1717,27 +1766,35 @@
         border-radius: 0;
     }
 
-    #progress-indicator .tab-container > div {
-        margin-bottom:8px;
+    #progress-indicator .tab-container > div + div {
+        margin-top:24px;
     }
 
-
-
-    /* SIGNATURE/FIRSTNET BANNERS */
-    #promobanner.signature .accordion .content .frame {
-        grid-template-columns: 1fr;
+    #progress-indicator .tab-container > div > div span {
+        font-size:var(--type-md);
     }
-    
-    #promobanner.signature .accordion .content .frame > div:last-child {
-        border-left:none;
-        padding-left:0;
-    }
+
+    #progress-indicator .tab-container > div:last-child span {display:block;}
+
+    #progress-indicator .tab-container .icon-button {display:none;}
+
+    #progress-indicator .tab-container > div::before,
+    #progress-indicator .tab-container > div::after {display:none;}
+
+    #progress-indicator .tab-container > div.active {justify-content: flex-start;}
+
+    /* CAROUSEL */
+
+    .pag-button.prev, .pag-button.next {display:none;}
+    .pagination {display:none;}
 
 }
 
 
 /* MOBILE */
 @media only screen and (max-width: 480px) {
+    #progress-indicator .header {display: flex;}
+    
     #progress-indicator .breadcrumbs {
         right:0;
         width:100%;
@@ -1751,10 +1808,7 @@
         margin-top: 8px;
     }
 
-    #footer-pricing .price .plan::after, #footer-pricing .price .retail::after {
-        display:block;
-        margin:0
-    }
+    #footer-pricing .price .plan::after, #footer-pricing .price .retail::after {}
 
     #footer-cta {
         grid-row: span 2;
@@ -1772,10 +1826,5 @@
     
     .tabs > .list > div {padding:4px 24px;}
     .tabs > .list > div.active {padding:4px 16px;}
-
-    /* CAROUSEL */
-
-    .pag-button.prev, .pag-button.next {display:none;}
-    .pagination {display:none;}
     
 }

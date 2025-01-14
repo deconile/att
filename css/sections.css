@@ -1,7 +1,7 @@
 
 
 /* STRUCTURE */
-main section:first-of-type {margin-top:0!important;}
+/* main section:first-of-type {margin-top:0!important;} */
 
 
 /* BANNER SECTIONS */
@@ -122,11 +122,18 @@ aside.cover ~ .overlay {
     width:100%;
     height:100%;
     position:fixed;
-    top:0;
-    right:0;
     background-color:#000c;
     z-index:999;
     transition: 500ms;
+}
+
+aside.left.cover ~ .overlay {
+    top:0;
+    left:0;
+}
+aside.right.cover ~ .overlay {
+    top:0;
+    right:0;
 }
 
 aside.cover.out ~ .overlay {
@@ -259,4 +266,27 @@ aside .close {
     aside > section {
         padding:2.4rem;
     }
+
+    aside.left.cover ~ .overlay {
+        top:inherit;
+        left:0;
+        bottom:0;
+    }
+    aside.right.cover ~ .overlay {
+        top:inherit;
+        right:0;
+        bottom:0;
+    }
+    
+    aside.cover.out ~ .overlay {
+        height:0;
+        width:100%;
+        background-color:transparent;
+        transition-delay: 150ms;
+    }
+
+    aside.out.right {transform:translateX(0) translateY(100%);box-shadow: none;}
+    aside.out.left {transform:translateX(0) translateY(100%);box-shadow: none;}
+
+    
 }
